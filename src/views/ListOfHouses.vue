@@ -4,8 +4,8 @@ import { houses } from '@/stores/houses'
 </script>
 
 <template>
+  <Header />
   <div>
-    <Header />
     <h1>Houses</h1>
     <button>+ CREATE NEW</button>
   </div>
@@ -14,15 +14,24 @@ import { houses } from '@/stores/houses'
     <button>Price</button>
     <button>Size</button>
   </div>
-  <div
-    v-for="House in houses"
-    :key="House.id"
-    style="border: 1px solid black; margin: 20px; padding: 10px"
-  >
-    <strong>ID</strong>: {{ House.id }}
-    <br />
-    <strong>Address</strong>: {{ House.name }}
-    <br />
-    {{ House.descrption }}
+  <div class="houses-parent">
+    <div
+      v-for="House in houses"
+      :key="House.id"
+      style="border: 1px solid black; margin: 20px; padding: 10px"
+    >
+      <strong>ID</strong>: {{ House.id }}
+      <br />
+      <strong>Address</strong>: {{ House.name }}
+      <br />
+      {{ House.descrption }}
+    </div>
   </div>
 </template>
+
+<style scoped>
+.house-parent {
+  display: flex;
+  flex-direction: column;
+}
+</style>
