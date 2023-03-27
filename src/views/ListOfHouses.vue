@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import Header from '@/components/Header.vue';
 import { houses } from '@/stores/houses'
 </script>
 
 <template>
+    <div>
+        <Header/>
+    </div>
   <div>
     <div v-for="House in houses" :key="House.id" style="border: 1px solid black; margin: 20px; padding: 10px;">
       <strong>ID</strong>: {{ House.id }}
