@@ -1,2 +1,5 @@
 almost 1 hour to understanding the project and what you ask from me to do, 
 almost half hour to initialized the vue project, learning some stuff in Git and create a repository on Github, adding you
+almost half hour to understand router and implenemting it for single house page
+almost half hour to clean the code
+almost half hour to create the components in list page
