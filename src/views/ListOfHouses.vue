@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
+import HouseListItem from '@/components/HouseListItem.vue'
 import { houses } from '@/stores/houses'
 </script>
 
@@ -15,17 +16,7 @@ import { houses } from '@/stores/houses'
     <button>Size</button>
   </div>
   <div class="houses-parent">
-    <div
-      v-for="House in houses"
-      :key="House.id"
-      style="border: 1px solid black; margin: 20px; padding: 10px"
-    >
-      <strong>ID</strong>: {{ House.id }}
-      <br />
-      <strong>Address</strong>: {{ House.name }}
-      <br />
-      {{ House.descrption }}
-    </div>
+    <HouseListItem v-for="house in houses" :key="house.id" :house="house" />
   </div>
 </template>
 
