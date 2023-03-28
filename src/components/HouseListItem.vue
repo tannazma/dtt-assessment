@@ -1,31 +1,31 @@
 <script setup lang="ts">
-
 defineProps<{
   house: {
     id: number
-    name: string
-    address: string
-    price: string
+    image: string
+    price: number
+    rooms: { bedrooms: number; bathrooms: number }
+    size: number
+    description: string
+    location: { street: string; city: string; zip: string }
+    createdAt: string
+    constructionYear: number
+    hasGarage: boolean
+    madeByMe: boolean
   }
 }>()
 </script>
 
 <template>
   <div style="border: 1px solid black; margin: 20px; padding: 10px">
-    <img
-      display="flex,"
-      flex="1,"
-      align-content="space-between,"
-      width="100"
-      src="src/assets/img_placeholder_house@3x.png"
-    />   
-    <br /> 
+    <img width="100" :src="house.image" />
+    <br />
     <strong>ID</strong>: {{ house.id }}
     <br />
-    <strong>Name</strong>: {{ house.name }}
-    <br />
+    <img width="30" src="src/assets/ic_bath@3x.png" />
+    <p>bedrooms:{{ house.rooms.bedrooms }}</p>
     <string>Price</string>: {{ house.price }}
     <br />
-    {{ house.address }}
+    {{ house.description }}
   </div>
 </template>
