@@ -25,7 +25,7 @@ const state = reactive({ searchText: '' })
   </div>
   <div class="houses-parent">
     <HouseListItem
-      v-for="house in houses.filter((h) => h.description.includes(state.searchText))"
+      v-for="house in houses.filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))"
       :key="house.id"
       :house="house"
     />
