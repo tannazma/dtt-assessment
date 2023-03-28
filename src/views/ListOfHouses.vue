@@ -4,7 +4,7 @@ import HouseListItem from '@/components/HouseListItem.vue'
 import { houses } from '@/stores/houses'
 import { reactive } from 'vue'
 
-const state = reactive({ searchText: 'ardi' })
+const state = reactive({ searchText: '' })
 </script>
 
 <template>
