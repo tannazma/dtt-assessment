@@ -4,7 +4,7 @@ import HouseListItem from '@/components/HouseListItem.vue'
 import { houses } from '@/stores/houses'
 </script>
 
-<template >
+<template>
   <Header />
   <div class="first-part">
     <h1 class="title">Houses</h1>
@@ -21,7 +21,6 @@ import { houses } from '@/stores/houses'
 </template>
 
 <style scoped>
-
 .first-part {
   background-color: darkgray;
 }
@@ -46,18 +45,16 @@ import { houses } from '@/stores/houses'
   margin-top: 20px;
   background-color: darkgray;
 }
-.input{
-margin-right:auto;
+.input {
+  margin-right: auto;
 }
 
 .price {
   display: flex;
   gap: 10px;
 }
-.size{
+.size {
   display: flex;
   gap: 10px;
 }
-
-
 </style>
