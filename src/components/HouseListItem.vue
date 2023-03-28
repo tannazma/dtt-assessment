@@ -25,7 +25,7 @@ defineProps<{
       <br />
       <img width="30" src="src/assets/ic_bath@3x.png" />
       <p>bedrooms:{{ house.rooms.bedrooms }}</p>
-      <string>Price</string>: {{ house.price }}
+      <strong>Price</strong>: {{ house.price }}
       <br />
       {{ house.description }}
     </div>
