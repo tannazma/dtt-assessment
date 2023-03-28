@@ -2,6 +2,9 @@
 import Header from '@/components/Header.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
 import { houses } from '@/stores/houses'
+import { reactive } from 'vue'
+
+const state = reactive({ searchText: 'ardi' })
 </script>
 
 <template>
@@ -11,7 +14,12 @@ import { houses } from '@/stores/houses'
     <button class="create-new">+ CREATE NEW</button>
   </div>
   <div class="second-part">
-    <input class="input" placeholder="Search for a house" />
+    <input
+      :value="state.searchText"
+      @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
+      class="input"
+      placeholder="Search for a house"
+    />
     <button class="price">Price</button>
     <button class="size">Size</button>
   </div>
