@@ -4,16 +4,16 @@ import HouseListItem from '@/components/HouseListItem.vue'
 import { houses } from '@/stores/houses'
 </script>
 
-<template>
+<template >
   <Header />
-  <div>
-    <h1>Houses</h1>
-    <button>+ CREATE NEW</button>
+  <div class="first-part">
+    <h1 class="title">Houses</h1>
+    <button class="create-new">+ CREATE NEW</button>
   </div>
-  <div>
-    <input placeholder="Search for a house" />
-    <button>Price</button>
-    <button>Size</button>
+  <div class="second-part">
+    <input class="input" placeholder="Search for a house" />
+    <button class="price">Price</button>
+    <button class="size">Size</button>
   </div>
   <div class="houses-parent">
     <HouseListItem v-for="house in houses" :key="house.id" :house="house" />
@@ -21,8 +21,43 @@ import { houses } from '@/stores/houses'
 </template>
 
 <style scoped>
+
+.first-part {
+  background-color: darkgray;
+}
 .house-parent {
   display: flex;
   flex-direction: column;
 }
+
+.first-part {
+  display: flex;
+  margin-top: 20px;
+}
+
+.title {
+  flex: 1;
+  align-content: space-between;
+}
+
+.second-part {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  background-color: darkgray;
+}
+.input{
+margin-right:auto;
+}
+
+.price {
+  display: flex;
+  gap: 10px;
+}
+.size{
+  display: flex;
+  gap: 10px;
+}
+
+
 </style>
