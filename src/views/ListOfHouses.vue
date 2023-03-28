@@ -24,7 +24,11 @@ const state = reactive({ searchText: 'ardi' })
     <button class="size">Size</button>
   </div>
   <div class="houses-parent">
-    <HouseListItem v-for="house in houses" :key="house.id" :house="house" />
+    <HouseListItem
+      v-for="house in houses.filter((h) => h.description.includes(state.searchText))"
+      :key="house.id"
+      :house="house"
+    />
   </div>
 </template>
 
