@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
+import CreateNewVue from '@/components/CreateNew.vue'
 import { houses } from '@/stores/houses'
 import { reactive } from 'vue'
 
@@ -11,7 +12,9 @@ const state = reactive({ searchText: '' })
   <Header />
   <div class="first-part">
     <h1 class="title">Houses</h1>
-    <button class="create-new">+ CREATE NEW</button>
+    <div>
+      <CreateNewVue />
+    </div>
   </div>
   <div class="second-part">
     <input
@@ -25,7 +28,9 @@ const state = reactive({ searchText: '' })
   </div>
   <div class="houses-parent">
     <HouseListItem
-      v-for="house in houses.filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))"
+      v-for="house in houses.filter((h) =>
+        h.description.toLowerCase().includes(state.searchText.toLowerCase())
+      )"
       :key="house.id"
       :house="house"
     />
