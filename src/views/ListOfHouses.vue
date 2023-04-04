@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import CreateNew from '@/components/CreateNew.vue'
 import Header from '@/components/Header.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
 import { reactive } from 'vue'
+import type { T_House } from '@/types/house'
 
-const state = reactive({ searchText: '', houses: [] })
+const state = reactive<{
+  searchText: string
+  houses: T_House[]
+}>({ searchText: '', houses: [] })
 
 // this is old way
 // response.then((responseResolved) => {
@@ -21,7 +26,7 @@ async function getHousesFromServer() {
     }
   })
 
-  state.houses =( await (await response).json())
+  state.houses = await (await response).json()
 }
 
 getHousesFromServer()
@@ -31,7 +36,7 @@ getHousesFromServer()
   <Header />
   <div class="first-part">
     <h1 class="title">Houses</h1>
-    <button class="create-new">+ CREATE NEW</button>
+    <CreateNew />
   </div>
   <div class="second-part">
     <input
