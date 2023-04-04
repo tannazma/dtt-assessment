@@ -8,3 +8,4 @@ almost 1 hour to learn props to use the entry of the component and create
 a seperated component from a page by calling a component tag in that page
 almost half hour to create a component for a seperated component for houses
 1 hour to learn how to create a component for create new buttoon and mount router to a new page
+almost 1 hour to learn and create a form for create new house page
