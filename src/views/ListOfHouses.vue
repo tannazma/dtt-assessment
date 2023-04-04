@@ -1,20 +1,37 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
-import CreateNewVue from '@/components/CreateNew.vue'
-import { houses } from '@/stores/houses'
 import { reactive } from 'vue'
 
-const state = reactive({ searchText: '' })
+const state = reactive({ searchText: '', houses: [] })
+
+// this is old way
+// response.then((responseResolved) => {
+//   responseResolved.text().then((responseExtracted) => {
+//     const result = JSON.parse(responseExtracted);
+//     state.houses = result;
+//   })
+// })
+
+// this is new good way
+async function getHousesFromServer() {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    }
+  })
+
+  state.houses =( await (await response).json())
+}
+
+getHousesFromServer()
 </script>
 
 <template>
   <Header />
   <div class="first-part">
     <h1 class="title">Houses</h1>
-    <div>
-      <CreateNewVue />
-    </div>
+    <button class="create-new">+ CREATE NEW</button>
   </div>
   <div class="second-part">
     <input
@@ -28,7 +45,7 @@ const state = reactive({ searchText: '' })
   </div>
   <div class="houses-parent">
     <HouseListItem
-      v-for="house in houses.filter((h) =>
+      v-for="house in state.houses.filter((h) =>
         h.description.toLowerCase().includes(state.searchText.toLowerCase())
       )"
       :key="house.id"
