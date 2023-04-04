@@ -1,18 +1,8 @@
 <script setup lang="ts">
+import type { T_House } from '@/types/house';
+
 defineProps<{
-  house: {
-    id: number
-    image: string
-    price: number
-    rooms: { bedrooms: number; bathrooms: number }
-    size: number
-    description: string
-    location: { street: string; city: string; zip: string }
-    createdAt: string
-    constructionYear: number
-    hasGarage: boolean
-    madeByMe: boolean
-  }
+  house: T_House
 }>()
 </script>
 
