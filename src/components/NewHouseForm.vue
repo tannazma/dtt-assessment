@@ -19,8 +19,8 @@
     Postal code
     <input
       placeholder="e.g. 1000 AA"
-      :value="state.postalCode"
-      @input="event => state.postalCode = (event.target as HTMLInputElement)?.value"
+      :value="state.zip"
+      @input="event => state.zip = (event.target as HTMLInputElement)?.value"
       class="input"
     />
     City
@@ -63,15 +63,15 @@
     Bedrooms
     <input
       placeholder="Enter amount"
-      :value="state.bedroom"
-      @input="event => state.bedroom = (event.target as HTMLInputElement)?.value"
+      :value="state.bedrooms"
+      @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
       class="input"
     />
     Bathrooms
     <input
       placeholder="Enter amount"
-      :value="state.bathroom"
-      @input="event => state.bathroom = (event.target as HTMLInputElement)?.value"
+      :value="state.bathrooms"
+      @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
       class="input"
     />
     Construction date
@@ -98,24 +98,49 @@ import { reactive } from 'vue'
 const state = reactive({
   streetName: '',
   houseNumber: '',
-  postalCode: '',
+  zip: '',
   city: '',
   picture: '',
   price: '',
   size: '',
   garage: '',
-  bedroom: '',
-  bathroom: '',
+  bedrooms: '',
+  bathrooms: '',
   date: '',
   description: ''
 })
+// it is here for referece comparison
 
-function submitForm() {
-  console.log(state)
-  // fetch('dtt.com/house/create', {
-  //   method: 'POST',
-  //   body: state
-  // })
+// const test_state = {
+//   price: 210,
+//   bedrooms: 1,
+//   bathrooms: 1,
+//   size: 1,
+//   streetName: 'Overtoom',
+//   houseNumber: 21,
+//   numberAddition: 1,
+//   zip: '11867787686781TY',
+//   city: 'Amsterdam',
+//   constructionYear: 1968,
+//   hasGarage: false,
+//   description: 'Nice houseeeeeeeee!'
+// }
+
+async function submitForm() {
+  var form_data = new FormData()
+
+  for (var key in state) {
+    form_data.append(key, state[key as keyof typeof state])
+  }
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    method: 'POST',
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    },
+    body: form_data
+  })
+
+  console.log(await (await response).json())
 }
 </script>
 
