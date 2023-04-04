@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import Header from '@/components/Header.vue';
 import NewHouseForm from '@/components/NewHouseForm.vue'
 </script>
 
 <template>
+    <Header />
   <div>
     <p>
       Back to overview
