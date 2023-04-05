@@ -50,9 +50,9 @@ getHousesFromServer()
   </div>
   <div class="houses-parent">
     <HouseListItem
-      v-for="house in state.houses.filter((h) =>
-        h.description.toLowerCase().includes(state.searchText.toLowerCase())
-      )"
+      v-for="house in state.houses
+        .filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
+        .sort((house1, house2) => (house1.price > house2.price ? -1 : 1))"
       :key="house.id"
       :house="house"
     />
