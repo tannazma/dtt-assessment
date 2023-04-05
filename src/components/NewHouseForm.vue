@@ -89,7 +89,7 @@
       @input="event => state.description = (event.target as HTMLInputElement)?.value"
       class="input"
     />
-    <button @click="submitForm">POST</button>
+    <button @click="submitForm" type="submit" :disabled="!isDecriptionValid()">POST</button>
   </div>
 </template>
 
@@ -107,26 +107,24 @@ const state = reactive({
   city: '',
   constructionYear: '',
   hasGarage: '',
-  picture:'',
+  picture: '',
   description: ''
 })
 
 // it is here for referece comparison
 
-// const test_state = {
-//   price: 210,
-//   bedrooms: 1,
-//   bathrooms: 1,
-//   size: 1,
-//   streetName: 'Overtoom',
-//   houseNumber: 21,
-//   numberAddition: 1,
-//   zip: '11867787686781TY',
-//   city: 'Amsterdam',
-//   constructionYear: 1968,
-//   hasGarage: false,
-//   description: 'Nice houseeeeeeeee!'
-// }
+state.price = '210'
+state.bedrooms = '1'
+state.bathrooms = '1'
+state.size = '1'
+state.streetName = 'Overtoom'
+// state.houseNumber = '21'
+// state.numberAddition = '1'
+// state.zip = '11867787686781TY'
+// state.city = 'Amsterdam'
+// state.constructionYear = '1968'
+// state.hasGarage = 'false'
+// description: 'Nice houseeeeeeeee!'
 
 async function submitForm() {
   var form_data = new FormData()
@@ -142,7 +140,18 @@ async function submitForm() {
     body: form_data
   })
 
-  console.log(await (await response).json())
+  try {
+    console.log(await (await response).json())
+  } catch {
+    alert('Error happened')
+  }
+}
+function isDecriptionValid() {
+  if (state.description) {
+    return true
+  } else {
+    return false
+  }
 }
 </script>
 
