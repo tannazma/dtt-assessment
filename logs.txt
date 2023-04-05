@@ -11,3 +11,4 @@ almost half hour to create a component for a seperated component for houses
 almost 1 hour to learn and create a form for create new house page
 almost 2 hours to learn about fetch and how to send data to server (GET and POST)
 almost half hour to learn about json.stringify to form data and sending request to server as form data
+1 hour to learn how to validate a form and make description mandetory 
