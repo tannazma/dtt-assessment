@@ -56,8 +56,8 @@
     <input
       placeholder="Select"
       type="number"
-      :value="state.garage"
-      @input="event => state.garage = (event.target as HTMLInputElement)?.value"
+      :value="state.hasGarage"
+      @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
       class="input"
     />
     Bedrooms
@@ -77,8 +77,8 @@
     Construction date
     <input
       placeholder="e.ge 1990"
-      :value="state.date"
-      @input="event => state.date = (event.target as HTMLInputElement)?.value"
+      :value="state.constructionYear"
+      @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
       class="input"
     />
     Description
@@ -96,19 +96,21 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 const state = reactive({
-  streetName: '',
-  houseNumber: '',
-  zip: '',
-  city: '',
-  picture: '',
   price: '',
-  size: '',
-  garage: '',
   bedrooms: '',
   bathrooms: '',
-  date: '',
+  size: '',
+  streetName: '',
+  houseNumber: '',
+  numberAddition: '',
+  zip: '',
+  city: '',
+  constructionYear: '',
+  hasGarage: '',
+  picture:'',
   description: ''
 })
+
 // it is here for referece comparison
 
 // const test_state = {
