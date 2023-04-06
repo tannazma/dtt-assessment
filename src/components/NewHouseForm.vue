@@ -89,6 +89,7 @@
       @input="event => state.description = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{color: 'red', display: isDescriptionValid() ? 'none' : 'block'}"> Required field is missing</span>
     <button @click="submitForm" type="submit" :disabled="!isFormValidate()">POST</button>
   </form>
 </template>
@@ -140,7 +141,7 @@ state.zip = '11867787686781TY'
 state.city = 'Amsterdam'
 state.constructionYear = '1968'
 // state.hasGarage = 'trie'
-state.description = 'Nice houseeeeeeeee!'
+// state.description = 'Nice houseeeeeeeee!'
 
 async function submitForm(e: any) {
   e.preventDefault()
@@ -186,7 +187,7 @@ async function submitForm(e: any) {
 
 function isFormValidate() {
   if (
-    state.description.trim() &&
+    isDescriptionValid() &&
     state.price.trim() &&
     state.bedrooms.trim() &&
     state.bathrooms.trim() &&
@@ -203,11 +204,22 @@ function isFormValidate() {
     return false
   }
 }
+
+function isDescriptionValid() {
+  if (state.description.trim()) {
+    return true
+  } else {
+    return false
+  }
+}
 </script>
 
 <style scoped>
 input {
   padding: 15px;
+  display: block;
+}
+span {
   display: block;
 }
 </style>
