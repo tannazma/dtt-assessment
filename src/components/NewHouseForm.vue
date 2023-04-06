@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form>
     Street name
     <input
       placeholder="Enter the street name"
@@ -89,8 +89,8 @@
       @input="event => state.description = (event.target as HTMLInputElement)?.value"
       class="input"
     />
-    <button @click="submitForm" type="submit" :disabled="!isDecriptionValid()">POST</button>
-  </div>
+    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">POST</button>
+  </form>
 </template>
 
 <script setup lang="ts">
@@ -111,6 +111,22 @@ const state = reactive({
   description: ''
 })
 
+// const state2 = reactive({
+//   priceValue: '',
+//   bedroomsValue: '',
+//   bathroomsValue: '',
+//   sizeValue: '',
+//   streetNameValue: '',
+//   houseNumberValue: '',
+//   numberAdditionValue: '',
+//   zipValue: '',
+//   cityValue: '',
+//   constructionYearValue: '',
+//   hasGarageValue: '',
+//   pictureValue: '',
+//   descriptionValue: ''
+// })
+
 // it is here for referece comparison
 
 state.price = '210'
@@ -118,15 +134,16 @@ state.bedrooms = '1'
 state.bathrooms = '1'
 state.size = '1'
 state.streetName = 'Overtoom'
-// state.houseNumber = '21'
+state.houseNumber = '21'
 // state.numberAddition = '1'
-// state.zip = '11867787686781TY'
-// state.city = 'Amsterdam'
-// state.constructionYear = '1968'
-// state.hasGarage = 'false'
-// description: 'Nice houseeeeeeeee!'
+state.zip = '11867787686781TY'
+state.city = 'Amsterdam'
+state.constructionYear = '1968'
+// state.hasGarage = 'trie'
+state.description = 'Nice houseeeeeeeee!'
 
-async function submitForm() {
+async function submitForm(e: any) {
+  e.preventDefault()
   var form_data = new FormData()
 
   for (var key in state) {
@@ -146,8 +163,41 @@ async function submitForm() {
     alert('Error happened')
   }
 }
-function isDecriptionValid() {
-  if (state.description) {
+
+// function isFormValidate() {
+//   if (
+//     priceValue.trim() &&
+//     bedroomsValue.trim() &&
+//     bathroomsValue.trim() &&
+//     sizeValue.trim() &&
+//     streetNameValue.trim() &&
+//     houseNumberValue.trim() &&
+//     zipValue.trim() &&
+//     cityValue.trim() &&
+//     constructionYearValue.trim() &&
+//     hasGarageValue.trim() &&
+//     pictureValue.trim() &&
+//     descriptionValue.trim()
+//   ) {
+//     return true
+//   } else {
+//     return false
+//   }}
+
+function isFormValidate() {
+  if (
+    state.description.trim() &&
+    state.price.trim() &&
+    state.bedrooms.trim() &&
+    state.bathrooms.trim() &&
+    state.city.trim() &&
+    state.constructionYear.trim() &&
+    state.hasGarage.trim() &&
+    state.houseNumber.trim() &&
+    state.size.trim() &&
+    state.streetName.trim() &&
+    state.zip.trim()
+  ) {
     return true
   } else {
     return false
