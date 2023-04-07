@@ -39,14 +39,18 @@ getHousesFromServer()
     <CreateNew />
   </div>
   <div class="second-part">
-    <input
-      :value="state.searchText"
-      @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
-      class="input"
-      placeholder="Search for a house"
-    />
-    <button class="price">Price</button>
-    <button class="size">Size</button>
+    <div style="background-color: rgb(193, 189, 189)">
+      <input
+        :value="state.searchText"
+        @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
+        class="input"
+        placeholder="Search for a house"
+      />
+    </div>
+    <div style="display: flex">
+      <button class="price">Price</button>
+      <button class="size">Size</button>
+    </div>
   </div>
   <div class="houses-parent">
     <HouseListItem
@@ -60,9 +64,6 @@ getHousesFromServer()
 </template>
 
 <style scoped>
-.first-part {
-  background-color: darkgray;
-}
 .house-parent {
   display: flex;
   flex-direction: column;
@@ -82,10 +83,17 @@ getHousesFromServer()
   display: flex;
   align-items: center;
   margin-top: 20px;
-  background-color: darkgray;
+  margin-bottom: 20px;
+  justify-content: space-between;
 }
 .input {
   margin-right: auto;
+  width: 250px;
+  height: 30px;
+  border-radius: 5%;
+  border: none;
+  padding-left: 45px;
+  background: transparent;
 }
 
 .price {
