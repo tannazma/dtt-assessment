@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { T_House } from '@/types/house'
+import type EditHouseVue from './EditHouse.vue'
 
 defineProps<{
   house: T_House
@@ -43,10 +44,9 @@ defineProps<{
           </div>
         </div>
         <div>
-          <img width="15" src="src/assets/ic_edit@3x.png" style="margin-right: 20px" />
+          <EditHouseVue />
           <img width="15" src="src/assets/ic_delete@3x.png" style="margin-right: 8px" />
         </div>
-        <!-- {{ house.description }} -->
       </div>
     </div>
   </RouterLink>
