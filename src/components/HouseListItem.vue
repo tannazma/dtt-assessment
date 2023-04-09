@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { T_House } from '@/types/house'
-import type EditHouseVue from './EditHouse.vue'
+import EditHouseVue from './EditHouseButton.vue'
 
 defineProps<{
   house: T_House
@@ -51,8 +51,3 @@ defineProps<{
     </div>
   </RouterLink>
 </template>
-
-<style scoped>
-button {
-}
-</style>
