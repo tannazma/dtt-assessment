@@ -8,7 +8,8 @@ import type { T_House } from '@/types/house'
 const state = reactive<{
   searchText: string
   houses: T_House[]
-}>({ searchText: '', houses: [] })
+  showDeleteDialog: boolean
+}>({ searchText: '', houses: [] , showDeleteDialog: false})
 
 // this is old way
 // response.then((responseResolved) => {
@@ -54,12 +55,35 @@ getHousesFromServer()
   </div>
   <div class="houses-parent">
     <HouseListItem
+      @deleteHouse="state.showDeleteDialog = true"
       v-for="house in state.houses
         .filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
         .sort((house1, house2) => (house1.price > house2.price ? -1 : 1))"
       :key="house.id"
       :house="house"
     />
+  </div>
+  <div
+    v-if="state.showDeleteDialog"
+    style="
+      position: fixed;
+      display: grid;
+      place-items: center;
+      color: black;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      padding: 10%;
+      background-color: rgba(0, 0, 0, 0.4);
+    "
+  >
+    <div style="background-color: white; padding: 20px">
+      <h2>Delete listing</h2>
+      <p>Are you sure you want to delete it?</p>
+      <button>YES, DELETE</button>
+      <button>GO BACK</button>
+    </div>
   </div>
 </template>
 

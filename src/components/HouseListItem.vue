@@ -45,7 +45,18 @@ defineProps<{
         </div>
         <div>
           <EditHouseVue />
-          <img width="15" src="src/assets/ic_delete@3x.png" style="margin-right: 8px" />
+          <img
+            @click="
+              ($event) => {
+                $event.preventDefault()
+                $emit('deleteHouse')
+              }
+            "
+            width="15"
+            src="src/assets/ic_delete@3x.png"
+            style="margin-right: 8px; color: rgba(0, 0, 0, 0.5)"
+          />
+          <div></div>
         </div>
       </div>
     </div>
