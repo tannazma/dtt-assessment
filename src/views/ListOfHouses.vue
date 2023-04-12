@@ -9,7 +9,8 @@ const state = reactive<{
   searchText: string
   houses: T_House[]
   showDeleteDialog: boolean
-}>({ searchText: '', houses: [], showDeleteDialog: false })
+  sortParameter: 'price' | 'size'
+}>({ searchText: '', houses: [], showDeleteDialog: false, sortParameter: 'price' })
 
 // this is old way
 // response.then((responseResolved) => {
@@ -49,8 +50,8 @@ getHousesFromServer()
       />
     </div>
     <div style="display: flex">
-      <button class="price">Price</button>
-      <button class="size">Size</button>
+      <button class="price" @click="state.sortParameter = 'price'">Price</button>
+      <button class="size" @click="state.sortParameter = 'size'">Size</button>
     </div>
   </div>
   <div class="houses-parent">
@@ -58,7 +59,9 @@ getHousesFromServer()
       @deleteHouse="state.showDeleteDialog = true"
       v-for="house in state.houses
         .filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
-        .sort((house1, house2) => (house1.price > house2.price ? -1 : 1))"
+        .sort((house1, house2) =>
+          house1[state.sortParameter] > house2[state.sortParameter] ? -1 : 1
+        )"
       :key="house.id"
       :house="house"
     />
