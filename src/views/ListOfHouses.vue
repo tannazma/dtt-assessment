@@ -54,6 +54,21 @@ getHousesFromServer()
       <button class="size" @click="state.sortParameter = 'size'">Size</button>
     </div>
   </div>
+  <div
+    style="text-align: center"
+    v-if="
+      state.houses.filter((h) =>
+        h.description.toLowerCase().includes(state.searchText.toLowerCase())
+      ).length === 0
+    "
+  >
+    <img
+      src="/src/assets/img_empty_houses@3x.png"
+      style="margin-right: 20px; width: 50%; margin: 50px 40px; text-align: center"
+    />
+    <p>No results found.</p>
+    <p>Please try another keyword.</p>
+  </div>
   <div class="houses-parent">
     <HouseListItem
       @deleteHouse="state.showDeleteDialog = true"
