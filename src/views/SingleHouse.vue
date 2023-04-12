@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import Header from '@/components/Header.vue'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
+import EditHouseButton from '@/components/EditHouseButton.vue'
 
 const route = useRoute()
 
@@ -41,6 +42,20 @@ getHouseFromServer()
           <p style="margin-bottom: 10px">
             <img width="15" src="/src/assets/ic_location@3x.png" />
             {{ state.house?.location.zip }} {{ state.house?.location.city }}
+            <div style="display: flex; justify-content:space-between">
+                <EditHouseButton style="display: flex"/>
+              <img
+              @click="
+                ($event) => {
+                  $event.preventDefault()
+                  $emit('deleteHouse')
+                }
+              "
+              width="15"
+              src="/src/assets/ic_delete@3x.png"
+              style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
+            />
+            </div>
           </p>
           <div style="display: flex; gap: 15px">
             <p style="margin-bottom: 10px">
