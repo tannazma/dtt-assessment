@@ -42,7 +42,7 @@ getHousesFromServer()
 
 async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
-  
+
   await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
     headers: {
       'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
@@ -145,9 +145,11 @@ async function deleteHouse(houseId: number | undefined) {
         >
           YES, DELETE
         </button>
-        <button style="width: 200px; padding: 10px; border-radius: 8px; border: 1px">
-          GO BACK
-        </button>
+        <!-- close the dialog when we press Go back -->
+        <button
+          style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
+          @click="state.showDeleteDialog = false"
+        ></button>
       </div>
     </div>
   </div>
