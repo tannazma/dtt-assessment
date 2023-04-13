@@ -42,13 +42,14 @@ getHousesFromServer()
 
 async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
-
+  
   await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
     headers: {
       'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
     },
     method: 'delete'
   })
+  //close the dialog
   state.showDeleteDialog = false
   getHousesFromServer()
 }
