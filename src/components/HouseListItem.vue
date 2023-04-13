@@ -49,7 +49,7 @@ defineProps<{
             @click="
               ($event) => {
                 $event.preventDefault()
-                $emit('deleteHouse')
+                $emit('deleteHouse', house.id)
               }
             "
             width="15"

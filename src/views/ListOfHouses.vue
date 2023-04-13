@@ -10,7 +10,14 @@ const state = reactive<{
   houses: T_House[]
   showDeleteDialog: boolean
   sortParameter: 'price' | 'size'
-}>({ searchText: '', houses: [], showDeleteDialog: false, sortParameter: 'price' })
+  houseToDeleteId: number | undefined
+}>({
+  searchText: '',
+  houses: [],
+  showDeleteDialog: false,
+  sortParameter: 'price',
+  houseToDeleteId: undefined
+})
 
 // this is old way
 // response.then((responseResolved) => {
@@ -32,6 +39,19 @@ async function getHousesFromServer() {
 }
 
 getHousesFromServer()
+
+async function deleteHouse(houseId: number | undefined) {
+  if (houseId === undefined) return
+
+  await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    },
+    method: 'delete'
+  })
+  state.showDeleteDialog = false
+  getHousesFromServer()
+}
 </script>
 
 <template>
@@ -71,7 +91,12 @@ getHousesFromServer()
   </div>
   <div class="houses-parent">
     <HouseListItem
-      @deleteHouse="state.showDeleteDialog = true"
+      @deleteHouse="
+        (houseId) => {
+          state.showDeleteDialog = true
+          state.houseToDeleteId = houseId
+        }
+      "
       v-for="house in state.houses
         .filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
         .sort((house1, house2) =>
@@ -113,7 +138,10 @@ getHousesFromServer()
           align-items: center;
         "
       >
-        <button style="width: 200px; padding: 10px; border-radius: 8px; border: 1px">
+        <button
+          style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
+          @click="deleteHouse(state.houseToDeleteId)"
+        >
           YES, DELETE
         </button>
         <button style="width: 200px; padding: 10px; border-radius: 8px; border: 1px">
