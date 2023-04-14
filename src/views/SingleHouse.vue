@@ -35,16 +35,18 @@ getHouseFromServer()
         <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
       </div>
       <div style="padding: 20px; margin: 20px">
-        <div style="margin-bottom: 20px">
-          <h1 style="margin-bottom: 20px">
-            {{ state.house?.location.street }}
-          </h1>
-          <p style="margin-bottom: 10px">
-            <img width="15" src="/src/assets/ic_location@3x.png" />
-            {{ state.house?.location.zip }} {{ state.house?.location.city }}
-            <div style="display: flex; justify-content:space-between">
-                <EditHouseButton style="display: flex"/>
+        <div style="display: flex; justify-content: end">
+          <div style="display: flex">
+            <RouterLink :to="'/edit/'">
               <img
+                width="15"
+                src="/src/assets/ic_edit@3x.png"
+                style="display: flex; margin-right: 20px"
+              />
+            </RouterLink>
+          </div>
+          <div style="display: flex">
+            <img
               @click="
                 ($event) => {
                   $event.preventDefault()
@@ -55,7 +57,15 @@ getHouseFromServer()
               src="/src/assets/ic_delete@3x.png"
               style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
             />
-            </div>
+          </div>
+        </div>
+        <div style="margin-bottom: 20px">
+          <h1 style="margin-bottom: 20px">
+            {{ state.house?.location.street }}
+          </h1>
+          <p style="margin-bottom: 10px">
+            <img width="15" src="/src/assets/ic_location@3x.png" />
+            {{ state.house?.location.zip }} {{ state.house?.location.city }}
           </p>
           <div style="display: flex; gap: 15px">
             <p style="margin-bottom: 10px">
