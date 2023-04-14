@@ -8,16 +8,24 @@ import type { T_House } from '@/types/house'
 const state = reactive<{
   searchText: string
   houses: T_House[]
-  showDeleteDialog: boolean
+  isDeleteDialogOpen: boolean
   sortParameter: 'price' | 'size'
   houseToDeleteId: number | undefined
 }>({
   searchText: '',
   houses: [],
-  showDeleteDialog: false,
+  isDeleteDialogOpen: false,
   sortParameter: 'price',
   houseToDeleteId: undefined
 })
+
+function hideDeleteDialog() {
+  state.isDeleteDialogOpen = false;
+}
+
+function showDeleteDialog() {
+  state.isDeleteDialogOpen = true;
+}
 
 // this is old way
 // response.then((responseResolved) => {
@@ -50,7 +58,7 @@ async function deleteHouse(houseId: number | undefined) {
     method: 'delete'
   })
   //close the dialog
-  state.showDeleteDialog = false
+  hideDeleteDialog()
   getHousesFromServer()
 }
 </script>
@@ -94,7 +102,7 @@ async function deleteHouse(houseId: number | undefined) {
     <HouseListItem
       @deleteHouse="
         (houseId) => {
-          state.showDeleteDialog = true
+          showDeleteDialog();
           state.houseToDeleteId = houseId
         }
       "
@@ -108,7 +116,7 @@ async function deleteHouse(houseId: number | undefined) {
     />
   </div>
   <div
-    v-if="state.showDeleteDialog"
+    v-if="state.isDeleteDialogOpen"
     style="
       position: fixed;
       display: grid;
@@ -148,7 +156,7 @@ async function deleteHouse(houseId: number | undefined) {
         <!-- close the dialog when we press Go back -->
         <button
           style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
-          @click="state.showDeleteDialog = false"
+          @click="hideDeleteDialog"
         ></button>
       </div>
     </div>
