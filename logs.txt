@@ -14,3 +14,9 @@ almost half hour to learn about json.stringify to form data and sending request 
 1 hour to learn how to validate a form and make description mandetory 
 1 hour to validate all form ad know how to prevent browser refresh after form is sumbitted
 almost 30 min to create an error when the description field is empty
+almost 2 hour to struggle with the styles in the first page and the form page
+like half hour to style the single house page
+like 1 hour to create a dialog for deleting the house
+almost 2 hour to learn about sort and sort by price and size in the listing page
+almost 2 hour for emit how to use it and use emit for deleting the dialog in the parent component
+almost 1 hour to learn about props and the diferences between props and emit, when I should use them both
