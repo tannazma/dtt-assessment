@@ -1,6 +1,27 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 import NewHouseForm from '@/components/NewHouseForm.vue'
+import type { T_House } from '@/types/house'
+import { reactive } from 'vue'
+import { useRoute } from 'vue-router'
+
+const state = reactive<{
+  house: T_House | undefined
+}>({ house: undefined })
+
+const route = useRoute()
+
+async function getHouseFromServer() {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    }
+  })
+
+  const houses: T_House[] = await (await response).json()
+  state.house = houses.find((house) => house.id === Number(route.params.id))
+}
+getHouseFromServer()
 </script>
 
 <template>
@@ -13,6 +34,5 @@ import NewHouseForm from '@/components/NewHouseForm.vue'
       <h1>Edit listing</h1>
       <NewHouseForm :isEditing="true" />
     </div>
-    
   </div>
 </template>
