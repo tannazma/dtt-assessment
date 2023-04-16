@@ -109,18 +109,18 @@ const props = defineProps<{
 
 const state = reactive({
   price: props.isEditing ? props.house.price.toString() : '',
-  bedrooms: '',
-  bathrooms: '',
-  size: '',
-  streetName: '',
-  houseNumber: '',
-  numberAddition: '',
-  zip: '',
-  city: '',
-  constructionYear: '',
-  hasGarage: '',
+  bedrooms: props.isEditing ? props.house.rooms.bedrooms.toString() : '',
+  bathrooms: props.isEditing ? props.house.rooms.bathrooms.toString() : '',
+  size: props.isEditing ? props.house.size.toString() : '',
+  streetName: props.isEditing ? props.house.location.street.toString() : '',
+  houseNumber: props.isEditing ? props.house.id.toString() : '',
+  numberAddition: props.isEditing ? props.house.id.toString() : '',
+  zip: props.isEditing ? props.house.location.zip.toString() : '',
+  city: props.isEditing ? props.house.location.city.toString() : '',
+  constructionYear: props.isEditing ? props.house.constructionYear.toString() : '',
+  hasGarage: props.isEditing ? props.house.hasGarage.toString() : '',
   picture: '',
-  description: ''
+  description: props.isEditing ? props.house.description.toString() : ''
 })
 // const state2 = reactive({
 //   priceValue: '',
