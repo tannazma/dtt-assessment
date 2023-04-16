@@ -3,7 +3,6 @@ import { useRoute } from 'vue-router'
 import Header from '@/components/Header.vue'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
-import EditHouseButton from '@/components/EditHouseButton.vue'
 
 const route = useRoute()
 
