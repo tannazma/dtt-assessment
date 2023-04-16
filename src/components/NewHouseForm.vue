@@ -140,18 +140,18 @@ defineProps<{
 
 // it is here for referece comparison
 
-state.price = '210'
-state.bedrooms = '1'
-state.bathrooms = '1'
-state.size = '1'
-state.streetName = 'Overtoom'
-state.houseNumber = '21'
-// state.numberAddition = '1'
-state.zip = '11867787686781TY'
-state.city = 'Amsterdam'
-state.constructionYear = '1968'
-// state.hasGarage = 'trie'
-// state.description = 'Nice houseeeeeeeee!'
+// state.price = '210'
+// state.bedrooms = '1'
+// state.bathrooms = '1'
+// state.size = '1'
+// state.streetName = 'Overtoom'
+// state.houseNumber = '21'
+// // state.numberAddition = '1'
+// state.zip = '11867787686781TY'
+// state.city = 'Amsterdam'
+// state.constructionYear = '1968'
+// // state.hasGarage = 'trie'
+// // state.description = 'Nice houseeeeeeeee!'
 
 async function submitForm(e: any) {
   e.preventDefault()
