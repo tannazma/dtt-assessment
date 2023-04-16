@@ -44,7 +44,7 @@ defineProps<{
           </div>
         </div>
         <div>
-          <EditHouseVue />
+          <EditHouseVue :house="house" />
           <img
             @click="
               ($event) => {

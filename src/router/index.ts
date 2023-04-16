@@ -32,7 +32,7 @@ const router = createRouter({
       component: () => import('../views/CreateNewView.vue')
     },
     {
-      path: '/edit',
+      path: '/edit/:id',
       name: 'Edit',
       component: () => import('../views/EditHouseView.vue')
     }
