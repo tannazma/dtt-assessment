@@ -89,12 +89,17 @@
       @input="event => state.description = (event.target as HTMLInputElement)?.value"
       class="input"
     />
-    <span :style="{color: 'red', display: isDescriptionValid() ? 'none' : 'block'}"> Required field is missing</span>
-    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">{{ isEditing ? 'EDIT' : 'CREATE' }}</button>
+    <span :style="{ color: 'red', display: isDescriptionValid() ? 'none' : 'block' }">
+      Required field is missing</span
+    >
+    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">
+      {{ isEditing ? 'EDIT' : 'CREATE' }}
+    </button>
   </form>
 </template>
 
 <script setup lang="ts">
+import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 const state = reactive({
   price: '',
@@ -114,6 +119,7 @@ const state = reactive({
 
 defineProps<{
   isEditing: boolean
+  house: T_House
 }>()
 
 // const state2 = reactive({

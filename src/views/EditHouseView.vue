@@ -32,7 +32,7 @@ getHouseFromServer()
     </div>
     <div class="create-new">
       <h1>Edit listing</h1>
-      <NewHouseForm :isEditing="true" />
+      <NewHouseForm v-if="state.house" :isEditing="true" :house="state.house" />
     </div>
   </div>
 </template>
