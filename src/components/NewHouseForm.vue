@@ -90,7 +90,7 @@
       class="input"
     />
     <span :style="{color: 'red', display: isDescriptionValid() ? 'none' : 'block'}"> Required field is missing</span>
-    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">POST</button>
+    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">{{ isEditing ? 'EDIT' : 'CREATE' }}</button>
   </form>
 </template>
 
@@ -111,6 +111,10 @@ const state = reactive({
   picture: '',
   description: ''
 })
+
+defineProps<{
+  isEditing: boolean
+}>()
 
 // const state2 = reactive({
 //   priceValue: '',
