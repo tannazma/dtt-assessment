@@ -101,8 +101,14 @@
 <script setup lang="ts">
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
+
+const props = defineProps<{
+  isEditing: boolean
+  house: T_House
+}>()
+
 const state = reactive({
-  price: '',
+  price: props.isEditing ? props.house.price.toString() : '',
   bedrooms: '',
   bathrooms: '',
   size: '',
@@ -116,12 +122,6 @@ const state = reactive({
   picture: '',
   description: ''
 })
-
-defineProps<{
-  isEditing: boolean
-  house: T_House
-}>()
-
 // const state2 = reactive({
 //   priceValue: '',
 //   bedroomsValue: '',
