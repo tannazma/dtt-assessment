@@ -73,6 +73,10 @@
       @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    />
+    <span :style="{ color: 'red', display: isBedroomsValid() ? 'none' : 'block' }">
+      Please enter a valid number</span
+    >
     Bathrooms
     <input
       placeholder="Enter amount"
@@ -205,7 +209,7 @@ function isFormValidate() {
   if (
     isDescriptionValid() &&
     isPriceValid() &&
-    state.bedrooms.trim() &&
+    isBedroomsValid() &&
     state.bathrooms.trim() &&
     state.city.trim() &&
     state.constructionYear.trim() &&
@@ -231,6 +235,14 @@ function isDescriptionValid() {
 
 function isPriceValid() {
   if (state.price.trim() && Number(state.price.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function isBedroomsValid() {
+  if (state.bedrooms.trim() && Number(state.bedrooms.trim())) {
     return true
   } else {
     return false
