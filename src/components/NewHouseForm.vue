@@ -30,6 +30,9 @@
       @input="event => state.city = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isCityValid() ? 'none' : 'block' }">
+      Please enter a valid city</span
+    >
     Upload picture (JPG or PNG)
     <input
       placeholder="+"
@@ -213,7 +216,7 @@ function isFormValidate() {
     isPriceValid() &&
     isBedroomsValid() &&
     isBathroomsValid() &&
-    state.city.trim() &&
+    isCityValid() &&
     state.constructionYear.trim() &&
     state.hasGarage.trim() &&
     state.houseNumber.trim() &&
@@ -257,7 +260,13 @@ function isBathroomsValid() {
     return false
   }
 }
-
+function isCityValid() {
+  if (state.city.trim() && /^[a-zA-Z\s]+$/.test(state.city.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
 function isSizeValid() {
   if (state.size.trim() ) {
     return true
