@@ -23,6 +23,9 @@
       @input="event => state.zip = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isPostalCodeValid() ? 'none' : 'block' }">
+      Please enter a valid postal code</span
+    >
     City
     <input
       placeholder="e.g. Utreckt"
@@ -267,14 +270,20 @@ function isCityValid() {
     return false
   }
 }
-function isSizeValid() {
-  if (state.size.trim() ) {
+function isPostalCodeValid() {
+  if (state.zip.trim() && /^([0-9]{4}[ ]+[a-zA-Z]{2})$/.test(state.zip.trim())) {
     return true
   } else {
     return false
   }
 }
-
+function isSizeValid() {
+  if (state.size.trim()) {
+    return true
+  } else {
+    return false
+  }
+}
 </script>
 
 <style scoped>
