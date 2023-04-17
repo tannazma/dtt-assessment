@@ -4,17 +4,18 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div class="header-container">
-    <img width="100" src="/src/assets/img_logo_dtt@3x.png" />
-    <RouterLink class="list" to="/list">Houses</RouterLink>
-    <RouterLink class="about" to="/about">About</RouterLink>
+      <img width="100" src="/src/assets/img_logo_dtt@3x.png" />
+      <RouterLink class="list" to="/list">Houses</RouterLink>
+      <RouterLink class="about" to="/about">About</RouterLink>
   </div>
 </template>
 
 <style>
 .header-container {
+  padding: 20px;
+  padding-left: 12rem;
   display: flex;
   background-color: white;
-  padding: 20px;
 }
 
 .list {
