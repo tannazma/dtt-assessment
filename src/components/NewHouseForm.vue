@@ -17,8 +17,12 @@
       @input="event => state.houseNumber = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isHouseNumberValid() ? 'none' : 'block' }">
+      Required field is missing</span
+    >
     Addition (Optional)
     <input />
+    <span :style="{ color: 'blue', display: 'block' }"> This is optional</span>
     Postal code
     <input
       placeholder="e.g. 1000 AA"
@@ -225,7 +229,7 @@ function isFormValidate() {
     isCityValid() &&
     state.constructionYear.trim() &&
     state.hasGarage.trim() &&
-    state.houseNumber.trim() &&
+    isHouseNumberValid() &&
     isSizeValid() &&
     isStreetValid() &&
     isPostalCodeValid()
@@ -275,6 +279,13 @@ function isCityValid() {
 }
 function isStreetValid() {
   if (state.streetName.trim() && /^[a-zA-Z\s]+$/.test(state.streetName.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+function isHouseNumberValid() {
+  if (state.houseNumber.trim() && Number(state.houseNumber.trim())) {
     return true
   } else {
     return false
