@@ -104,23 +104,23 @@ import { reactive } from 'vue'
 
 const props = defineProps<{
   isEditing: boolean
-  house: T_House
+  house?: T_House
 }>()
 
 const state = reactive({
-  price: props.isEditing ? props.house.price.toString() : '',
-  bedrooms: props.isEditing ? props.house.rooms.bedrooms.toString() : '',
-  bathrooms: props.isEditing ? props.house.rooms.bathrooms.toString() : '',
-  size: props.isEditing ? props.house.size.toString() : '',
-  streetName: props.isEditing ? props.house.location.street.toString() : '',
-  houseNumber: props.isEditing ? props.house.id.toString() : '',
-  numberAddition: props.isEditing ? props.house.id.toString() : '',
-  zip: props.isEditing ? props.house.location.zip.toString() : '',
-  city: props.isEditing ? props.house.location.city.toString() : '',
-  constructionYear: props.isEditing ? props.house.constructionYear.toString() : '',
-  hasGarage: props.isEditing ? props.house.hasGarage.toString() : '',
+  price: props.house ? props.house.price.toString() : '',
+  bedrooms: props.house ? props.house.rooms.bedrooms.toString() : '',
+  bathrooms: props.house ? props.house.rooms.bathrooms.toString() : '',
+  size: props.house ? props.house.size.toString() : '',
+  streetName: props.house ? props.house.location.street.toString() : '',
+  houseNumber: props.house ? props.house.id.toString() : '',
+  numberAddition: props.house ? props.house.id.toString() : '',
+  zip: props.house ? props.house.location.zip.toString() : '',
+  city: props.house ? props.house.location.city.toString() : '',
+  constructionYear: props.house ? props.house.constructionYear.toString() : '',
+  hasGarage: props.house ? props.house.hasGarage.toString() : '',
   picture: '',
-  description: props.isEditing ? props.house.description.toString() : ''
+  description: props.house ? props.house.description.toString() : ''
 })
 // const state2 = reactive({
 //   priceValue: '',
