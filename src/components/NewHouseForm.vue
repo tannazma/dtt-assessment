@@ -45,6 +45,9 @@
       @input="event => state.price = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isPriceValid() ? 'none' : 'block' }">
+      Please enter a valid price</span
+    >
     Size
     <input
       placeholder="e.g. 60m2"
@@ -198,7 +201,7 @@ async function submitForm(e: any) {
 function isFormValidate() {
   if (
     isDescriptionValid() &&
-    state.price.trim() &&
+    isPriceValid() &&
     state.bedrooms.trim() &&
     state.bathrooms.trim() &&
     state.city.trim() &&
@@ -217,6 +220,14 @@ function isFormValidate() {
 
 function isDescriptionValid() {
   if (state.description.trim()) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function isPriceValid() {
+  if (state.price.trim() && Number(state.price.trim())) {
     return true
   } else {
     return false
