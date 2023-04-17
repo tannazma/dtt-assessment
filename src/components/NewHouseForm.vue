@@ -55,6 +55,9 @@
       @input="event => state.size = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isSizeValid() ? 'none' : 'block' }">
+      Please enter a valid size</span
+    >
     Garage
     <input
       placeholder="Select"
@@ -208,7 +211,7 @@ function isFormValidate() {
     state.constructionYear.trim() &&
     state.hasGarage.trim() &&
     state.houseNumber.trim() &&
-    state.size.trim() &&
+    isSizeValid() &&
     state.streetName.trim() &&
     state.zip.trim()
   ) {
@@ -233,6 +236,15 @@ function isPriceValid() {
     return false
   }
 }
+
+function isSizeValid() {
+  if (state.size.trim() ) {
+    return true
+  } else {
+    return false
+  }
+}
+
 </script>
 
 <style scoped>
