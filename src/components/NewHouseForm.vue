@@ -73,7 +73,6 @@
       @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
       class="input"
     />
-    />
     <span :style="{ color: 'red', display: isBedroomsValid() ? 'none' : 'block' }">
       Please enter a valid number</span
     >
@@ -84,6 +83,9 @@
       @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isBathroomsValid() ? 'none' : 'block' }">
+      Please enter a valid number</span
+    >
     Construction date
     <input
       placeholder="e.ge 1990"
@@ -210,7 +212,7 @@ function isFormValidate() {
     isDescriptionValid() &&
     isPriceValid() &&
     isBedroomsValid() &&
-    state.bathrooms.trim() &&
+    isBathroomsValid() &&
     state.city.trim() &&
     state.constructionYear.trim() &&
     state.hasGarage.trim() &&
@@ -242,6 +244,13 @@ function isPriceValid() {
 }
 
 function isBedroomsValid() {
+  if (state.bedrooms.trim() && Number(state.bedrooms.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+function isBathroomsValid() {
   if (state.bedrooms.trim() && Number(state.bedrooms.trim())) {
     return true
   } else {
