@@ -7,6 +7,9 @@
       @input="event => state.streetName = (event.target as HTMLInputElement)?.value"
       class="input"
     />
+    <span :style="{ color: 'red', display: isStreetValid() ? 'none' : 'block' }">
+      Required field is missing</span
+    >
     House Number
     <input
       placeholder="Enter house number"
@@ -224,8 +227,8 @@ function isFormValidate() {
     state.hasGarage.trim() &&
     state.houseNumber.trim() &&
     isSizeValid() &&
-    state.streetName.trim() &&
-    state.zip.trim()
+    isStreetValid() &&
+    isPostalCodeValid()
   ) {
     return true
   } else {
@@ -270,6 +273,14 @@ function isCityValid() {
     return false
   }
 }
+function isStreetValid() {
+  if (state.streetName.trim() && /^[a-zA-Z\s]+$/.test(state.streetName.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+
 function isPostalCodeValid() {
   if (state.zip.trim() && /^([0-9]{4}[ ]+[a-zA-Z]{2})$/.test(state.zip.trim())) {
     return true
