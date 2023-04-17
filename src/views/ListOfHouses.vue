@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import CreateNew from '@/components/CreateNew.vue'
-import Header from '@/components/Header.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
@@ -64,7 +63,6 @@ async function deleteHouse(houseId: number | undefined) {
 </script>
 
 <template>
-  <Header />
   <div class="first-part">
     <h1 class="title">Houses</h1>
     <CreateNew />
