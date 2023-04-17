@@ -20,3 +20,8 @@ like 1 hour to create a dialog for deleting the house
 almost 2 hour to learn about sort and sort by price and size in the listing page
 almost 2 hour for emit how to use it and use emit for deleting the dialog in the parent component
 almost 1 hour to learn about props and the diferences between props and emit, when I should use them both
+like 2 hour to just understand how to pass house to be editted to the new house form, prepare house to be edited and initiate input values in edit page
+like 1 hour to initiate all inputs in edit page and create a separated links for edit every houses by initialized
+like 20 min styles for header and responsive
+like half hour to create about page
+
