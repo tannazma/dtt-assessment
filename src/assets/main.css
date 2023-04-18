@@ -1,9 +1,8 @@
 @import './base.css';
 
-
-
 #app {
-  font-family: "Montserrat", "Open Sans", Verdana, lucida, sans-serif;  background-color: rgb(231, 231, 231);
+  font-family: 'Montserrat', 'Open Sans', Verdana, lucida, sans-serif;
+  background-color: rgb(231, 231, 231);
 
   font-weight: normal;
 }
@@ -25,4 +24,8 @@ a,
   #app {
     min-height: 100vh;
   }
+}
+
+label {
+  font-weight: bold;
 }

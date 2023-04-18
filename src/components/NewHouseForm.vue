@@ -1,7 +1,7 @@
 <template>
   <form>
     <div class="form-field">
-      <label> Street name </label>
+      <label> Street name* </label>
       <input
         placeholder="Enter the street name"
         :value="state.streetName"
@@ -343,9 +343,9 @@ textarea {
 span {
   font-size: 12px;
 }
-/* label {
-  margin-bottom: 20px;
-} */
+label {
+font-weight: bold;
+}
 .form-field {
   margin-top: 10px;
   margin-bottom: 20px;
