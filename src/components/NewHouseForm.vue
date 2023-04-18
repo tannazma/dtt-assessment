@@ -300,7 +300,7 @@ function isCityValid() {
   }
 }
 function isStreetValid() {
-  if (state.streetName.trim() && /^[a-zA-Z\s]+$/.test(state.streetName.trim())) {
+  if (state.streetName.trim() && /^[a-zA-Z\s0-9]+$/.test(state.streetName.trim())) {
     return true
   } else {
     return false
@@ -341,7 +341,6 @@ textarea {
   width: 100%;
 }
 span {
-  display: block;
   font-size: 12px;
 }
 /* label {
