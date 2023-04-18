@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import Header from '@/components/Header.vue'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
 
@@ -24,8 +23,13 @@ getHouseFromServer()
 </script>
 
 <template>
-  <div>
-    <p style="margin-top: 20px">Back to overview</p>
+  <div style="padding-top: 30px; padding-bottom: 20px">
+    <RouterLink :to="'/list/'">
+      <p style="color: black">
+        <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
+        Back to overview
+      </p>
+    </RouterLink>
   </div>
   <div style="background-color: white; margin-top: 20px">
     <div>
