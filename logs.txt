@@ -24,4 +24,5 @@ like 2 hour to just understand how to pass house to be editted to the new house 
 like 1 hour to initiate all inputs in edit page and create a separated links for edit every houses by initialized
 like 20 min styles for header and responsive
 like half hour to create about page
-
+like half hour to add font and some styles 
+like half hour to add routerlink for back to overview for single house and create new house page and edit page
