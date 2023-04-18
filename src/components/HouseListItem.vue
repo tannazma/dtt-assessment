@@ -28,16 +28,16 @@ defineProps<{
             </p>
             <div style="display: flex">
               <p style="margin-right: 20px; display: flex; align-items: center; color: gray">
-                <img width="20" src="src/assets/ic_bed@3x.png" style="margin-right: 8px" />
+                <img width="20" src="/src/assets/ic_bed@3x.png" style="margin-right: 8px" />
                 {{ house.rooms.bedrooms }}
               </p>
               <p style="margin-right: 20px; display: flex; align-items: center; color: gray">
-                <img width="20" src="src/assets/ic_bath@3x.png" style="margin-right: 8px" />{{
+                <img width="20" src="/src/assets/ic_bath@3x.png" style="margin-right: 8px" />{{
                   house.rooms.bathrooms
                 }}
               </p>
               <p style="display: flex; align-items: center; color: gray">
-                <img width="20" src="src/assets/ic_size@3x.png" style="margin-right: 8px" />
+                <img width="20" src="/src/assets/ic_size@3x.png" style="margin-right: 8px" />
                 {{ house.size }} m2
               </p>
             </div>
@@ -53,7 +53,7 @@ defineProps<{
               }
             "
             width="15"
-            src="src/assets/ic_delete@3x.png"
+            src="/src/assets/ic_delete@3x.png"
             style="margin-right: 8px; color: rgba(0, 0, 0, 0.5)"
           />
           <div></div>
