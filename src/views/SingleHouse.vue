@@ -25,76 +25,73 @@ getHouseFromServer()
 
 <template>
   <div>
-    <Header />
+    <p style="margin-top: 20px">Back to overview</p>
+  </div>
+  <div style="background-color: white; margin-top: 20px">
     <div>
-      <p style="margin-top: 20px">Back to overview</p>
+      <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
     </div>
-    <div style="background-color: white; margin-top: 20px">
-      <div>
-        <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
-      </div>
-      <div style="padding: 20px; margin: 20px">
-        <div style="display: flex; justify-content: end">
-          <div style="display: flex">
-            <RouterLink :to="'/edit/'">
-              <img
-                width="15"
-                src="/src/assets/ic_edit@3x.png"
-                style="display: flex; margin-right: 20px"
-              />
-            </RouterLink>
-          </div>
-          <div style="display: flex">
+    <div style="padding: 20px; margin: 20px">
+      <div style="display: flex; justify-content: end">
+        <div style="display: flex">
+          <RouterLink :to="'/edit/'">
             <img
-              @click="
-                ($event) => {
-                  $event.preventDefault()
-                  $emit('deleteHouse')
-                }
-              "
               width="15"
-              src="/src/assets/ic_delete@3x.png"
-              style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
+              src="/src/assets/ic_edit@3x.png"
+              style="display: flex; margin-right: 20px"
             />
-          </div>
+          </RouterLink>
         </div>
-        <div style="margin-bottom: 20px">
-          <h1 style="margin-bottom: 20px">
-            {{ state.house?.location.street }}
-          </h1>
+        <div style="display: flex">
+          <img
+            @click="
+              ($event) => {
+                $event.preventDefault()
+                $emit('deleteHouse')
+              }
+            "
+            width="15"
+            src="/src/assets/ic_delete@3x.png"
+            style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
+          />
+        </div>
+      </div>
+      <div style="margin-bottom: 20px">
+        <h1 style="margin-bottom: 20px">
+          {{ state.house?.location.street }}
+        </h1>
+        <p style="margin-bottom: 10px">
+          <img width="15" src="/src/assets/ic_location@3x.png" />
+          {{ state.house?.location.zip }} {{ state.house?.location.city }}
+        </p>
+        <div style="display: flex; gap: 15px">
           <p style="margin-bottom: 10px">
-            <img width="15" src="/src/assets/ic_location@3x.png" />
-            {{ state.house?.location.zip }} {{ state.house?.location.city }}
+            <img width="15" src="/src/assets/ic_price@3x.png" />
+            {{ state.house?.price }}
           </p>
-          <div style="display: flex; gap: 15px">
-            <p style="margin-bottom: 10px">
-              <img width="15" src="/src/assets/ic_price@3x.png" />
-              {{ state.house?.price }}
-            </p>
-            <p><img width="15" src="/src/assets/ic_size@3x.png" /> {{ state.house?.size }} m2</p>
-            <p>
-              <img width="15" src="/src/assets/ic_construction_date@3x.png" /> Built in
-              {{ state.house?.constructionYear }}
-            </p>
-          </div>
-          <div style="display: flex; gap: 15px">
-            <p>
-              <img width="15" src="/src/assets/ic_bed@3x.png" />
-              {{ state.house?.rooms.bedrooms }}
-            </p>
-            <p>
-              <img width="15" src="/src/assets/ic_bath@3x.png" />
-              {{ state.house?.rooms.bathrooms }}
-            </p>
-            <p>
-              <img width="15" src="/src/assets/ic_garage@3x.png" />
-              {{ state.house?.hasGarage }}
-            </p>
-          </div>
-          <p style="margin-top: 20px">
-            {{ state.house?.description }}
+          <p><img width="15" src="/src/assets/ic_size@3x.png" /> {{ state.house?.size }} m2</p>
+          <p>
+            <img width="15" src="/src/assets/ic_construction_date@3x.png" /> Built in
+            {{ state.house?.constructionYear }}
           </p>
         </div>
+        <div style="display: flex; gap: 15px">
+          <p>
+            <img width="15" src="/src/assets/ic_bed@3x.png" />
+            {{ state.house?.rooms.bedrooms }}
+          </p>
+          <p>
+            <img width="15" src="/src/assets/ic_bath@3x.png" />
+            {{ state.house?.rooms.bathrooms }}
+          </p>
+          <p>
+            <img width="15" src="/src/assets/ic_garage@3x.png" />
+            {{ state.house?.hasGarage }}
+          </p>
+        </div>
+        <p style="margin-top: 20px">
+          {{ state.house?.description }}
+        </p>
       </div>
     </div>
   </div>

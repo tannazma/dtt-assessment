@@ -1,7 +1,9 @@
 @import './base.css';
 
+
+
 #app {
-  background-color: rgb(231, 231, 231);
+  font-family: "Montserrat", "Open Sans", Verdana, lucida, sans-serif;  background-color: rgb(231, 231, 231);
 
   font-weight: normal;
 }
