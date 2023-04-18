@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue'
 import NewHouseForm from '@/components/NewHouseForm.vue'
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
@@ -26,7 +25,6 @@ getHouseFromServer()
 
 <template>
   <div style="background-image: url(src/assets/img_background@3x.png); background-size: 100%">
-    <Header />
     <div style="padding-top: 30px; padding-bottom: 20px">
       <RouterLink :to="'/list/'">
         <p style="color: black">
