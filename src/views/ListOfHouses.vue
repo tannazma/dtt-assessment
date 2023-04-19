@@ -19,11 +19,11 @@ const state = reactive<{
 })
 
 function hideDeleteDialog() {
-  state.isDeleteDialogOpen = false;
+  state.isDeleteDialogOpen = false
 }
 
 function showDeleteDialog() {
-  state.isDeleteDialogOpen = true;
+  state.isDeleteDialogOpen = true
 }
 
 // this is old way
@@ -100,7 +100,7 @@ async function deleteHouse(houseId: number | undefined) {
     <HouseListItem
       @deleteHouse="
         (houseId) => {
-          showDeleteDialog();
+          showDeleteDialog()
           state.houseToDeleteId = houseId
         }
       "
@@ -155,7 +155,9 @@ async function deleteHouse(houseId: number | undefined) {
         <button
           style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
           @click="hideDeleteDialog"
-        ></button>
+        >
+          GO BACK
+        </button>
       </div>
     </div>
   </div>
