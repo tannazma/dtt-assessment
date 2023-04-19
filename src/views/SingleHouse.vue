@@ -97,6 +97,54 @@ getHouseFromServer()
         </p>
       </div>
     </div>
+    <div
+      v-if="state.isDeleteDialogOpen"
+      style="
+        position: fixed;
+        display: grid;
+        place-items: center;
+        color: black;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        padding: 10%;
+        background-color: rgba(0, 0, 0, 0.4);
+      "
+    >
+      <div style="background-color: white; padding: 43px 96px; border-radius: 3%">
+        <h2 style="text-align: center; margin-bottom: 20px">Delete listing</h2>
+        <p style="align-content: center; color: gray">
+          Are you sure you want to delete this listing?
+        </p>
+        <p style="text-align: center; margin-bottom: 45px; color: gray">
+          This action can not be undone.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            gap: 20px;
+            align-items: center;
+          "
+        >
+          <button
+            style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
+            @click="deleteHouse(state.house?.id)"
+          >
+            YES, DELETE
+          </button>
+          <!-- close the dialog when we press Go back -->
+          <button
+            style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
+            @click="hideDeleteDialog"
+          >
+            GO BACK
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
