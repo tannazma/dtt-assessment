@@ -28,8 +28,10 @@ getHouseFromServer()
     <div style="padding-top: 30px; padding-bottom: 20px">
       <RouterLink :to="'/list/'">
         <p style="color: black">
-          <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
-          <lable> Back to overview </lable>
+          <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />  
+          <lable>
+            Back to overview
+          </lable>
         </p>
       </RouterLink>
     </div>
