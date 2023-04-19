@@ -2,6 +2,9 @@
 import { useRoute } from 'vue-router'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
+defineProps<{
+  house: T_House
+}>()
 
 const route = useRoute()
 
@@ -38,12 +41,8 @@ getHouseFromServer()
     <div style="padding: 20px; margin: 20px">
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
-          <RouterLink :to="'/edit/'">
-            <img
-              width="15"
-              src="/src/assets/ic_edit@3x.png"
-              style="display: flex; margin-right: 20px"
-            />
+          <RouterLink :to="'/edit/' + state.house?.id">
+            <img width="15" src="/src/assets/ic_edit@3x.png" style="margin-right: 20px" />
           </RouterLink>
         </div>
         <div style="display: flex">
