@@ -1,7 +1,7 @@
 <template>
   <form>
     <div class="form-field">
-      <label> Street name* </label>
+      <label> Street name </label>
       <input
         placeholder="Enter the street name"
         :value="state.streetName"
@@ -24,7 +24,7 @@
         >
       </div>
       <div style="display: flex; flex-direction: column">
-        <label>Addition (Optional)</label>
+        <label>Addition</label>
         <input />
         <span :style="{ color: 'blue', display: 'block' }"> This is optional</span>
       </div>
