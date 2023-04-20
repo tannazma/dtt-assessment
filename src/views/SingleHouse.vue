@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
-defineProps<{
-  house: T_House
-}>()
 
 const route = useRoute()
+const router = useRouter()
 
 const state = reactive<{
   house: T_House | undefined
-}>({ house: undefined })
+  isDeleteDialogOpen: boolean
+}>({ 
+  house: undefined, 
+  isDeleteDialogOpen: false 
+})
 
 async function getHouseFromServer() {
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
@@ -23,6 +25,28 @@ async function getHouseFromServer() {
   state.house = houses.find((house) => house.id === Number(route.params.id))
 }
 getHouseFromServer()
+
+function hideDeleteDialog() {
+  state.isDeleteDialogOpen = false
+}
+
+function showDeleteDialog() {
+  state.isDeleteDialogOpen = true
+}
+
+async function deleteHouse(houseId: number | undefined) {
+  if (houseId === undefined) return
+
+  await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    },
+    method: 'delete'
+  })
+  //close the dialog
+  hideDeleteDialog()
+  router.push('/list')
+}
 </script>
 
 <template>
@@ -50,7 +74,7 @@ getHouseFromServer()
             @click="
               ($event) => {
                 $event.preventDefault()
-                $emit('deleteHouse')
+                showDeleteDialog()
               }
             "
             width="15"
