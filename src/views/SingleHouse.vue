@@ -8,10 +8,12 @@ const router = useRouter()
 
 const state = reactive<{
   house: T_House | undefined
+  houses: T_House[]
   isDeleteDialogOpen: boolean
 }>({ 
   house: undefined, 
-  isDeleteDialogOpen: false 
+  isDeleteDialogOpen: false,
+  houses: []
 })
 
 async function getHouseFromServer() {
@@ -23,6 +25,7 @@ async function getHouseFromServer() {
 
   const houses: T_House[] = await (await response).json()
   state.house = houses.find((house) => house.id === Number(route.params.id))
+  state.houses = houses
 }
 getHouseFromServer()
 
