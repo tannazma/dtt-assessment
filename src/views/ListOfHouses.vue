@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CreateNew from '@/components/CreateNew.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import type { T_House } from '@/types/house'
 
 const state = reactive<{
@@ -17,6 +17,10 @@ const state = reactive<{
   sortParameter: 'price',
   houseToDeleteId: undefined
 })
+
+const filteredHouses = computed(() =>
+  state.houses.filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
+)
 
 function hideDeleteDialog() {
   state.isDeleteDialogOpen = false
@@ -68,46 +72,43 @@ async function deleteHouse(houseId: number | undefined) {
     <CreateNew />
   </div>
   <div class="second-part">
-    <div
-      style="
-        display: flex;
-        background-color: #e8e8e8;
-        padding: 5px 20px;
-        border-radius: 5px;
-        margin-left: 10px;
-        align-items: center;
-      "
-    >
-      <img src="/src/assets/ic_search@3x.png" width="20" height="20" />
-      <input
-        :value="state.searchText"
-        @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
-        class="input"
-        style="background-color: transparent; border-radius: 3px; border: none; outline: none"
-        placeholder="Search for a house"
-      />
-
-      <img
-        @click="state.searchText = ''"
-        src="/src/assets/ic_clear@3x.png"
-        width="20"
-        height="20"
-        style="box-sizing: content-box; cursor: pointer"
-      />
+    <div>
+      <div
+        style="
+          display: flex;
+          background-color: #e8e8e8;
+          padding: 5px 20px;
+          border-radius: 5px;
+          margin-left: 10px;
+          align-items: center;
+        "
+      >
+        <img src="/src/assets/ic_search@3x.png" width="20" height="20" />
+        <input
+          :value="state.searchText"
+          @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
+          class="input"
+          style="background-color: transparent; border-radius: 3px; border: none; outline: none"
+          placeholder="Search for a house"
+        />
+        <img
+          @click="state.searchText = ''"
+          src="/src/assets/ic_clear@3x.png"
+          width="20"
+          height="20"
+          style="box-sizing: content-box; cursor: pointer"
+        />
+      </div>
+      <div>
+        <strong style="padding:20px">{{ filteredHouses.length }} results found</strong>
+      </div>
     </div>
     <div style="display: flex">
       <button class="price primary" @click="state.sortParameter = 'price'">Price</button>
       <button class="size tertiary" @click="state.sortParameter = 'size'">Size</button>
     </div>
   </div>
-  <div
-    style="text-align: center"
-    v-if="
-      state.houses.filter((h) =>
-        h.description.toLowerCase().includes(state.searchText.toLowerCase())
-      ).length === 0
-    "
-  >
+  <div style="text-align: center" v-if="filteredHouses.length === 0">
     <img
       src="/src/assets/img_empty_houses@3x.png"
       style="margin-right: 20px; width: 50%; margin: 50px 40px; text-align: center"
@@ -124,11 +125,9 @@ async function deleteHouse(houseId: number | undefined) {
           state.houseToDeleteId = houseId
         }
       "
-      v-for="house in state.houses
-        .filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
-        .sort((house1, house2) =>
-          house1[state.sortParameter] > house2[state.sortParameter] ? -1 : 1
-        )"
+      v-for="house in filteredHouses.sort((house1, house2) =>
+        house1[state.sortParameter] > house2[state.sortParameter] ? -1 : 1
+      )"
       :key="house.id"
       :house="house"
       :showEdit="true"
