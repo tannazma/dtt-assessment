@@ -68,12 +68,31 @@ async function deleteHouse(houseId: number | undefined) {
     <CreateNew />
   </div>
   <div class="second-part">
-    <div style="background-color: rgb(193, 189, 189)">
+    <div
+      style="
+        display: flex;
+        background-color: #e8e8e8;
+        padding: 5px 20px;
+        border-radius: 5px;
+        margin-left: 10px;
+        align-items: center;
+      "
+    >
+      <img src="/src/assets/ic_search@3x.png" width="20" height="20" />
       <input
         :value="state.searchText"
         @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
         class="input"
+        style="background-color: transparent; border-radius: 3px; border: none; outline: none"
         placeholder="Search for a house"
+      />
+
+      <img
+        @click="state.searchText = ''"
+        src="/src/assets/ic_clear@3x.png"
+        width="20"
+        height="20"
+        style="box-sizing: content-box; cursor: pointer"
       />
     </div>
     <div style="display: flex">
@@ -209,6 +228,5 @@ async function deleteHouse(houseId: number | undefined) {
   display: flex;
   gap: 10px;
   border-radius: 0 5px 5px 0;
-    
 }
 </style>
