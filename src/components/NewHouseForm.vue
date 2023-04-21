@@ -1,140 +1,166 @@
 <template>
   <form>
     <div class="form-field">
-      <label> Street name </label>
-      <input
-        placeholder="Enter the street name"
-        :value="state.streetName"
-        @input="event => state.streetName = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        Street name
+        <input
+          placeholder="Enter the street name"
+          :value="state.streetName"
+          @input="event => state.streetName = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
       <span :style="{ color: 'red', display: isStreetValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
     </div>
     <div style="display: flex; gap: 30px" class="form-field">
       <div style="display: flex; flex-direction: column">
-        <label> House Number </label>
-        <input
-          placeholder="Enter house number"
-          :value="state.houseNumber"
-          @input="event => state.houseNumber = (event.target as HTMLInputElement)?.value"
-        />
+        <label>
+          House Number
+          <input
+            placeholder="Enter house number"
+            :value="state.houseNumber"
+            @input="event => state.houseNumber = (event.target as HTMLInputElement)?.value"
+          />
+        </label>
         <span :style="{ color: 'red', display: isHouseNumberValid() ? 'none' : 'block' }">
           Required field is missing</span
         >
       </div>
       <div style="display: flex; flex-direction: column">
-        <label>Addition</label>
-        <input />
+        <label>
+          Addition
+          <input />
+        </label>
         <span :style="{ color: 'blue', display: 'block' }"> This is optional</span>
       </div>
     </div>
     <div class="form-field">
-      <label> Postal code </label>
-      <input
-        placeholder="e.g. 1000 AA"
-        :value="state.zip"
-        @input="event => state.zip = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        Postal code
+        <input
+          placeholder="e.g. 1000 AA"
+          :value="state.zip"
+          @input="event => state.zip = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
       <span :style="{ color: 'red', display: isPostalCodeValid() ? 'none' : 'block' }">
         Please enter a valid postal code</span
       >
     </div>
     <div class="form-field">
-      <label> City </label>
-      <input
-        placeholder="e.g. Utreckt"
-        :value="state.city"
-        @input="event => state.city = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        City
+        <input
+          placeholder="e.g. Utreckt"
+          :value="state.city"
+          @input="event => state.city = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
       <span :style="{ color: 'red', display: isCityValid() ? 'none' : 'block' }">
         Please enter a valid city</span
       >
     </div>
     <div class="form-field">
-      <label> Upload picture (JPG or PNG) </label>
-      <input
-        placeholder="+"
-        type="file"
-        :value="state.picture"
-        @input="event => state.picture = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        Upload picture (JPG or PNG)
+        <input
+          placeholder="+"
+          type="file"
+          :value="state.picture"
+          @input="event => state.picture = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
     </div>
     <div class="form-field">
-      <label> Price </label>
-      <input
-        placeholder="e.g. €150.000"
-        :value="state.price"
-        @input="event => state.price = (event.target as HTMLInputElement)?.value"
-        class="input"
-      />
+      <label>
+        Price
+        <input
+          placeholder="e.g. €150.000"
+          :value="state.price"
+          @input="event => state.price = (event.target as HTMLInputElement)?.value"
+          class="input"
+        />
+      </label>
       <span :style="{ color: 'red', display: isPriceValid() ? 'none' : 'block' }">
         Please enter a valid price</span
       >
     </div>
     <div style="display: flex; gap: 30px" class="form-field">
       <div style="display: flex; flex-direction: column">
-        <label>Size</label>
-        <input
-          placeholder="e.g. 60m2"
-          :value="state.size"
-          @input="event => state.size = (event.target as HTMLInputElement)?.value"
-        />
+        <label>
+          Size
+          <input
+            placeholder="e.g. 60m2"
+            :value="state.size"
+            @input="event => state.size = (event.target as HTMLInputElement)?.value"
+          />
+        </label>
         <span :style="{ color: 'red', display: isSizeValid() ? 'none' : 'block' }">
           Please enter a valid size</span
         >
       </div>
       <div style="display: flex; flex-direction: column">
-        <label>Garage</label>
-        <input
-          placeholder="Select"
-          type="number"
-          :value="state.hasGarage"
-          @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
-        />
+        <label>
+          Garage
+          <input
+            placeholder="Select"
+            type="number"
+            :value="state.hasGarage"
+            @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
+          />
+        </label>
       </div>
     </div>
     <div style="display: flex; gap: 30px" class="form-field">
       <div style="display: flex; flex-direction: column">
-        <label>Bedrooms</label>
-        <input
-          placeholder="Enter amount"
-          :value="state.bedrooms"
-          @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
-        />
+        <label>
+          Bedrooms
+          <input
+            placeholder="Enter amount"
+            :value="state.bedrooms"
+            @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
+          />
+        </label>
         <span :style="{ color: 'red', display: isBedroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
       <div style="display: flex; flex-direction: column">
-        <label> Bathrooms </label>
-        <input
-          placeholder="Enter amount"
-          :value="state.bathrooms"
-          @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
-        />
+        <label>
+          Bathrooms
+          <input
+            placeholder="Enter amount"
+            :value="state.bathrooms"
+            @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
+          />
+        </label>
         <span :style="{ color: 'red', display: isBathroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
     </div>
     <div class="form-field">
-      <label> Construction date </label>
-      <input
-        placeholder="Enter description"
-        :value="state.constructionYear"
-        @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        Construction date
+        <input
+          placeholder="Enter description"
+          :value="state.constructionYear"
+          @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
     </div>
     <div class="form-field">
-      <label>Description</label>
-      <textarea
-        rows="5"
-        placeholder="Enter description"
-        required
-        :value="state.description"
-        @input="event => state.description = (event.target as HTMLInputElement)?.value"
-      />
+      <label>
+        Description
+        <textarea
+          rows="5"
+          placeholder="Enter description"
+          required
+          :value="state.description"
+          @input="event => state.description = (event.target as HTMLInputElement)?.value"
+        />
+      </label>
       <span :style="{ color: 'red', display: isDescriptionValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
@@ -344,7 +370,7 @@ span {
   font-size: 12px;
 }
 label {
-font-weight: bold;
+  font-weight: bold;
 }
 .form-field {
   margin: 10px 0 20px;

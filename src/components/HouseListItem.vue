@@ -21,6 +21,7 @@ defineProps<{
             height="130"
             :src="house.image"
             style="margin-right: 20px; border-radius: 5%"
+            alt="house image"
           />
           <div style="display: flex; flex-direction: column">
             <strong style="color: black; margin-bottom: 10px">{{ house.location.street }} </strong>
@@ -30,16 +31,16 @@ defineProps<{
             </p>
             <div style="display: flex; gap:2px">
               <p style="margin-right: 20px; display: flex; align-items: center; color: gray">
-                <img width="20" src="/src/assets/ic_bed@3x.png" style="margin-right: 8px" />
+                <img width="20" src="/src/assets/ic_bed@3x.png" style="margin-right: 8px" alt="bedroom icon"/>
                 {{ house.rooms.bedrooms }}
               </p>
               <p style="margin-right: 20px; display: flex; align-items: center; color: gray">
-                <img width="20" src="/src/assets/ic_bath@3x.png" style="margin-right: 8px" />{{
+                <img width="20" src="/src/assets/ic_bath@3x.png" style="margin-right: 8px" alt="bathroom icon"/>{{
                   house.rooms.bathrooms
                 }}
               </p>
               <p style="display: flex; align-items: center; color: gray">
-                <img width="20" src="/src/assets/ic_size@3x.png" style="margin-right: 8px" />
+                <img width="20" src="/src/assets/ic_size@3x.png" style="margin-right: 8px" alt="size icon"/>
                 {{ house.size }}m2
               </p>
             </div>
@@ -53,10 +54,11 @@ defineProps<{
                 $event.preventDefault()
                 $emit('deleteHouse', house.id)
               }
-            "
+              "
             width="15"
             src="/src/assets/ic_delete@3x.png"
             style="margin-right: 8px; color: rgba(0, 0, 0, 0.5)"
+            alt="delete icon"
           />
         </div>
       </div>

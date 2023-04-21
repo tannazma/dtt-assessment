@@ -13,7 +13,7 @@ const state = reactive<{
     <div style="padding: 30px 0 20px 0">
       <RouterLink :to="'/list/'">
         <p style="color: black">
-          <img src="src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
+          <img src="src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" alt="black gray icon"/>
           <label > Back to overview </label>
         </p>
       </RouterLink>

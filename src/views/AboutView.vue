@@ -12,7 +12,7 @@
     <h2 style="padding-top: 30px">Desin and Development</h2>
     <div style="display: flex">
       <div style="display:flex">
-        <img src="src/assets/img_logo_dtt@3x.png" style="width: 200px; padding-top: 20px" />
+        <img src="src/assets/img_logo_dtt@3x.png" style="width: 200px; padding-top: 20px" alt="dtt logo" />
       </div>
       <div style="padding-top:25px; padding-left:20px">
         <p>By DTT</p>
@@ -23,8 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { reactive } from 'vue'
 </script>
 
 <style scoped>

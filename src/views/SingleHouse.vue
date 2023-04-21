@@ -64,18 +64,28 @@ async function deleteHouse(houseId: number | undefined) {
   <div style="padding: 30px 0 20px 0">
     <RouterLink :to="'/list/'">
       <p style="color: black">
-        <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
+        <img
+          src="/src/assets/ic_back_grey@3x.png"
+          width="15"
+          style="text-align: center"
+          alt="black gray icon"
+        />
         <label> Back to overview </label>
       </p>
     </RouterLink>
   </div>
   <div style="background-color: white; margin-top: 20px; display: flex">
     <div style="">
-      <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0;" />
+      <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
           <RouterLink :to="'/edit/' + state.house?.id">
-            <img width="15" src="/src/assets/ic_edit@3x.png" style="margin-right: 20px" />
+            <img
+              width="15"
+              src="/src/assets/ic_edit@3x.png"
+              style="margin-right: 20px"
+              alt="edit icon"
+            />
           </RouterLink>
         </div>
         <div style="display: flex">
@@ -90,6 +100,7 @@ async function deleteHouse(houseId: number | undefined) {
             height="20"
             src="/src/assets/ic_delete@3x.png"
             style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
+            alt="delete icon"
           />
         </div>
       </div>
@@ -98,31 +109,39 @@ async function deleteHouse(houseId: number | undefined) {
           {{ state.house?.location.street }}
         </h1>
         <p style="margin-bottom: 10px">
-          <img width="15" src="/src/assets/ic_location@3x.png" />
+          <img width="15" src="/src/assets/ic_location@3x.png" alt="location icon" />
           {{ state.house?.location.zip }} {{ state.house?.location.city }}
         </p>
         <div style="display: flex; gap: 15px">
           <p style="margin-bottom: 10px">
-            <img width="15" src="/src/assets/ic_price@3x.png" />
+            <img width="15" src="/src/assets/ic_price@3x.png" alt="price icon" />
             {{ state.house?.price }}
           </p>
-          <p><img width="15" src="/src/assets/ic_size@3x.png" /> {{ state.house?.size }} m2</p>
           <p>
-            <img width="15" src="/src/assets/ic_construction_date@3x.png" /> Built in
+            <img width="15" src="/src/assets/ic_size@3x.png" alt="size icon" />
+            {{ state.house?.size }} m2
+          </p>
+          <p>
+            <img
+              width="15"
+              src="/src/assets/ic_construction_date@3x.png"
+              alt="contruction year icon"
+            />
+            Built in
             {{ state.house?.constructionYear }}
           </p>
         </div>
         <div style="display: flex; gap: 15px">
           <p>
-            <img width="15" src="/src/assets/ic_bed@3x.png" />
+            <img width="15" src="/src/assets/ic_bed@3x.png" alt="bedroom icon" />
             {{ state.house?.rooms.bedrooms }}
           </p>
           <p>
-            <img width="15" src="/src/assets/ic_bath@3x.png" />
+            <img width="15" src="/src/assets/ic_bath@3x.png" alt="bathroom icon" />
             {{ state.house?.rooms.bathrooms }}
           </p>
           <p>
-            <img width="15" src="/src/assets/ic_garage@3x.png" />
+            <img width="15" src="/src/assets/ic_garage@3x.png" alt="garage icon" />
             {{ state.house?.hasGarage }}
           </p>
         </div>
@@ -131,24 +150,18 @@ async function deleteHouse(houseId: number | undefined) {
         </p>
       </div>
     </div>
-    <div
-      style="
-        padding: 0 10px 0 40px;
-        background-color: rgb(231, 231, 231);
-        gap: 20px;
-      "
-    >
+    <div style="padding: 0 10px 0 40px; background-color: rgb(231, 231, 231); gap: 20px">
       <h3 style="padding-bottom: 10px">Recommended for you</h3>
       <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
         :to="'/house/' + recommendHouse.id"
       >
         <HouseListItem
-        :house="recommendHouse"
-        :key="recommendHouse.id"
-        :showEdit="false"
-        :showDelete="false"
-      />
+          :house="recommendHouse"
+          :key="recommendHouse.id"
+          :showEdit="false"
+          :showDelete="false"
+        />
       </RouterLink>
     </div>
     <div

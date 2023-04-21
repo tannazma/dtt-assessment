@@ -1,6 +1,6 @@
 <template class="edit">
   <RouterLink :to="'/edit/' + house.id">
-    <img width="15" src="/src/assets/ic_edit@3x.png" style="margin-right: 20px" />
+    <img width="15" src="/src/assets/ic_edit@3x.png" alt="edit icon" style="margin-right: 20px" />
   </RouterLink>
 </template>
 
