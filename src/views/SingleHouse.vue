@@ -2,6 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { reactive } from 'vue'
 import type { T_House } from '@/types/house'
+import HouseListItem from '@/components/HouseListItem.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -10,8 +11,8 @@ const state = reactive<{
   house: T_House | undefined
   houses: T_House[]
   isDeleteDialogOpen: boolean
-}>({ 
-  house: undefined, 
+}>({
+  house: undefined,
   isDeleteDialogOpen: false,
   houses: []
 })
@@ -62,10 +63,15 @@ async function deleteHouse(houseId: number | undefined) {
     </RouterLink>
   </div>
   <div style="background-color: white; margin-top: 20px">
-    <div>
       <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
-    </div>
     <div style="padding: 20px; margin: 20px">
+      <div>
+        <HouseListItem
+          v-for="recommendHouse in state.houses.slice(0, 3)"
+          :house="recommendHouse"
+          :key="recommendHouse.id"
+        />
+      </div>
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
           <RouterLink :to="'/edit/' + state.house?.id">
