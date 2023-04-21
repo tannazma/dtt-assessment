@@ -111,6 +111,7 @@ async function deleteHouse(houseId: number | undefined) {
         )"
       :key="house.id"
       :house="house"
+      :showEdit="true"
     />
   </div>
   <div

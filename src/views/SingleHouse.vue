@@ -80,6 +80,7 @@ async function deleteHouse(houseId: number | undefined) {
               }
             "
             width="15"
+            height="20"
             src="/src/assets/ic_delete@3x.png"
             style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
           />
@@ -136,6 +137,7 @@ async function deleteHouse(houseId: number | undefined) {
         v-for="recommendHouse in state.houses.slice(0, 3)"
         :house="recommendHouse"
         :key="recommendHouse.id"
+        :showEdit="false"
       />
     </div>
     <div
