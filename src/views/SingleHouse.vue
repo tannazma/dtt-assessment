@@ -150,7 +150,7 @@ async function deleteHouse(houseId: number | undefined) {
         </p>
       </div>
     </div>
-    <div style="padding: 0 10px 0 40px; background-color: rgb(231, 231, 231); gap: 20px">
+    <div style="padding: 0 10px 0 40px; background-color: #F6F6F6; gap: 20px">
       <h3 style="padding-bottom: 10px">Recommended for you</h3>
       <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
