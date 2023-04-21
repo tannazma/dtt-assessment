@@ -17,6 +17,13 @@ const state = reactive<{
   houses: []
 })
 
+watch(
+  () => route.params.id,
+  () => {
+    getHouseFromServer()
+  }
+)
+
 async function getHouseFromServer() {
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
     headers: {
@@ -133,13 +140,17 @@ async function deleteHouse(houseId: number | undefined) {
       "
     >
       <h3 style="padding-bottom: 10px">Recommended for you</h3>
-      <HouseListItem
+      <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
+        :to="'/house/' + recommendHouse.id"
+      >
+        <HouseListItem
         :house="recommendHouse"
         :key="recommendHouse.id"
         :showEdit="false"
         :showDelete="false"
       />
+      </RouterLink>
     </div>
     <div
       v-if="state.isDeleteDialogOpen"
