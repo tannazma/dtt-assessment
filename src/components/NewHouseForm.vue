@@ -165,7 +165,7 @@
         Required field is missing</span
       >
     </div>
-    <button @click="submitForm" type="submit" :disabled="!isFormValidate()">
+    <button @click="submitForm" type="submit" :disabled="!isFormValidate()" class="primary">
       {{ isEditing ? 'EDIT' : 'CREATE' }}
     </button>
   </form>

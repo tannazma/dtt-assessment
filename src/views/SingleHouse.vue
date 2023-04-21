@@ -199,6 +199,7 @@ async function deleteHouse(houseId: number | undefined) {
           <button
             style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
             @click="deleteHouse(state.house?.id)"
+            class="primary"
           >
             YES, DELETE
           </button>
@@ -206,6 +207,7 @@ async function deleteHouse(houseId: number | undefined) {
           <button
             style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
             @click="hideDeleteDialog"
+            class="secondary"
           >
             GO BACK
           </button>

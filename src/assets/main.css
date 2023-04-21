@@ -29,3 +29,37 @@ a,
 label {
   font-weight: bold;
 }
+
+button.primary {
+  background-color: #eb5440;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+
+button.secondary {
+  background-color: #4A4B4C;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+
+button.tertiary {
+  background-color: #C3C3C3;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+
