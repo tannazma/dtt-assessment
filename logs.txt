@@ -26,3 +26,8 @@ like 20 min styles for header and responsive
 like half hour to create about page
 like half hour to add font and some styles 
 like half hour to add routerlink for back to overview for single house and create new house page and edit page
+almost 30 min to follow css and html guide
+almost 2 hour to add styles for form page and single page house
+almost 2 hour to create re random recommended column
+like 1 hour to learn how to use and conditionalize houslistitem component and use it in the recommended column
+like 1 hour to add styles for the single page and use router to takes the user to the house id in recommended column
