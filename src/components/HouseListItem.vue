@@ -28,7 +28,7 @@ defineProps<{
             <p style="margin-top: 0px; color: gray; margin-bottom: 10px">
               {{ house.location.zip }} {{ house.location.city }}
             </p>
-            <div style="display: flex">
+            <div style="display: flex; gap:2px">
               <p style="margin-right: 20px; display: flex; align-items: center; color: gray">
                 <img width="20" src="/src/assets/ic_bed@3x.png" style="margin-right: 8px" />
                 {{ house.rooms.bedrooms }}
@@ -40,7 +40,7 @@ defineProps<{
               </p>
               <p style="display: flex; align-items: center; color: gray">
                 <img width="20" src="/src/assets/ic_size@3x.png" style="margin-right: 8px" />
-                {{ house.size }} m2
+                {{ house.size }}m2
               </p>
             </div>
           </div>
