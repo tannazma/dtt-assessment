@@ -62,16 +62,9 @@ async function deleteHouse(houseId: number | undefined) {
       </p>
     </RouterLink>
   </div>
-  <div style="background-color: white; margin-top: 20px">
+  <div style="background-color: white; margin-top: 20px; display: flex">
+    <div style="">
       <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
-    <div style="padding: 20px; margin: 20px">
-      <div>
-        <HouseListItem
-          v-for="recommendHouse in state.houses.slice(0, 3)"
-          :house="recommendHouse"
-          :key="recommendHouse.id"
-        />
-      </div>
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
           <RouterLink :to="'/edit/' + state.house?.id">
@@ -92,7 +85,7 @@ async function deleteHouse(houseId: number | undefined) {
           />
         </div>
       </div>
-      <div style="margin-bottom: 20px">
+      <div style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px">
         <h1 style="margin-bottom: 20px">
           {{ state.house?.location.street }}
         </h1>
@@ -129,6 +122,21 @@ async function deleteHouse(houseId: number | undefined) {
           {{ state.house?.description }}
         </p>
       </div>
+    </div>
+    <div
+      style="
+        padding-left: 40px;
+        padding-right: 10px;
+        background-color: rgb(231, 231, 231);
+        gap: 20px;
+      "
+    >
+      <h3 style="padding-bottom: 10px">Recommended for you</h3>
+      <HouseListItem
+        v-for="recommendHouse in state.houses.slice(0, 3)"
+        :house="recommendHouse"
+        :key="recommendHouse.id"
+      />
     </div>
     <div
       v-if="state.isDeleteDialogOpen"
