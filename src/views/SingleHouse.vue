@@ -138,6 +138,7 @@ async function deleteHouse(houseId: number | undefined) {
         :house="recommendHouse"
         :key="recommendHouse.id"
         :showEdit="false"
+        :showDelete="false"
       />
     </div>
     <div

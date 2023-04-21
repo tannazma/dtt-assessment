@@ -5,6 +5,7 @@ import EditHouseVue from './EditHouseButton.vue'
 defineProps<{
   house: T_House
   showEdit: boolean
+  showDelete: boolean
 }>()
 </script>
 
@@ -44,7 +45,7 @@ defineProps<{
             </div>
           </div>
         </div>
-        <div>
+        <div v-if="showDelete">
           <EditHouseVue :house="house" v-if="showEdit" />
           <img
             @click="
