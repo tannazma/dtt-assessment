@@ -25,7 +25,7 @@ defineProps<{
           <div style="display: flex; flex-direction: column">
             <strong style="color: black; margin-bottom: 10px">{{ house.location.street }} </strong>
             <strong style="color: black; margin-bottom: 10px">€ {{ house.price }}</strong>
-            <p style="margin-top: 0px; color: gray; margin-bottom: 10px">
+            <p style="margin: 0 0 10px; color: gray;">
               {{ house.location.zip }} {{ house.location.city }}
             </p>
             <div style="display: flex; gap:2px">

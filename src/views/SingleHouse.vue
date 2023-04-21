@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
 
@@ -61,7 +61,7 @@ async function deleteHouse(houseId: number | undefined) {
 </script>
 
 <template>
-  <div style="padding-top: 30px; padding-bottom: 20px">
+  <div style="padding: 30px 0 20px 0">
     <RouterLink :to="'/list/'">
       <p style="color: black">
         <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
@@ -71,7 +71,7 @@ async function deleteHouse(houseId: number | undefined) {
   </div>
   <div style="background-color: white; margin-top: 20px; display: flex">
     <div style="">
-      <img class="image" :src="state.house?.image" style="margin-right: 20px; margin-top: 0px" />
+      <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0;" />
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
           <RouterLink :to="'/edit/' + state.house?.id">
@@ -93,7 +93,7 @@ async function deleteHouse(houseId: number | undefined) {
           />
         </div>
       </div>
-      <div style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px">
+      <div style="margin-bottom: 20px; padding: 0 20px">
         <h1 style="margin-bottom: 20px">
           {{ state.house?.location.street }}
         </h1>
@@ -133,8 +133,7 @@ async function deleteHouse(houseId: number | undefined) {
     </div>
     <div
       style="
-        padding-left: 40px;
-        padding-right: 10px;
+        padding: 0 10px 0 40px;
         background-color: rgb(231, 231, 231);
         gap: 20px;
       "
@@ -161,8 +160,8 @@ async function deleteHouse(houseId: number | undefined) {
         color: black;
         height: 100%;
         width: 100%;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         padding: 10%;
         background-color: rgba(0, 0, 0, 0.4);
       "

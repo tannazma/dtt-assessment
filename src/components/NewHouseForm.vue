@@ -337,7 +337,7 @@ textarea {
   display: block;
   border-radius: 5px;
   border: none;
-  margin: 10px 0px 0px 0px;
+  margin: 10px 0 0 0;
   width: 100%;
 }
 span {
@@ -347,8 +347,7 @@ label {
 font-weight: bold;
 }
 .form-field {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
   width: 350px;
 }
 textarea {

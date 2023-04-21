@@ -124,8 +124,8 @@ async function deleteHouse(houseId: number | undefined) {
       color: black;
       height: 100%;
       width: 100%;
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
       padding: 10%;
       background-color: rgba(0, 0, 0, 0.4);
     "
@@ -184,8 +184,7 @@ async function deleteHouse(houseId: number | undefined) {
 .second-part {
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0 20px;
   justify-content: space-between;
 }
 .input {

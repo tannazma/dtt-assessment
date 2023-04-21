@@ -12,16 +12,14 @@ import { RouterLink } from 'vue-router'
 
 <style>
 .header-container {
-  padding: 20px;
-  padding-left: 12rem;
+  padding: 20px 20px 20px 12rem;
   display: flex;
   background-color: white;
 }
 
 .list {
   align-content: space-between;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin:0 50px;
   color: black;
 }
 .about {

@@ -10,7 +10,7 @@ const state = reactive<{
 
 <template>
   <div style="background-image: url(src/assets/img_background@3x.png); background-size: 100%">
-    <div style="padding-top: 30px; padding-bottom: 20px">
+    <div style="padding: 30px 0 20px 0">
       <RouterLink :to="'/list/'">
         <p style="color: black">
           <img src="src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" />
