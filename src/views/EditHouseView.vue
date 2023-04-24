@@ -29,9 +29,9 @@ getHouseFromServer()
       <RouterLink :to="'/list/'">
         <p style="color: black">
           <img src="/src/assets/ic_back_grey@3x.png" width="15" style="text-align: center" alt="black gray icon" />  
-          <lable>
+          <label>
             Back to overview
-          </lable>
+          </label>
         </p>
       </RouterLink>
     </div>
