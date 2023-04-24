@@ -75,7 +75,7 @@ async function deleteHouse(houseId: number | undefined) {
     </RouterLink>
   </div>
   <div style="background-color: white; margin-top: 20px; display: flex">
-    <div style="">
+    <div style="flex: 1">
       <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
       <div style="display: flex; justify-content: end">
         <div style="display: flex">
@@ -150,7 +150,7 @@ async function deleteHouse(houseId: number | undefined) {
         </p>
       </div>
     </div>
-    <div style="padding: 0 10px 0 40px; background-color: #F6F6F6; gap: 20px">
+    <div style="padding: 0 10px 0 40px; background-color: #f6f6f6; gap: 20px">
       <h3 style="padding-bottom: 10px">Recommended for you</h3>
       <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
