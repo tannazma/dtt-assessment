@@ -33,3 +33,4 @@ like 1 hour to learn how to use and conditionalize houslistitem component and us
 like 1 hour to add styles for the single page and use router to takes the user to the house id in recommended column
 like 3 hours to learn about form data and send a file to the server
 like 1 hour to fix the image in the ui and see the result
+like half hour to add styles for uploading image in the form page
