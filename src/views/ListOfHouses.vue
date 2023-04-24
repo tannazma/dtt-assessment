@@ -149,7 +149,7 @@ async function deleteHouse(houseId: number | undefined) {
       background-color: rgba(0, 0, 0, 0.4);
     "
   >
-    <div style="background-color: white; padding: 43px 96px; border-radius: 3%">
+    <div style="background-color: white; padding: 43px 96px; border-radius: 5px">
       <h2 style="text-align: center; margin-bottom: 20px">Delete listing</h2>
       <p style="align-content: center; color: gray">
         Are you sure you want to delete this listing?
@@ -212,7 +212,7 @@ async function deleteHouse(houseId: number | undefined) {
   margin-right: auto;
   width: 250px;
   height: 30px;
-  border-radius: 5%;
+  border-radius: 5px;
   border: none;
   padding-left: 45px;
   background: transparent;

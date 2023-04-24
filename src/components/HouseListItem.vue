@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
   <RouterLink :to="'/house/' + house.id">
-    <div style="background-color: white; border-radius: 3%; margin: auto; gap: 30px">
+    <div style="background-color: white; border-radius: 5px; margin: auto; gap: 30px">
       <div
         style="margin-bottom: 10px; padding: 10px; display: flex; justify-content: space-between"
       >
@@ -20,7 +20,7 @@ defineProps<{
             width="130"
             height="130"
             :src="house.image"
-            style="margin-right: 20px; border-radius: 5%"
+            style="margin-right: 20px; border-radius: 5px"
             alt="house image"
           />
           <div style="display: flex; flex-direction: column">
