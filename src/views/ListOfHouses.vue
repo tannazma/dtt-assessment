@@ -19,7 +19,13 @@ const state = reactive<{
 })
 
 const filteredHouses = computed(() =>
-  state.houses.filter((h) => h.description.toLowerCase().includes(state.searchText.toLowerCase()))
+  state.houses.filter(
+    (h) =>
+      h.description.toLowerCase().includes(state.searchText.toLowerCase()) ||
+      h.location.street.toLowerCase().includes(state.searchText.toLowerCase()) ||
+      h.location.city.toLowerCase().includes(state.searchText.toLowerCase()) ||
+      h.location.zip.toLowerCase().includes(state.searchText.toLowerCase())
+  )
 )
 
 function hideDeleteDialog() {
@@ -100,7 +106,7 @@ async function deleteHouse(houseId: number | undefined) {
         />
       </div>
       <div>
-        <strong style="padding:20px">{{ filteredHouses.length }} results found</strong>
+        <strong style="padding: 20px">{{ filteredHouses.length }} results found</strong>
       </div>
     </div>
     <div style="display: flex">
