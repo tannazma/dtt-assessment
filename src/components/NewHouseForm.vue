@@ -68,7 +68,7 @@
           placeholder="+"
           type="file"
           :value="state.picture"
-          @input="event => state.picture = (event.target as HTMLInputElement)?.value"
+          @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
       </label>
     </div>
@@ -192,7 +192,7 @@ const state = reactive({
   city: props.house ? props.house.location.city.toString() : '',
   constructionYear: props.house ? props.house.constructionYear.toString() : '',
   hasGarage: props.house ? props.house.hasGarage.toString() : '',
-  picture: '',
+  picture: undefined as File | undefined,
   description: props.house ? props.house.description.toString() : ''
 })
 // const state2 = reactive({
@@ -231,7 +231,10 @@ async function submitForm(e: any) {
   var form_data = new FormData()
 
   for (var key in state) {
-    form_data.append(key, state[key as keyof typeof state])
+    const value = state[key as keyof typeof state]
+    if (value) {
+      form_data.append(key, value)
+    }
   }
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
     method: 'POST',
@@ -246,8 +249,25 @@ async function submitForm(e: any) {
   } catch {
     alert('Error happened')
   }
+  sendImage()
 }
 
+async function sendImage() {
+  if (!state.picture) {
+    return
+  }
+  const formData = new FormData()
+
+  formData.append('image', state.picture)
+  const response = fetch('https://api.intern.d-tt.nl/api/houses/' + props.house?.id + '/upload', {
+    method: 'POST',
+    headers: {
+      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+    },
+    body: formData
+  })
+  console.log(response)
+}
 // function isFormValidate() {
 //   if (
 //     priceValue.trim() &&
