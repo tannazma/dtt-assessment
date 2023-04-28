@@ -139,6 +139,9 @@
             @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
           />
         </label>
+        <span :style="{ color: 'red', display: isGarageValid() ? 'none' : 'block' }">
+          Enter a valid number</span
+        >
       </div>
     </div>
     <div style="display: flex; gap: 30px" class="form-field">
@@ -178,6 +181,9 @@
           @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
         />
       </label>
+      <span :style="{ color: 'red', display: isYearValid() ? 'none' : 'block' }">
+        Enter a valid year</span
+      >
     </div>
     <div class="form-field">
       <label>
@@ -338,8 +344,8 @@ function isFormValidate() {
     isBedroomsValid() &&
     isBathroomsValid() &&
     isCityValid() &&
-    state.constructionYear.trim() &&
-    state.hasGarage.trim() &&
+    isYearValid() &&
+    isGarageValid() &&
     isHouseNumberValid() &&
     isSizeValid() &&
     isStreetValid() &&
@@ -358,9 +364,28 @@ function isDescriptionValid() {
     return false
   }
 }
-
 function isPriceValid() {
   if (state.price.trim() && Number(state.price.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function isGarageValid() {
+  if (state.hasGarage.trim() && Number(state.hasGarage.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function isYearValid() {
+  if (
+    state.constructionYear.trim() &&
+    Number(state.constructionYear.trim()) &&
+    /^[12][0-9]{3}$/.test(state.constructionYear.trim())
+  ) {
     return true
   } else {
     return false
@@ -411,7 +436,7 @@ function isPostalCodeValid() {
   }
 }
 function isSizeValid() {
-  if (state.size.trim()) {
+  if (state.size.trim() && /\d+[,.]?\d*\s*(?:m²|m2)/.test(state.size.trim())) {
     return true
   } else {
     return false
