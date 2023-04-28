@@ -30,7 +30,10 @@
       <div style="display: flex; flex-direction: column">
         <label>
           Addition
-          <input />
+          <input
+            :value="state.numberAddition"
+            @input="event => state.numberAddition = (event.target as HTMLInputElement)?.value"
+          />
         </label>
         <span :style="{ color: 'blue', display: 'block' }"> This is optional</span>
       </div>
@@ -194,8 +197,8 @@ const state = reactive({
   bathrooms: props.house ? props.house.rooms.bathrooms.toString() : '',
   size: props.house ? props.house.size.toString() : '',
   streetName: props.house ? props.house.location.street.toString() : '',
-  houseNumber: props.house ? props.house.id.toString() : '',
-  numberAddition: props.house ? props.house.id.toString() : '',
+  houseNumber: '',
+  numberAddition: '',
   zip: props.house ? props.house.location.zip.toString() : '',
   city: props.house ? props.house.location.city.toString() : '',
   constructionYear: props.house ? props.house.constructionYear.toString() : '',
