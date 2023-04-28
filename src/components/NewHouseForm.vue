@@ -64,9 +64,13 @@
     <div class="form-field">
       <label>
         Upload picture (JPG or PNG)
-        <div style="font-size: 50px; margin-top:10px;">
+        <div style="font-size: 50px; margin-top: 10px">
           <div style="border: 3px dashed #c3c3c3; width: 78px; height: 84px">
-            <img width="25" src="/src/assets/ic_plus_grey@3x.png" style="margin-left: 23px; margin-bottom: 8px;" />
+            <img
+              width="25"
+              src="/src/assets/ic_plus_grey@3x.png"
+              style="margin-left: 23px; margin-bottom: 8px"
+            />
           </div>
         </div>
         <input
