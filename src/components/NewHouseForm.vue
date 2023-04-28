@@ -253,21 +253,21 @@ async function submitForm(e: any) {
   })
 
   try {
-    console.log(await (await response).json())
+    const createdHouse = await (await response).json()
+    sendImage(createdHouse.id)
   } catch {
     alert('Error happened')
   }
-  sendImage()
 }
 
-async function sendImage() {
+async function sendImage(houseId: number) {
   if (!state.picture) {
     return
   }
   const formData = new FormData()
 
   formData.append('image', state.picture)
-  const response = fetch('https://api.intern.d-tt.nl/api/houses/' + props.house?.id + '/upload', {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
     method: 'POST',
     headers: {
       'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
