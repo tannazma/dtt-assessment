@@ -82,8 +82,8 @@
           type="file"
           @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
-        <img
-          v-if="state.picture"
+      </label>
+      <div style="position: relative">
         <img
           v-if="state.picture"
           id="selected-image"
@@ -91,7 +91,15 @@
           alt="Selected Image"
           style="border-radius: 3px; width: 120px"
         />
-      </label>
+        <img
+          @click="state.picture = undefined"
+          v-if="state.picture"
+          src="/src/assets/ic_clear_white@3x.png"
+          width="20"
+          height="20"
+          style=" cursor: pointer; position: absolute; top 0; left:100px;"
+        />
+      </div>
     </div>
     <div class="form-field">
       <label>
