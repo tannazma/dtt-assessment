@@ -34,5 +34,6 @@ like 1 hour to add styles for the single page and use router to takes the user t
 like 3 hours to learn about form data and send a file to the server
 like 1 hour to fix the image in the ui and see the result
 like half hour to add styles for uploading image in the form page
-1 hour to understand why when i'm editing the house, the title of the house is written like street name+house number + addition, without any space between 2 addition and house number, I couldnt split them I think it ws the problem of the backend, I couldnt seperate them even with split, or slice or any other things, because I dont know what in the source of data is, is it number or string, so I decided to put ' ' an empty string instead of the tow last ones:
+2 hour to understand why when i'm editing the house, the title of the house is written like street name+house number + addition, without any space between 2 addition and house number, I couldnt split them I think it ws the problem of the backend, I couldnt seperate them even with split, or slice or any other things, because I dont know what in the source of data is, is it number or string, so I decided to put ' ' an empty string instead of the tow last ones:
 location: {street: "aaa 123666", city: "rtyui", zip: "1123 aa"} this is the example.
+almost 2 hour to find a way to show image wghen it is added to the form + close icon + style
