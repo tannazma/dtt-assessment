@@ -68,7 +68,7 @@
       <label>
         Upload picture (JPG or PNG)
         <div style="font-size: 50px; margin-top: 10px">
-          <div style="border: 3px dashed #c3c3c3; width: 78px; height: 84px">
+          <div v-if="!state.picture" style="border: 3px dashed #c3c3c3; width: 78px; height: 84px">
             <img
               width="25"
               src="/src/assets/ic_plus_grey@3x.png"
@@ -78,8 +78,18 @@
         </div>
         <input
           style="display: none"
+          onchange="document.getElementById('selected-image').src = window.URL.createObjectURL(this.files[0])"
           type="file"
           @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
+        />
+        <img
+          v-if="state.picture"
+        <img
+          v-if="state.picture"
+          id="selected-image"
+          src="#"
+          alt="Selected Image"
+          style="border-radius: 3px; width: 120px"
         />
       </label>
     </div>
