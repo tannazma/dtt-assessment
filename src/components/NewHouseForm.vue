@@ -76,7 +76,6 @@
         <input
           style="display: none"
           type="file"
-          :value="state.picture"
           @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
       </label>
