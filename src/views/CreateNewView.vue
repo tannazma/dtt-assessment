@@ -20,7 +20,7 @@ const state = reactive<{
     </div>
     <div class="create-new">
       <h1>Create new listing</h1>
-      <NewHouseForm :isEditing="false" :house="state.house" />
+      <NewHouseForm :isEditing="false" :house="state.house" :editPage="false" />
     </div>
   </div>
 </template>

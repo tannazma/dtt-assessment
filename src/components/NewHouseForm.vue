@@ -188,6 +188,7 @@ import { reactive } from 'vue'
 
 const props = defineProps<{
   isEditing: boolean
+  editPage: boolean
   house?: T_House
 }>()
 
@@ -247,19 +248,38 @@ async function submitForm(e: any) {
       form_data.append(key, value)
     }
   }
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    method: 'POST',
-    headers: {
-      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-    },
-    body: form_data
-  })
+  if (props.editPage) {
+    const response = fetch('https://api.intern.d-tt.nl/api/houses/' + props.house?.id, {
+      method: 'POST',
+      headers: {
+        'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+      },
+      body: form_data
+    })
 
-  try {
-    const createdHouse = await (await response).json()
-    sendImage(createdHouse.id)
-  } catch {
-    alert('Error happened')
+    try {
+      const createdHouse = await (await response).json()
+      sendImage(createdHouse.id)
+    } catch (err) {
+      console.error(err)
+      alert('Error happened')
+    }
+  } else {
+    const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+      method: 'POST',
+      headers: {
+        'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
+      },
+      body: form_data
+    })
+
+    try {
+      const createdHouse = await (await response).json()
+      sendImage(createdHouse.id)
+    } catch (err) {
+      console.error(err)
+      alert('Error happened')
+    }
   }
 }
 
