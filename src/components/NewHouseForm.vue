@@ -266,8 +266,8 @@ async function submitForm(e: any) {
       form_data.append(key, value)
     }
   }
-  if (props.editPage) {
-    const response = fetch('https://api.intern.d-tt.nl/api/houses/' + props.house?.id, {
+  if (props.editPage && props.house?.id) {
+    fetch('https://api.intern.d-tt.nl/api/houses/' + props.house.id, {
       method: 'POST',
       headers: {
         'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
@@ -275,13 +275,7 @@ async function submitForm(e: any) {
       body: form_data
     })
 
-    try {
-      const createdHouse = await (await response).json()
-      sendImage(createdHouse.id)
-    } catch (err) {
-      console.error(err)
-      alert('Error happened')
-    }
+    sendImage(props.house.id)
   } else {
     const response = fetch('https://api.intern.d-tt.nl/api/houses', {
       method: 'POST',
