@@ -4,9 +4,9 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div class="header-container">
-      <img width="100" src="/src/assets/img_logo_dtt@3x.png" alt="dtt logo"/>
-      <RouterLink class="list" to="/list">Houses</RouterLink>
-      <RouterLink class="about" to="/about">About</RouterLink>
+    <img width="100" src="/src/assets/img_logo_dtt@3x.png" alt="dtt logo" />
+    <RouterLink class="list" to="/list">Houses</RouterLink>
+    <RouterLink class="about" to="/about">About</RouterLink>
   </div>
 </template>
 
@@ -19,10 +19,15 @@ import { RouterLink } from 'vue-router'
 
 .list {
   align-content: space-between;
-  margin:0 50px;
+  margin: 0 50px;
   color: black;
 }
 .about {
   color: black;
+}
+@media (max-width: 800px) {
+  .header-container {
+    display: none;
+  }
 }
 </style>
