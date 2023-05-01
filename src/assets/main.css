@@ -3,7 +3,7 @@
 #app {
   font-family: 'Montserrat', 'Open Sans', Verdana, lucida, sans-serif;
   background-color: #f6f6f6;
-
+  min-height: 100vh;
   font-weight: normal;
 }
 
