@@ -7,6 +7,7 @@
           placeholder="Enter the street name"
           :value="state.streetName"
           @input="event => state.streetName = (event.target as HTMLInputElement)?.value"
+          :style="{ border: isStreetValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isStreetValid() ? 'none' : 'block' }">
@@ -21,6 +22,7 @@
             placeholder="Enter house number"
             :value="state.houseNumber"
             @input="event => state.houseNumber = (event.target as HTMLInputElement)?.value"
+            :style="{ border: isHouseNumberValid() ? 'none' : '1px solid red' }"
           />
         </label>
         <span :style="{ color: 'red', display: isHouseNumberValid() ? 'none' : 'block' }">
@@ -45,6 +47,7 @@
           placeholder="e.g. 1000 AA"
           :value="state.zip"
           @input="event => state.zip = (event.target as HTMLInputElement)?.value"
+          :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isPostalCodeValid() ? 'none' : 'block' }">
@@ -58,6 +61,7 @@
           placeholder="e.g. Utreckt"
           :value="state.city"
           @input="event => state.city = (event.target as HTMLInputElement)?.value"
+          :style="{ border: isCityValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isCityValid() ? 'none' : 'block' }">
@@ -109,6 +113,7 @@
           :value="state.price"
           @input="event => state.price = (event.target as HTMLInputElement)?.value"
           class="input"
+          :style="{ border: isPriceValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isPriceValid() ? 'none' : 'block' }">
@@ -123,6 +128,7 @@
             placeholder="e.g. 60m2"
             :value="state.size"
             @input="event => state.size = (event.target as HTMLInputElement)?.value"
+            :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
           />
         </label>
         <span :style="{ color: 'red', display: isSizeValid() ? 'none' : 'block' }">
@@ -137,6 +143,7 @@
             type="number"
             :value="state.hasGarage"
             @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
+            :style="{ border: isGarageValid() ? 'none' : '1px solid red' }"
           />
         </label>
         <span :style="{ color: 'red', display: isGarageValid() ? 'none' : 'block' }">
@@ -152,6 +159,7 @@
             placeholder="Enter amount"
             :value="state.bedrooms"
             @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
+            :style="{ border: isBedroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
         <span :style="{ color: 'red', display: isBedroomsValid() ? 'none' : 'block' }">
@@ -165,6 +173,7 @@
             placeholder="Enter amount"
             :value="state.bathrooms"
             @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
+            :style="{ border: isBathroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
         <span :style="{ color: 'red', display: isBathroomsValid() ? 'none' : 'block' }">
@@ -179,6 +188,7 @@
           placeholder="Enter description"
           :value="state.constructionYear"
           @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
+          :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isYearValid() ? 'none' : 'block' }">
@@ -194,6 +204,7 @@
           required
           :value="state.description"
           @input="event => state.description = (event.target as HTMLInputElement)?.value"
+          :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isDescriptionValid() ? 'none' : 'block' }">
@@ -400,7 +411,7 @@ function isBedroomsValid() {
   }
 }
 function isBathroomsValid() {
-  if (state.bedrooms.trim() && Number(state.bedrooms.trim())) {
+  if (state.bathrooms.trim() && Number(state.bathrooms.trim())) {
     return true
   } else {
     return false
