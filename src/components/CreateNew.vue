@@ -1,6 +1,5 @@
 <template class="create-new">
-  <div>
-    <h1></h1>
+  <div class="new">
     <RouterLink to="/new"
       ><button class="create-new primary">
         <img
@@ -31,6 +30,10 @@ import { RouterLink } from 'vue-router'
   }
   .upload-image {
     display: none;
+  }
+  .new {
+    position: absolute;
+    right: 15px;
   }
 }
 @media (min-width: 800px) {

@@ -103,7 +103,7 @@ async function deleteHouse(houseId: number | undefined) {
     </div>
   </div>
   <div class="results">
-    <strong >{{ filteredHouses.length }} results found</strong>
+    <strong>{{ filteredHouses.length }} results found</strong>
   </div>
   <div style="text-align: center" v-if="filteredHouses.length === 0">
     <img
@@ -254,6 +254,9 @@ async function deleteHouse(houseId: number | undefined) {
     text-align: center;
     padding-bottom: 15px;
   }
+  .first-part {
+    margin-top: 0;
+  }
   .second-part {
     display: block;
     width: 90%;
@@ -263,9 +266,16 @@ async function deleteHouse(houseId: number | undefined) {
     margin-bottom: 20px;
     margin-left: 0;
   }
-  .results{
+  .results {
     width: 90%;
     margin: auto;
+    padding-bottom: 20px;
+  }
+  .houses-parent {
+    padding: 0px 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
   }
 }
 </style>
