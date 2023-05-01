@@ -468,4 +468,8 @@ textarea {
   display: block;
   font-family: 'Montserrat', 'Open Sans', Verdana, lucida, sans-serif;
 }
+
+button:disabled {
+  opacity: 0.5;
+}
 </style>
