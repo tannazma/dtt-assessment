@@ -208,6 +208,12 @@ async function deleteHouse(houseId: number | undefined) {
   align-content: space-between;
 }
 
+@media (max-width: 800px) {
+  .title {
+    text-align: center;
+  }
+}
+
 .second-part {
   display: flex;
   align-items: center;
