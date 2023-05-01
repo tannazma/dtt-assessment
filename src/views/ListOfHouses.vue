@@ -96,14 +96,14 @@ async function deleteHouse(houseId: number | undefined) {
           style="box-sizing: content-box; cursor: pointer"
         />
       </div>
-      <div>
-        <strong style="padding: 20px">{{ filteredHouses.length }} results found</strong>
-      </div>
     </div>
     <div class="button-container" style="display: flex">
       <button class="price primary" @click="state.sortParameter = 'price'">Price</button>
       <button class="size tertiary" @click="state.sortParameter = 'size'">Size</button>
     </div>
+  </div>
+  <div class="results">
+    <strong >{{ filteredHouses.length }} results found</strong>
   </div>
   <div style="text-align: center" v-if="filteredHouses.length === 0">
     <img
@@ -252,16 +252,18 @@ async function deleteHouse(houseId: number | undefined) {
   }
   .button-container {
     text-align: center;
-    width: 90%;
-    margin: auto;
     padding-bottom: 15px;
   }
   .second-part {
     display: block;
-    margin: auto;
     width: 90%;
+    margin: auto;
   }
   .first-child-input {
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+  .results{
     width: 90%;
     margin: auto;
   }

@@ -29,8 +29,6 @@ import { RouterLink } from 'vue-router'
   span {
     display: none;
   }
-  .upload-image-gray {
-  }
   .upload-image {
     display: none;
   }
