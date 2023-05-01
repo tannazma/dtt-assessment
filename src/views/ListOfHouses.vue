@@ -79,16 +79,7 @@ async function deleteHouse(houseId: number | undefined) {
   </div>
   <div class="second-part">
     <div>
-      <div
-        style="
-          display: flex;
-          background-color: #e8e8e8;
-          padding: 5px 20px;
-          border-radius: 5px;
-          margin-left: 10px;
-          align-items: center;
-        "
-      >
+      <div class="first-child-input">
         <img src="/src/assets/ic_search@3x.png" width="20" height="20" />
         <input
           :value="state.searchText"
@@ -109,7 +100,7 @@ async function deleteHouse(houseId: number | undefined) {
         <strong style="padding: 20px">{{ filteredHouses.length }} results found</strong>
       </div>
     </div>
-    <div style="display: flex">
+    <div class="button-container" style="display: flex">
       <button class="price primary" @click="state.sortParameter = 'price'">Price</button>
       <button class="size tertiary" @click="state.sortParameter = 'size'">Size</button>
     </div>
@@ -216,7 +207,7 @@ async function deleteHouse(houseId: number | undefined) {
 
 .second-part {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin: 20px 0 20px;
   justify-content: space-between;
 }
@@ -239,5 +230,39 @@ async function deleteHouse(houseId: number | undefined) {
   display: flex;
   gap: 10px;
   border-radius: 0 5px 5px 0;
+}
+
+.first-child-input {
+  display: flex;
+  background-color: rgb(232, 232, 232);
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .price {
+    flex-direction: column;
+    flex: 1;
+  }
+  .size {
+    flex-direction: column;
+    flex: 1;
+  }
+  .button-container {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+  }
+  .second-part {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+  .first-child-input {
+    width: 90%;
+    margin: auto;
+  }
 }
 </style>
