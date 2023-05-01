@@ -4,7 +4,7 @@
     <RouterLink to="/new"
       ><button class="create-new primary">
         <img
-          style="width: 15px; position: relative; top: 2px; margin-right: 12px;"
+          style="width: 15px; position: relative; top: 2px; margin-right: 12px"
           class="upload-image"
           src="/src/assets/ic_plus_white@3x.png"
         />
@@ -30,7 +30,6 @@ import { RouterLink } from 'vue-router'
     display: none;
   }
   .upload-image-gray {
-    width: 25px;
   }
   .upload-image {
     display: none;
