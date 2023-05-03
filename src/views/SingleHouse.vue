@@ -240,7 +240,7 @@ async function deleteHouse(houseId: number | undefined) {
 .recommended-column {
   padding: 0 10px 0 40px;
   background-color: #f6f6f6;
-  gap: 20px;
+  gap: 10px;
 }
 .edit-delete {
   margin-top: 10px;
