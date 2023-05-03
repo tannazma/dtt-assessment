@@ -77,37 +77,41 @@ async function deleteHouse(houseId: number | undefined) {
   <div class="house-container" style="background-color: white; margin-top: 0; display: flex">
     <div style="flex: 1">
       <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
-      <div style="display: flex; justify-content: end">
-        <div style="display: flex">
-          <RouterLink :to="'/edit/' + state.house?.id">
-            <img
-              width="15"
-              src="/src/assets/ic_edit@3x.png"
-              style="margin-right: 20px"
-              alt="edit icon"
-            />
-          </RouterLink>
-        </div>
-        <div style="display: flex">
-          <img
-            @click="
-              ($event) => {
-                $event.preventDefault()
-                showDeleteDialog()
-              }
-            "
-            width="15"
-            height="20"
-            src="/src/assets/ic_delete@3x.png"
-            style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
-            alt="delete icon"
-          />
-        </div>
-      </div>
       <div style="margin-bottom: 20px; padding: 0 20px">
-        <h1 style="margin-bottom: 20px">
-          {{ state.house?.location.street }}
-        </h1>
+        <div style="display: flex">
+          <div style="flex: 1">
+            <h1 style="margin-bottom: 20px">
+              {{ state.house?.location.street }}
+            </h1>
+          </div>
+          <div style="margin-top: 10px; display:flex">
+            <div style="display: flex">
+              <RouterLink :to="'/edit/' + state.house?.id">
+                <img
+                  width="15"
+                  src="/src/assets/ic_edit@3x.png"
+                  style="margin-right: 20px"
+                  alt="edit icon"
+                />
+              </RouterLink>
+            </div>
+            <div style="display: flex">
+              <img
+                @click="
+                  ($event) => {
+                    $event.preventDefault()
+                    showDeleteDialog()
+                  }
+                "
+                width="15"
+                height="20"
+                src="/src/assets/ic_delete@3x.png"
+                style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
+                alt="delete icon"
+              />
+            </div>
+          </div>
+        </div>
         <p style="margin-bottom: 10px">
           <img width="15" src="/src/assets/ic_location@3x.png" alt="location icon" />
           {{ state.house?.location.zip }} {{ state.house?.location.city }}
@@ -227,7 +231,7 @@ async function deleteHouse(houseId: number | undefined) {
     flex-direction: column;
     margin-top: 0;
   }
-  .back-page{
+  .back-page {
     display: none;
   }
 }
