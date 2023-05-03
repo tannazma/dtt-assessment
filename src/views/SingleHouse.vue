@@ -76,7 +76,14 @@ async function deleteHouse(houseId: number | undefined) {
   </div>
   <div class="house-container" style="background-color: white; margin-top: 0; display: flex">
     <div style="flex: 1">
-      <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
+      <div>
+        <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
+        <div class="back-mobile">
+          <RouterLink :to="'/list/'">
+            <img src="/src/assets/ic_back_white@3x.png" width="15" alt="black gray icon" />
+          </RouterLink>
+        </div>
+      </div>
       <div class="house-box">
         <div class="house-title" style="display: flex">
           <div style="flex: 1">
@@ -84,7 +91,7 @@ async function deleteHouse(houseId: number | undefined) {
               {{ state.house?.location.street }}
             </h1>
           </div>
-          <div style="margin-top: 10px; display: flex">
+          <div class="edit-delete">
             <div style="display: flex">
               <RouterLink :to="'/edit/' + state.house?.id">
                 <img
@@ -92,6 +99,7 @@ async function deleteHouse(houseId: number | undefined) {
                   src="/src/assets/ic_edit@3x.png"
                   style="margin-right: 20px"
                   alt="edit icon"
+                  class="edit-desktop"
                 />
               </RouterLink>
             </div>
@@ -106,8 +114,8 @@ async function deleteHouse(houseId: number | undefined) {
                 width="15"
                 height="20"
                 src="/src/assets/ic_delete@3x.png"
-                style="margin-right: 8px; display: flex; color: rgba(0, 0, 0, 0.5)"
                 alt="delete icon"
+                class="delete-desktop"
               />
             </div>
           </div>
@@ -155,7 +163,7 @@ async function deleteHouse(houseId: number | undefined) {
       </div>
     </div>
     <div class="recommended-column">
-      <h3 class="h3" style="padding-bottom: 10px">Recommended for you</h3>
+      <h3 class="h3">Recommended for you</h3>
       <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
         :to="'/house/' + recommendHouse.id"
@@ -234,6 +242,21 @@ async function deleteHouse(houseId: number | undefined) {
   background-color: #f6f6f6;
   gap: 20px;
 }
+.edit-delete {
+  margin-top: 10px;
+  display: flex;
+}
+.h3 {
+  padding-bottom: 10px;
+}
+.delete-desktop {
+  margin-right: 8px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.5);
+}
+.back-mobile {
+  display: none;
+}
 
 @media (max-width: 800px) {
   .house-container {
@@ -257,6 +280,23 @@ async function deleteHouse(houseId: number | undefined) {
   .recommended-column {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .delete-desktop {
+    display: none;
+  }
+  .edit-desktop {
+    display: none;
+  }
+  .back-mobile {
+    display: inline;
+    position: absolute;
+    top: 39px;
+    left: 32px;
+  }
+  .image {
+    position: relative;
+    top: 0;
+    left: 0;
   }
 }
 </style>
