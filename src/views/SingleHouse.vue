@@ -211,12 +211,10 @@ async function deleteHouse(houseId: number | undefined) {
     >
       <div style="background-color: white; padding: 43px 96px; border-radius: 3px">
         <h2 style="text-align: center; margin-bottom: 20px">Delete listing</h2>
-        <p style="align-content: center; color: gray">
-          Are you sure you want to delete this listing?
-        </p>
-        <p style="text-align: center; margin-bottom: 45px; color: gray">
-          This action can not be undone.
-        </p>
+        <div style="align-content: center; color: gray; margin-bottom: 45px">
+          <p >Are you sure you want to delete this listing?</p>
+          <p style="text-align: center">This action can not be undone.</p>
+        </div>
         <div
           style="
             display: flex;
