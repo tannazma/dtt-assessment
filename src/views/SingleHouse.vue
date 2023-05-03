@@ -80,8 +80,26 @@ async function deleteHouse(houseId: number | undefined) {
         <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
         <div class="back-mobile">
           <RouterLink :to="'/list/'">
-            <img src="/src/assets/ic_back_white@3x.png" width="15" alt="black gray icon" />
+            <img class="back-mobile" src="/src/assets/ic_back_white@3x.png" alt="black gray icon" />
           </RouterLink>
+        </div>
+        <div class="edit-mobile">
+          <RouterLink :to="'/edit/' + state.house?.id">
+            <img src="/src/assets/ic_edit_white@3x.png" alt="edit icon" class="edit-mobile" />
+          </RouterLink>
+        </div>
+        <div class="delete-mobile" style="display: flex">
+          <img
+            @click="
+              ($event) => {
+                $event.preventDefault()
+                showDeleteDialog()
+              }
+            "
+            src="/src/assets/ic_delete_white@3x.png"
+            alt="delete icon"
+            class="delete-mobile"
+          />
         </div>
       </div>
       <div class="house-box">
@@ -256,8 +274,14 @@ async function deleteHouse(houseId: number | undefined) {
 }
 .back-mobile {
   display: none;
+  width: 20px;
 }
-
+.edit-mobile {
+  display: none;
+}
+.delete-mobile {
+  display: none;
+}
 @media (max-width: 800px) {
   .house-container {
     flex-direction: column;
@@ -290,8 +314,22 @@ async function deleteHouse(houseId: number | undefined) {
   .back-mobile {
     display: inline;
     position: absolute;
-    top: 39px;
-    left: 32px;
+    top: 25px;
+    left: 20px;
+  }
+  .edit-mobile {
+    display: inline;
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    width: 21px;
+  }
+  .delete-mobile {
+    display: inline;
+    position: absolute;
+    top: 22px;
+    right: 18px;
+    width: 16px;
   }
   .image {
     position: relative;
