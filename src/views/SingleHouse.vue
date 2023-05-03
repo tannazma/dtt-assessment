@@ -77,14 +77,14 @@ async function deleteHouse(houseId: number | undefined) {
   <div class="house-container" style="background-color: white; margin-top: 0; display: flex">
     <div style="flex: 1">
       <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
-      <div style="margin-bottom: 20px; padding: 0 20px">
-        <div style="display: flex">
+      <div class="house-box">
+        <div class="house-title" style="display: flex">
           <div style="flex: 1">
             <h1 style="margin-bottom: 20px">
               {{ state.house?.location.street }}
             </h1>
           </div>
-          <div style="margin-top: 10px; display:flex">
+          <div style="margin-top: 10px; display: flex">
             <div style="display: flex">
               <RouterLink :to="'/edit/' + state.house?.id">
                 <img
@@ -154,8 +154,8 @@ async function deleteHouse(houseId: number | undefined) {
         </p>
       </div>
     </div>
-    <div style="padding: 0 10px 0 40px; background-color: #f6f6f6; gap: 20px">
-      <h3 style="padding-bottom: 10px">Recommended for you</h3>
+    <div class="recommended-column">
+      <h3 class="h3" style="padding-bottom: 10px">Recommended for you</h3>
       <RouterLink
         v-for="recommendHouse in state.houses.slice(0, 3)"
         :to="'/house/' + recommendHouse.id"
@@ -225,6 +225,15 @@ async function deleteHouse(houseId: number | undefined) {
 .image {
   width: 100%;
 }
+.house-box {
+  margin-bottom: 20px;
+  padding: 0px 24px 0 24px;
+}
+.recommended-column {
+  padding: 0 10px 0 40px;
+  background-color: #f6f6f6;
+  gap: 20px;
+}
 
 @media (max-width: 800px) {
   .house-container {
@@ -233,6 +242,21 @@ async function deleteHouse(houseId: number | undefined) {
   }
   .back-page {
     display: none;
+  }
+  .house-box {
+    border-radius: 30px;
+    margin-top: -40px;
+    background-color: white;
+  }
+  .house-title {
+    padding-top: 15px;
+  }
+  .h3 {
+    padding-top: 15px;
+  }
+  .recommended-column {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 </style>
