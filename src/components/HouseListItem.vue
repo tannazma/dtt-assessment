@@ -51,20 +51,24 @@ defineProps<{
             </div>
           </div>
         </div>
-        <div v-if="showDelete">
-          <EditHouseVue :house="house" v-if="showEdit" />
-          <img
-            @click="
-              ($event) => {
-                $event.preventDefault()
-                $emit('deleteHouse', house.id)
-              }
-            "
-            width="15"
-            src="/src/assets/ic_delete@3x.png"
-            style="margin-right: 8px; color: rgba(0, 0, 0, 0.5)"
-            alt="delete icon"
-          />
+        <div v-if="showDelete" style="display: flex">
+          <div class="edit-icon">
+            <EditHouseVue :house="house" v-if="showEdit" />
+          </div>
+          <div>
+            <img
+              @click="
+                ($event) => {
+                  $event.preventDefault()
+                  $emit('deleteHouse', house.id)
+                }
+              "
+              width="15"
+              src="/src/assets/ic_delete@3x.png"
+              alt="delete icon"
+              class="delete-icon"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -92,6 +96,13 @@ defineProps<{
   display: flex;
   gap: 2px;
 }
+.edit-icon {
+  margin-right: 20px;
+}
+.delete-icon {
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.5);
+}
 
 @media (max-width: 800px) {
   .house-image {
@@ -111,6 +122,9 @@ defineProps<{
   .icons {
     gap: 1px;
     margin-top: 9px;
+  }
+  .edit-icon {
+    margin-right: 10px;
   }
 }
 </style>

@@ -240,6 +240,9 @@ async function deleteHouse(houseId: number | undefined) {
   margin-left: 10px;
   align-items: center;
 }
+.results {
+  padding-bottom: 20px;
+}
 
 @media (max-width: 800px) {
   .price {
@@ -263,9 +266,6 @@ async function deleteHouse(houseId: number | undefined) {
   .first-child-input {
     margin-bottom: 20px;
     margin-left: 0;
-  }
-  .results {
-    padding-bottom: 20px;
   }
   .houses-parent {
     display: flex;
