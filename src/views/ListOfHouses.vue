@@ -259,20 +259,15 @@ async function deleteHouse(houseId: number | undefined) {
   }
   .second-part {
     display: block;
-    width: 90%;
-    margin: auto;
   }
   .first-child-input {
     margin-bottom: 20px;
     margin-left: 0;
   }
   .results {
-    width: 90%;
-    margin: auto;
     padding-bottom: 20px;
   }
   .houses-parent {
-    padding: 0px 23px;
     display: flex;
     flex-direction: column;
     gap: 13px;

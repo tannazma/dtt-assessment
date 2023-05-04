@@ -7,7 +7,7 @@
           class="upload-image"
           src="/src/assets/ic_plus_white@3x.png"
         />
-        <img style="width: 15px" class="upload-image-gray" src="/src/assets/ic_plus_grey@3x.png" />
+        <img style="width: 22px" class="upload-image-gray" src="/src/assets/ic_plus_grey@3x.png" />
         <span> CREATE NEW</span>
       </button></RouterLink
     >
@@ -34,6 +34,7 @@ import { RouterLink } from 'vue-router'
   .new {
     position: absolute;
     right: 15px;
+    top: 8px
   }
 }
 @media (min-width: 800px) {
