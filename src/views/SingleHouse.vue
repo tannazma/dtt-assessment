@@ -279,20 +279,23 @@ async function deleteHouse(houseId: number | undefined) {
   margin-top: 30px;
   gap: 20px;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .dialog-button-yes {
-  width: 200px;
+  width: 315px;
   padding: 10px;
   border-radius: 8px;
   border: 1px;
 }
 .dialog-button-no {
-  width: 200px;
+  width: 315px;
   padding: 10px;
   border-radius: 8px;
   border: 1px;
 }
-@media (max-width: 800px) {
+@media (max-width: 500px) {
   .house-container {
     flex-direction: column;
     margin-top: 0;
@@ -349,5 +352,8 @@ async function deleteHouse(houseId: number | undefined) {
   .dialog-box {
     padding: 16px 16px;
   }
+  /* .dialog {
+    position: fixed;
+  } */
 }
 </style>
