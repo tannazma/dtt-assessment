@@ -295,7 +295,7 @@ async function deleteHouse(houseId: number | undefined) {
   border-radius: 8px;
   border: 1px;
 }
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .house-container {
     flex-direction: column;
     margin-top: 0;
