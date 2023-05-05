@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
+import DeleteDialog from '@/components/DeleteDialog.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -194,22 +195,7 @@ async function deleteHouse(houseId: number | undefined) {
         />
       </RouterLink>
     </div>
-    <div class="dialog" v-if="state.isDeleteDialogOpen">
-      <div class="dialog-box">
-        <h2 class="dialog-title">Delete listing</h2>
-        <div class="dialog-content">
-          <p>Are you sure you want to delete this listing?</p>
-          <p style="text-align: center">This action can not be undone.</p>
-        </div>
-        <div class="dialog-buttons">
-          <button class="dialog-button-yes primary" @click="deleteHouse(state.house?.id)">
-            YES, DELETE
-          </button>
-          <!-- close the dialog when we press Go back -->
-          <button class="dialog-button-no secondary" @click="hideDeleteDialog">GO BACK</button>
-        </div>
-      </div>
-    </div>
+    <DeleteDialog v-if="state.isDeleteDialogOpen" @delete="deleteHouse(state.house?.id)" @close="hideDeleteDialog" />
   </div>
 </template>
 
@@ -248,53 +234,7 @@ async function deleteHouse(houseId: number | undefined) {
 .delete-mobile {
   display: none;
 }
-.dialog {
-  position: fixed;
-  display: grid;
-  place-items: center;
-  color: black;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.dialog-box {
-  background-color: white;
-  padding: 43px 96px;
-  border-radius: 3px;
-}
-.dialog-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.dialog-content {
-  align-content: center;
-  color: gray;
-  margin-bottom: 45px;
-}
-.dialog-buttons {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  gap: 20px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.dialog-button-yes {
-  width: 315px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px;
-}
-.dialog-button-no {
-  width: 315px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px;
-}
+
 @media (max-width: 800px) {
   .house-container {
     flex-direction: column;
@@ -349,11 +289,5 @@ async function deleteHouse(houseId: number | undefined) {
     top: 0;
     left: 0;
   }
-  .dialog-box {
-    padding: 16px 16px;
-  }
-  /* .dialog {
-    position: fixed;
-  } */
 }
 </style>
