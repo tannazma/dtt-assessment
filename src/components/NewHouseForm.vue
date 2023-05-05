@@ -47,7 +47,7 @@
           placeholder="e.g. 1000 AA"
           :value="state.zip"
           @input="event => state.zip = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
+          :style="{ border: isPostalCodeValid() ? 'none' : '1px solid red' }"
         />
       </label>
       <span :style="{ color: 'red', display: isPostalCodeValid() ? 'none' : 'block' }">
@@ -138,13 +138,18 @@
       <div style="display: flex; flex-direction: column">
         <label>
           Garage
-          <input
+          <select
+            style="display: flex; flex-direction: column"
             placeholder="Select"
-            type="number"
+            type="boolean"
             :value="state.hasGarage"
             @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
             :style="{ border: isGarageValid() ? 'none' : '1px solid red' }"
-          />
+            class="garage"
+          >
+            <option value="Yes" style="color: red">Yes</option>
+            <option value="No">No</option>
+          </select>
         </label>
         <span :style="{ color: 'red', display: isGarageValid() ? 'none' : 'block' }">
           Enter a valid number</span
@@ -384,7 +389,7 @@ function isPriceValid() {
 }
 
 function isGarageValid() {
-  if (state.hasGarage.trim() && Number(state.hasGarage.trim())) {
+  if (state.hasGarage.trim() && Boolean(state.hasGarage.trim())) {
     return true
   } else {
     return false
@@ -482,5 +487,13 @@ textarea {
 
 button:disabled {
   opacity: 0.5;
+}
+.garage {
+  padding: 15px;
+  display: block;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0 0 0;
+  width: 100%;
 }
 </style>
