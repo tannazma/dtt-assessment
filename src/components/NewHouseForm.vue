@@ -14,8 +14,8 @@
         Required field is missing</span
       >
     </div>
-    <div style="display: flex; gap: 30px" class="form-field">
-      <div style="display: flex; flex-direction: column">
+    <div class="form-field-tow">
+      <div class="addition">
         <label>
           House Number
           <input
@@ -29,7 +29,7 @@
           Required field is missing</span
         >
       </div>
-      <div style="display: flex; flex-direction: column">
+      <div class="addition">
         <label>
           Addition
           <input
@@ -120,8 +120,8 @@
         Please enter a valid price</span
       >
     </div>
-    <div style="display: flex; gap: 30px" class="form-field">
-      <div style="display: flex; flex-direction: column">
+    <div class="form-field-tow">
+      <div class="addition">
         <label>
           Size
           <input
@@ -135,11 +135,10 @@
           Please enter a valid size</span
         >
       </div>
-      <div style="display: flex; flex-direction: column">
+      <div class="addition">
         <label>
           Garage
           <select
-            style="display: flex; flex-direction: column"
             placeholder="Select"
             type="boolean"
             :value="state.hasGarage"
@@ -156,7 +155,7 @@
         >
       </div>
     </div>
-    <div style="display: flex; gap: 30px" class="form-field">
+    <div class="form-field-tow">
       <div style="display: flex; flex-direction: column">
         <label>
           Bedrooms
@@ -171,7 +170,7 @@
           Enter a valid number</span
         >
       </div>
-      <div style="display: flex; flex-direction: column">
+      <div class="addition">
         <label>
           Bathrooms
           <input
@@ -458,6 +457,14 @@ function isSizeValid() {
     return false
   }
 }
+
+function newFunction() {
+  return 'garage'
+}
+
+function newFunction_1() {
+  return 'garage'
+}
 </script>
 
 <style scoped>
@@ -480,6 +487,16 @@ label {
   margin: 10px 0 20px;
   width: 350px;
 }
+.form-field-tow {
+  display: flex;
+  gap: 30px;
+  margin: 10px 0 20px;
+  width: 350px;
+}
+.addition {
+  display: flex;
+  flex-direction: column;
+}
 textarea {
   display: block;
   font-family: 'Montserrat', 'Open Sans', Verdana, lucida, sans-serif;
@@ -495,5 +512,11 @@ button:disabled {
   border: none;
   margin: 10px 0 0 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.form-field,
+.form-field-tow > div {
+  flex: 1;
 }
 </style>
