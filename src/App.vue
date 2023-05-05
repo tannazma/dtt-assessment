@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue'
+const route = useRoute()
 </script>
 
 <template>
   <Header />
-  <div class="main-wrapper">
+  <div :class="{ 'main-wrapper': true, 'not-padding': route.name === 'house' }">
     <RouterView />
   </div>
 </template>
@@ -14,11 +15,12 @@ import Header from './components/Header.vue'
 .main-wrapper {
   padding: 0 20px;
 }
-@media (min-width: 1024px) {
+@media (max-width: 800px) {
   .main-wrapper {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 10px;
+  }
+  .not-padding {
+    padding: 0;
   }
 }
 </style>
