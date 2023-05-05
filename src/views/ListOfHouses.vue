@@ -3,6 +3,7 @@ import CreateNew from '@/components/CreateNew.vue'
 import HouseListItem from '@/components/HouseListItem.vue'
 import { computed, reactive } from 'vue'
 import type { T_House } from '@/types/house'
+import DeleteDialog from '@/components/DeleteDialog.vue'
 
 const state = reactive<{
   searchText: string
@@ -131,56 +132,7 @@ async function deleteHouse(houseId: number | undefined) {
       :showDelete="true"
     />
   </div>
-  <div
-    v-if="state.isDeleteDialogOpen"
-    style="
-      position: fixed;
-      display: grid;
-      place-items: center;
-      color: black;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      padding: 10%;
-      background-color: rgba(0, 0, 0, 0.4);
-    "
-  >
-    <div style="background-color: white; padding: 43px 96px; border-radius: 5px">
-      <h2 style="text-align: center; margin-bottom: 20px">Delete listing</h2>
-      <p style="align-content: center; color: gray">
-        Are you sure you want to delete this listing?
-      </p>
-      <p style="text-align: center; margin-bottom: 45px; color: gray">
-        This action can not be undone.
-      </p>
-      <div
-        style="
-          display: flex;
-          flex-direction: column;
-          margin-top: 30px;
-          gap: 20px;
-          align-items: center;
-        "
-      >
-        <button
-          style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
-          @click="deleteHouse(state.houseToDeleteId)"
-          class="primary"
-        >
-          YES, DELETE
-        </button>
-        <!-- close the dialog when we press Go back -->
-        <button
-          style="width: 200px; padding: 10px; border-radius: 8px; border: 1px"
-          @click="hideDeleteDialog"
-          class="secondary"
-        >
-          GO BACK
-        </button>
-      </div>
-    </div>
-  </div>
+  <DeleteDialog v-if="state.isDeleteDialogOpen" @delete="deleteHouse(state.houseToDeleteId)" @close="hideDeleteDialog" />
 </template>
 
 <style scoped>
