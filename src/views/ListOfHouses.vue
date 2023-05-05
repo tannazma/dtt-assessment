@@ -237,7 +237,6 @@ async function deleteHouse(houseId: number | undefined) {
   background-color: rgb(232, 232, 232);
   padding: 5px 20px;
   border-radius: 5px;
-  margin-left: 10px;
   align-items: center;
 }
 .results {
