@@ -11,6 +11,9 @@ import Header from './components/Header.vue'
 </template>
 
 <style scoped>
+.main-wrapper {
+  padding: 0 20px;
+}
 @media (min-width: 1024px) {
   .main-wrapper {
     max-width: 1280px;
