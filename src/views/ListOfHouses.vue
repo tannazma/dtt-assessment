@@ -90,6 +90,7 @@ async function deleteHouse(houseId: number | undefined) {
           placeholder="Search for a house"
         />
         <img
+          v-if="state.searchText"
           @click="state.searchText = ''"
           src="/src/assets/ic_clear@3x.png"
           width="20"
@@ -132,7 +133,11 @@ async function deleteHouse(houseId: number | undefined) {
       :showDelete="true"
     />
   </div>
-  <DeleteDialog v-if="state.isDeleteDialogOpen" @delete="deleteHouse(state.houseToDeleteId)" @close="hideDeleteDialog" />
+  <DeleteDialog
+    v-if="state.isDeleteDialogOpen"
+    @delete="deleteHouse(state.houseToDeleteId)"
+    @close="hideDeleteDialog"
+  />
 </template>
 
 <style scoped>
