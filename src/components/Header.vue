@@ -15,6 +15,12 @@ import { RouterLink } from 'vue-router'
   padding: 20px 30px;
   display: flex;
   background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 75px;
+  height: 75px;
+  z-index: 1;
 }
 
 .list {
@@ -25,9 +31,15 @@ import { RouterLink } from 'vue-router'
 .about {
   color: black;
 }
+.main-wrapper {
+  margin-top: 75px;
+}
 @media (max-width: 800px) {
   .header-container {
     display: none;
+  }
+  .main-wrapper {
+    margin-top: 0;
   }
 }
 </style>
