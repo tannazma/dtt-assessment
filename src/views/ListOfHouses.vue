@@ -100,8 +100,20 @@ async function deleteHouse(houseId: number | undefined) {
       </div>
     </div>
     <div class="button-container" style="display: flex">
-      <button class="price primary" @click="state.sortParameter = 'price'">Price</button>
-      <button class="size tertiary" @click="state.sortParameter = 'size'">Size</button>
+      <button
+        class="price tertiary"
+        :class="{ 'primary': state.sortParameter === 'price' }"
+        @click="state.sortParameter = 'price'"
+      >
+        Price
+      </button>
+      <button
+        :class="{ 'primary': state.sortParameter === 'size' }"
+        class="size tertiary"
+        @click="state.sortParameter = 'size'"
+      >
+        Size
+      </button>
     </div>
   </div>
   <div class="results">
@@ -182,11 +194,13 @@ async function deleteHouse(houseId: number | undefined) {
   display: flex;
   gap: 10px;
   border-radius: 5px 0 0 5px;
+  color: white;
 }
 .size {
   display: flex;
   gap: 10px;
   border-radius: 0 5px 5px 0;
+  color: white;
 }
 
 .first-child-input {

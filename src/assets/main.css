@@ -23,7 +23,15 @@ a,
 label {
   font-weight: bold;
 }
-
+button.tertiary {
+  background-color: #c3c3c3;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+}
 button.primary {
   background-color: #eb5440;
   color: white;
@@ -36,16 +44,6 @@ button.primary {
 
 button.secondary {
   background-color: #4a4b4c;
-  color: white;
-  padding: 10px 40px 10px 40px;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-button.tertiary {
-  background-color: #c3c3c3;
   color: white;
   padding: 10px 40px 10px 40px;
   border: none;
