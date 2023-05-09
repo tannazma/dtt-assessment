@@ -173,7 +173,7 @@ async function deleteHouse(houseId: number | undefined) {
           </p>
           <p>
             <img width="15" src="/src/assets/ic_garage@3x.png" alt="garage icon" />
-            {{ state.house?.hasGarage }}
+            {{ state.house?.hasGarage ? 'Yes' : 'No'}}
           </p>
         </div>
         <p style="margin-top: 20px">
