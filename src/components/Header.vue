@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router'
   </div>
 </template>
 
-<style>
+<style scoped>
 .header-container {
   padding: 20px 30px;
   display: flex;
@@ -26,20 +26,19 @@ import { RouterLink } from 'vue-router'
 .list {
   align-content: space-between;
   margin: 0 50px;
-  color: black;
+  color: #c3c3c3;
 }
 .about {
+  color: #c3c3c3;
+}
+.router-link-exact-active {
   color: black;
+  font-weight: bold;
 }
-.main-wrapper {
-  margin-top: 75px;
-}
+
 @media (max-width: 800px) {
   .header-container {
     display: none;
-  }
-  .main-wrapper {
-    margin-top: 0;
   }
 }
 </style>
