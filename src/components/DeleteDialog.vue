@@ -71,12 +71,14 @@ function close() {
   padding: 10px;
   border-radius: 8px;
   border: 1px;
+  cursor: pointer;
 }
 .dialog-button-no {
   width: 315px;
   padding: 10px;
   border-radius: 8px;
   border: 1px;
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {
