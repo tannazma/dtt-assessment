@@ -110,7 +110,7 @@ async function deleteHouse(houseId: number | undefined) {
               {{ state.house?.location.street }}
             </h1>
           </div>
-          <div class="edit-delete">
+          <div class="edit-delete" v-if="state.house?.madeByMe">
             <div style="display: flex">
               <RouterLink :to="'/edit/' + state.house?.id">
                 <img
@@ -173,7 +173,7 @@ async function deleteHouse(houseId: number | undefined) {
           </p>
           <p>
             <img width="15" src="/src/assets/ic_garage@3x.png" alt="garage icon" />
-            {{ state.house?.hasGarage ? 'Yes' : 'No'}}
+            {{ state.house?.hasGarage ? 'Yes' : 'No' }}
           </p>
         </div>
         <p style="margin-top: 20px">
@@ -195,7 +195,11 @@ async function deleteHouse(houseId: number | undefined) {
         />
       </RouterLink>
     </div>
-    <DeleteDialog v-if="state.isDeleteDialogOpen" @delete="deleteHouse(state.house?.id)" @close="hideDeleteDialog" />
+    <DeleteDialog
+      v-if="state.isDeleteDialogOpen"
+      @delete="deleteHouse(state.house?.id)"
+      @close="hideDeleteDialog"
+    />
   </div>
 </template>
 
