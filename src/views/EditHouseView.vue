@@ -34,7 +34,7 @@ getHouseFromServer()
             style="text-align: center"
             alt="black gray icon"
           />
-          <label> Back to overview </label>
+          <label style="cursor: pointer"> Back to overview </label>
         </p>
       </RouterLink>
     </div>

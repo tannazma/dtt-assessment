@@ -71,7 +71,7 @@ async function deleteHouse(houseId: number | undefined) {
           style="text-align: center"
           alt="black gray icon"
         />
-        <label> Back to overview </label>
+        <label style="cursor: pointer"> Back to overview </label>
       </p>
     </RouterLink>
   </div>
@@ -227,6 +227,7 @@ async function deleteHouse(houseId: number | undefined) {
   margin-right: 8px;
   display: flex;
   color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 .back-mobile {
   display: none;

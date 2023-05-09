@@ -195,12 +195,14 @@ async function deleteHouse(houseId: number | undefined) {
   gap: 10px;
   border-radius: 5px 0 0 5px;
   color: white;
+  cursor: pointer;
 }
 .size {
   display: flex;
   gap: 10px;
   border-radius: 0 5px 5px 0;
   color: white;
+  cursor: pointer;
 }
 
 .first-child-input {

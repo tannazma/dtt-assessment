@@ -19,6 +19,10 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped>
+.create-new {
+  cursor: pointer;
+}
+
 @media (max-width: 800px) {
   .create-new {
     background-color: transparent;
@@ -34,7 +38,7 @@ import { RouterLink } from 'vue-router'
   .new {
     position: absolute;
     right: 15px;
-    top: 8px
+    top: 8px;
   }
 }
 @media (min-width: 800px) {
