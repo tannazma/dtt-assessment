@@ -14,10 +14,12 @@ const route = useRoute()
 <style scoped>
 .main-wrapper {
   padding: 0 20px;
+  margin-top: 75px;
 }
 @media (max-width: 800px) {
   .main-wrapper {
     padding: 0 10px;
+    margin-top: 0;
   }
   .not-padding {
     padding: 0;
