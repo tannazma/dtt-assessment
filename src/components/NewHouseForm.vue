@@ -224,6 +224,7 @@
 <script setup lang="ts">
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps<{
   isEditing: boolean
@@ -231,6 +232,7 @@ const props = defineProps<{
   house?: T_House
 }>()
 
+const router = useRouter()
 const state = reactive({
   price: props.house ? props.house.price.toString() : '',
   bedrooms: props.house ? props.house.rooms.bedrooms.toString() : '',
@@ -308,7 +310,8 @@ async function submitForm(e: any) {
 
     try {
       const createdHouse = await (await response).json()
-      sendImage(createdHouse.id)
+      await sendImage(createdHouse.id)
+      router.push('/house/' + createdHouse.id)
     } catch (err) {
       console.error(err)
       alert('Error happened')
@@ -323,7 +326,7 @@ async function sendImage(houseId: number) {
   const formData = new FormData()
 
   formData.append('image', state.picture)
-  const response = fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
+  const response = await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
     method: 'POST',
     headers: {
       'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
