@@ -38,3 +38,8 @@ like half hour to add styles for uploading image in the form page
 location: {street: "aaa 123666", city: "rtyui", zip: "1123 aa"} this is the example.
 almost 2 hour to find a way to show image wghen it is added to the form + close icon + style
 almost half hour to search and create regex for year and garage in the form
+almost 1 week to do all details things to be better in style and follow the guide
+almost 3 hours to make better dialog open and add cursor on the buttons
+almost 3 hours to fix redirect page to the new one when a new house is created
+like 2 hours to remove inline styles in some cases
+like 3 hours to create delete dialog componenet and remove it from all pages and mount it on other pages like houses and single house
