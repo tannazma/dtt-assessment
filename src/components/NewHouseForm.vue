@@ -454,7 +454,7 @@ function isPostalCodeValid() {
   }
 }
 function isSizeValid() {
-  if (state.size.trim() && /\d+[,.]?\d*\s*(?:m²|m2)/.test(state.size.trim())) {
+  if (state.size.trim() && /\d+[,.]?\d*\s*/.test(state.size.trim())) {
     return true
   } else {
     return false

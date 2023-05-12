@@ -161,6 +161,7 @@ async function deleteHouse(houseId: number | undefined) {
 .first-part {
   display: flex;
   margin-top: 20px;
+  padding-top: 20px;
 }
 
 .title {
