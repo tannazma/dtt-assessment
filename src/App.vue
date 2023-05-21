@@ -13,7 +13,7 @@ const route = useRoute()
 
 <style scoped>
 .main-wrapper {
-  padding: 0 20px;
+  padding: 0 20px 10px 20px;
   margin-top: 75px;
 }
 @media (max-width: 800px) {

@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="form">
     <div class="form-field">
       <label>
         Street name
@@ -485,6 +485,9 @@ span {
 }
 label {
   font-weight: bold;
+}
+.form{
+  padding-bottom: 10px;
 }
 .form-field {
   margin: 10px 0 20px;
