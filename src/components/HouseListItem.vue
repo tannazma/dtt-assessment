@@ -11,39 +11,37 @@ defineProps<{
 
 <template>
   <RouterLink :to="'/house/' + house.id">
-    <div style="background-color: white; border-radius: 5px; margin: auto; gap: 30px">
-      <div
-        style="margin-bottom: 10px; padding: 10px; display: flex; justify-content: space-between"
-      >
-        <div style="display: flex">
+    <div class="house-container">
+      <div>
+        <div class="house-box">
           <img width="130" height="130" :src="house.image" class="house-image" alt="house image" />
-          <div style="display: flex; flex-direction: column">
+          <div class="house-location">
             <strong class="house-street">{{ house.location.street }} </strong>
             <strong class="house-price">€ {{ house.price }}</strong>
             <p class="house-zip">{{ house.location.zip }} {{ house.location.city }}</p>
             <div class="icons">
-              <p style="margin-right: 15px; display: flex; align-items: center; color: gray">
+              <p class="house-bedroom">
                 <img
                   width="20"
                   src="/src/assets/ic_bed@3x.png"
-                  style="margin-right: 8px"
+                  class="house-bedroom-image"
                   alt="bedroom icon"
                 />
                 {{ house.rooms.bedrooms }}
               </p>
-              <p style="margin-right: 15px; display: flex; align-items: center; color: gray">
+              <p class="house-bathroom">
                 <img
                   width="20"
                   src="/src/assets/ic_bath@3x.png"
-                  style="margin-right: 8px"
+                  class="house-bathroom-image"
                   alt="bathroom icon"
                 />{{ house.rooms.bathrooms }}
               </p>
-              <p style="display: flex; align-items: center; color: gray">
+              <p class="house-size">
                 <img
                   width="20"
                   src="/src/assets/ic_size@3x.png"
-                  style="margin-right: 8px"
+                  class="house-size-image"
                   alt="size icon"
                 />
                 {{ house.size }}m2
@@ -51,7 +49,7 @@ defineProps<{
             </div>
           </div>
         </div>
-        <div v-if="showDelete" style="display: flex">
+        <div v-if="showDelete" class="show-delete-icon">
           <div class="edit-icon">
             <EditHouseVue :house="house" v-if="showEdit" />
           </div>
@@ -79,6 +77,55 @@ defineProps<{
 .house-image {
   margin-right: 20px;
   border-radius: 5px;
+}
+.house-container {
+  background-color: white;
+  border-radius: 5px;
+  margin: auto;
+  gap: 30px;
+}
+.house-box {
+  display: flex;
+}
+.house-bedroom {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.house-bedroom-image {
+  margin-right: 8px;
+}
+.house-bathroom {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.house-bathroom-image {
+  margin-right: 8px;
+}
+
+.house-container > div {
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.house-size {
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.house-size-image {
+  margin-right: 8px;
+}
+.house-location {
+  display: flex;
+  flex-direction: column;
+}
+.show-delete-icon {
+  display: flex;
 }
 .house-street {
   color: black;

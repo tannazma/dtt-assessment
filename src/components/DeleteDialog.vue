@@ -4,7 +4,7 @@
       <h2 class="dialog-title">Delete listing</h2>
       <div class="dialog-content">
         <p>Are you sure you want to delete this listing?</p>
-        <p style="text-align: center">This action can not be undone.</p>
+        <p >This action can not be undone.</p>
       </div>
       <div class="dialog-buttons">
         <button class="dialog-button-yes primary" @click="confirmDelete">YES, DELETE</button>
@@ -41,6 +41,9 @@ function close() {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
+}
+.dialog-content p {
+  text-align: center;
 }
 .dialog-box {
   background-color: white;

@@ -85,8 +85,7 @@ async function deleteHouse(houseId: number | undefined) {
         <input
           :value="state.searchText"
           @input="event => state.searchText = (event.target as HTMLInputElement)?.value"
-          class="input"
-          style="background-color: transparent; border-radius: 3px; border: none; outline: none"
+          class="search-house"
           placeholder="Search for a house"
         />
         <img
@@ -95,20 +94,20 @@ async function deleteHouse(houseId: number | undefined) {
           src="/src/assets/ic_clear@3x.png"
           width="20"
           height="20"
-          style="box-sizing: content-box; cursor: pointer"
+          class="clear-icon"
         />
       </div>
     </div>
-    <div class="button-container" style="display: flex">
+    <div class="button-container">
       <button
         class="price tertiary"
-        :class="{ 'primary': state.sortParameter === 'price' }"
+        :class="{ primary: state.sortParameter === 'price' }"
         @click="state.sortParameter = 'price'"
       >
         Price
       </button>
       <button
-        :class="{ 'primary': state.sortParameter === 'size' }"
+        :class="{ primary: state.sortParameter === 'size' }"
         class="size tertiary"
         @click="state.sortParameter = 'size'"
       >
@@ -119,10 +118,10 @@ async function deleteHouse(houseId: number | undefined) {
   <div class="results">
     <strong>{{ filteredHouses.length }} results found</strong>
   </div>
-  <div style="text-align: center" v-if="filteredHouses.length === 0">
+  <div class="empty-house-div" v-if="filteredHouses.length === 0">
     <img
       src="/src/assets/img_empty_houses@3x.png"
-      style="margin-right: 20px; width: 50%; margin: 50px 40px; text-align: center"
+      class="empty-house-image"
       alt="empty house image"
     />
     <p>No results found.</p>
@@ -163,7 +162,28 @@ async function deleteHouse(houseId: number | undefined) {
   margin-top: 20px;
   padding-top: 20px;
 }
-
+.search-house {
+  background-color: transparent;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+.button-container {
+  display: flex;
+}
+.clerar-icon {
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.empty-house-div {
+  text-align: center;
+}
+.empty-house-image {
+  margin-right: 20px;
+  width: 50%;
+  margin: 50px 40px;
+  text-align: center;
+}
 .title {
   flex: 1;
   align-content: space-between;

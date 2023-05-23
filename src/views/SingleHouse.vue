@@ -62,23 +62,23 @@ async function deleteHouse(houseId: number | undefined) {
 </script>
 
 <template>
-  <div class="back-page" style="padding: 30px 0 20px 0">
+  <div class="back-page">
     <RouterLink :to="'/list/'">
-      <p style="color: black">
+      <p class="list-route">
         <img
           src="/src/assets/ic_back_grey@3x.png"
           width="15"
-          style="text-align: center"
+          class="back-gray-icon"
           alt="black gray icon"
         />
-        <label style="cursor: pointer"> Back to overview </label>
+        <label class="back-overview"> Back to overview </label>
       </p>
     </RouterLink>
   </div>
-  <div class="house-container" style="background-color: white; margin-top: 0; display: flex">
-    <div style="flex: 1">
+  <div class="house-container">
+    <div class="house-box">
       <div>
-        <img class="image" :src="state.house?.image" style="margin: 0 20px 0 0" alt="house image" />
+        <img class="image" :src="state.house?.image" alt="house image" />
         <div class="back-mobile">
           <RouterLink :to="'/list/'">
             <img class="back-mobile" src="/src/assets/ic_back_white@3x.png" alt="black gray icon" />
@@ -89,7 +89,7 @@ async function deleteHouse(houseId: number | undefined) {
             <img src="/src/assets/ic_edit_white@3x.png" alt="edit icon" class="edit-mobile" />
           </RouterLink>
         </div>
-        <div class="delete-mobile" style="display: flex">
+        <div class="delete-mobile">
           <img
             @click="
               ($event) => {
@@ -104,25 +104,24 @@ async function deleteHouse(houseId: number | undefined) {
         </div>
       </div>
       <div class="house-box">
-        <div class="house-title" style="display: flex">
-          <div style="flex: 1">
-            <h1 style="margin-bottom: 20px">
+        <div class="house-title">
+          <div class="house-title-div">
+            <h1 class="house-location">
               {{ state.house?.location.street }}
             </h1>
           </div>
           <div class="edit-delete" v-if="state.house?.madeByMe">
-            <div style="display: flex">
+            <div class="edit-route">
               <RouterLink :to="'/edit/' + state.house?.id">
                 <img
                   width="15"
                   src="/src/assets/ic_edit@3x.png"
-                  style="margin-right: 20px"
                   alt="edit icon"
                   class="edit-desktop"
                 />
               </RouterLink>
             </div>
-            <div style="display: flex">
+            <div class="delete-icon">
               <img
                 @click="
                   ($event) => {
@@ -139,12 +138,12 @@ async function deleteHouse(houseId: number | undefined) {
             </div>
           </div>
         </div>
-        <p style="margin-bottom: 10px">
+        <p class="location-p">
           <img width="15" src="/src/assets/ic_location@3x.png" alt="location icon" />
           {{ state.house?.location.zip }} {{ state.house?.location.city }}
         </p>
-        <div style="display: flex; gap: 15px">
-          <p style="margin-bottom: 10px">
+        <div class="house-price-div">
+          <p class="house-price">
             <img width="15" src="/src/assets/ic_price@3x.png" alt="price icon" />
             {{ state.house?.price }}
           </p>
@@ -162,7 +161,7 @@ async function deleteHouse(houseId: number | undefined) {
             {{ state.house?.constructionYear }}
           </p>
         </div>
-        <div style="display: flex; gap: 15px">
+        <div class="house-rooms">
           <p>
             <img width="15" src="/src/assets/ic_bed@3x.png" alt="bedroom icon" />
             {{ state.house?.rooms.bedrooms }}
@@ -176,7 +175,7 @@ async function deleteHouse(houseId: number | undefined) {
             {{ state.house?.hasGarage ? 'Yes' : 'No' }}
           </p>
         </div>
-        <p style="margin-top: 20px">
+        <p class="house-description">
           {{ state.house?.description }}
         </p>
       </div>
@@ -211,6 +210,32 @@ async function deleteHouse(houseId: number | undefined) {
   margin-bottom: 20px;
   padding: 0px 24px 0 24px;
 }
+.house-title {
+  display: flex;
+}
+.house-title-div {
+  flex: 1;
+}
+.house-location {
+  margin-bottom: 20px;
+}
+.edit-route {
+  display: flex;
+}
+.delete-icon {
+  display: flex;
+}
+.house-price-div {
+  display: flex;
+  gap: 15px;
+}
+.house-rooms {
+  display: flex;
+  gap: 15px;
+}
+.house-description {
+  margin-top: 20px;
+}
 .recommended-column {
   padding: 0 10px 0 40px;
   background-color: #f6f6f6;
@@ -219,6 +244,12 @@ async function deleteHouse(houseId: number | undefined) {
 .edit-delete {
   margin-top: 10px;
   display: flex;
+}
+.edit-desktop {
+  margin-right: 20px;
+}
+.house-price {
+  margin-bottom: 10px;
 }
 .h3 {
   padding-bottom: 10px;
@@ -238,8 +269,31 @@ async function deleteHouse(houseId: number | undefined) {
 }
 .delete-mobile {
   display: none;
+  display: flex;
 }
-
+.back-page {
+  padding: 30px 0 20px 0;
+}
+.list-route {
+  color: black;
+}
+.back-gray-icon {
+  text-align: center;
+}
+.back-overview {
+  cursor: pointer;
+}
+.house-container {
+  background-color: white;
+  margin-top: 0;
+  display: flex;
+}
+.house-box {
+  flex: 1;
+}
+.location-p {
+  margin-bottom: 10px;
+}
 @media (max-width: 800px) {
   .house-container {
     flex-direction: column;

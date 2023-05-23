@@ -9,17 +9,17 @@ const state = reactive<{
 </script>
 
 <template>
-  <div style="background-image: url(src/assets/img_background@3x.png); background-size: cover">
-    <div style="padding: 30px 0 20px 0">
+  <div class="background-image">
+    <div class="back-container">
       <RouterLink :to="'/list/'">
-        <p style="color: black">
+        <p class="list-route">
           <img
             src="src/assets/ic_back_grey@3x.png"
             width="15"
-            style="text-align: center"
+            class="back-gray-icon"
             alt="black gray icon"
           />
-          <label style="cursor: pointer"> Back to overview </label>
+          <label class="back-overview"> Back to overview </label>
         </p>
       </RouterLink>
     </div>
@@ -29,3 +29,22 @@ const state = reactive<{
     </div>
   </div>
 </template>
+
+<style>
+.background-image {
+  background-image: url(src/assets/img_background@3x.png);
+  background-size: cover;
+}
+.back-container {
+  padding: 30px 0 20px 0;
+}
+.list-route {
+  color: black;
+}
+.back-gray-icon {
+  text-align: center;
+}
+.back-overview {
+  cursor: pointer;
+}
+</style>

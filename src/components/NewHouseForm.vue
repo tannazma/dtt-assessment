@@ -10,7 +10,7 @@
           :style="{ border: isStreetValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isStreetValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isStreetValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
     </div>
@@ -25,7 +25,7 @@
             :style="{ border: isHouseNumberValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span :style="{ color: 'red', display: isHouseNumberValid() ? 'none' : 'block' }">
+        <span class="span-input" :style="{ display: isHouseNumberValid() ? 'none' : 'block' }">
           Required field is missing</span
         >
       </div>
@@ -37,7 +37,7 @@
             @input="event => state.numberAddition = (event.target as HTMLInputElement)?.value"
           />
         </label>
-        <span :style="{ color: 'blue', display: 'block' }"> This is optional</span>
+        <span class="span-optional" :style="{ display: 'block' }"> This is optional</span>
       </div>
     </div>
     <div class="form-field">
@@ -50,7 +50,7 @@
           :style="{ border: isPostalCodeValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isPostalCodeValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isPostalCodeValid() ? 'none' : 'block' }">
         Please enter a valid postal code</span
       >
     </div>
@@ -64,36 +64,32 @@
           :style="{ border: isCityValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isCityValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isCityValid() ? 'none' : 'block' }">
         Please enter a valid city</span
       >
     </div>
     <div class="form-field">
       <label>
         Upload picture (JPG or PNG)
-        <div style="font-size: 50px; margin-top: 10px">
-          <div v-if="!state.picture" style="border: 3px dashed #c3c3c3; width: 78px; height: 84px">
-            <img
-              width="25"
-              src="/src/assets/ic_plus_grey@3x.png"
-              style="margin-left: 23px; margin-bottom: 8px"
-            />
+        <div class="plus-picture-div">
+          <div v-if="!state.picture" class="plus-icon-div">
+            <img width="25" src="/src/assets/ic_plus_grey@3x.png" class="plus-icon" />
           </div>
         </div>
         <input
-          style="display: none"
+          class="input-file"
           onchange="document.getElementById('selected-image').src = window.URL.createObjectURL(this.files[0])"
           type="file"
           @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
       </label>
-      <div style="position: relative">
+      <div class="attribute-selector">
         <img
           v-if="state.picture"
           id="selected-image"
           src="#"
           alt="Selected Image"
-          style="border-radius: 3px; width: 120px"
+          class="selected-image"
         />
         <img
           @click="state.picture = undefined"
@@ -101,7 +97,7 @@
           src="/src/assets/ic_clear_white@3x.png"
           width="20"
           height="20"
-          style=" cursor: pointer; position: absolute; top 0; left:100px;"
+          class="clear-icon"
         />
       </div>
     </div>
@@ -116,7 +112,7 @@
           :style="{ border: isPriceValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isPriceValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isPriceValid() ? 'none' : 'block' }">
         Please enter a valid price</span
       >
     </div>
@@ -131,7 +127,7 @@
             :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span :style="{ color: 'red', display: isSizeValid() ? 'none' : 'block' }">
+        <span class="span-input" :style="{ display: isSizeValid() ? 'none' : 'block' }">
           Please enter a valid size</span
         >
       </div>
@@ -146,17 +142,17 @@
             :style="{ border: isGarageValid() ? 'none' : '1px solid red' }"
             class="garage"
           >
-            <option value="Yes" style="color: red">Yes</option>
+            <option value="Yes" class="option-yes">Yes</option>
             <option value="No">No</option>
           </select>
         </label>
-        <span :style="{ color: 'red', display: isGarageValid() ? 'none' : 'block' }">
+        <span class="span-input" :style="{ display: isGarageValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
     </div>
     <div class="form-field-tow">
-      <div style="display: flex; flex-direction: column">
+      <div class="bedroom-container">
         <label>
           Bedrooms
           <input
@@ -166,7 +162,7 @@
             :style="{ border: isBedroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span :style="{ color: 'red', display: isBedroomsValid() ? 'none' : 'block' }">
+        <span class="span-input" :style="{ display: isBedroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
@@ -180,7 +176,7 @@
             :style="{ border: isBathroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span :style="{ color: 'red', display: isBathroomsValid() ? 'none' : 'block' }">
+        <span class="span-input" :style="{ display: isBathroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
@@ -195,7 +191,7 @@
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isYearValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isYearValid() ? 'none' : 'block' }">
         Enter a valid year</span
       >
     </div>
@@ -211,7 +207,7 @@
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span :style="{ color: 'red', display: isDescriptionValid() ? 'none' : 'block' }">
+      <span class="span-input" :style="{ display: isDescriptionValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
     </div>
@@ -483,10 +479,52 @@ textarea {
 span {
   font-size: 12px;
 }
+.span-input {
+  color: red;
+}
+.span-optional {
+  color: blue;
+}
+.plus-icon {
+  margin-left: 23px;
+  margin-bottom: 8px;
+}
+.plus-icon-div {
+  border: 3px dashed #c3c3c3;
+  width: 78px;
+  height: 84px;
+}
+.plus-picture-div {
+  font-size: 50px;
+  margin-top: 10px;
+}
+.input-file {
+  display: none;
+}
+.attribute-selector {
+  position: relative;
+}
+.selected-image {
+  border-radius: 3px;
+  width: 120px;
+}
+.clear-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+.option-yes {
+  color: red;
+}
+.bedroom-container {
+  display: flex;
+  flex-direction: column;
+}
 label {
   font-weight: bold;
 }
-.form{
+.form {
   padding-bottom: 10px;
 }
 .form-field {
