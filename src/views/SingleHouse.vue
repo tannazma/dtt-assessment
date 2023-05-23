@@ -4,6 +4,7 @@ import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
 import DeleteDialog from '@/components/DeleteDialog.vue'
+import { apiKey } from '@/stores/Api-key'
 
 const route = useRoute()
 const router = useRouter()
@@ -26,10 +27,13 @@ watch(
 )
 
 async function getHouseFromServer() {
+
+  const headers = {
+    'X-Api-Key': apiKey,
+  };
+
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: {
-      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-    }
+    headers: headers
   })
 
   const houses: T_House[] = await (await response).json()
@@ -47,12 +51,15 @@ function showDeleteDialog() {
 }
 
 async function deleteHouse(houseId: number | undefined) {
+
+  const headers = {
+    'X-Api-Key': apiKey,
+  };
+
   if (houseId === undefined) return
 
   await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
-    headers: {
-      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-    },
+    headers: headers,
     method: 'delete'
   })
   //close the dialog

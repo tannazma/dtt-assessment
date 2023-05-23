@@ -221,6 +221,7 @@
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { apiKey } from '@/stores/Api-key';
 
 const props = defineProps<{
   isEditing: boolean
@@ -285,23 +286,24 @@ async function submitForm(e: any) {
       form_data.append(key, value)
     }
   }
+
+  const headers = {
+    'X-Api-Key': apiKey,
+  };
+
   if (props.editPage && props.house?.id) {
     fetch('https://api.intern.d-tt.nl/api/houses/' + props.house.id, {
       method: 'POST',
-      headers: {
-        'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-      },
-      body: form_data
-    })
+      headers: headers,
+      body: form_data,
+    });
 
     sendImage(props.house.id)
   } else {
     const response = fetch('https://api.intern.d-tt.nl/api/houses', {
       method: 'POST',
-      headers: {
-        'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-      },
-      body: form_data
+      headers: headers,
+      body: form_data,
     })
 
     try {
@@ -316,6 +318,11 @@ async function submitForm(e: any) {
 }
 
 async function sendImage(houseId: number) {
+  
+  const headers = {
+    'X-Api-Key': apiKey,
+  };
+
   if (!state.picture) {
     return
   }
@@ -324,9 +331,7 @@ async function sendImage(houseId: number) {
   formData.append('image', state.picture)
   const response = await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
     method: 'POST',
-    headers: {
-      'X-Api-Key': 'ndFAUDTBMW7xO6YsIL3-Gb5rSQu4ZoHz'
-    },
+    headers: headers,
     body: formData
   })
   console.log(response)
