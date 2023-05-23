@@ -245,6 +245,10 @@ const state = reactive({
   picture: undefined as File | undefined,
   description: props.house ? props.house.description.toString() : ''
 })
+
+const headers = {
+  'X-Api-Key': apiKey,
+};
 // const state2 = reactive({
 //   priceValue: '',
 //   bedroomsValue: '',
@@ -287,10 +291,6 @@ async function submitForm(e: any) {
     }
   }
 
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
-
   if (props.editPage && props.house?.id) {
     fetch('https://api.intern.d-tt.nl/api/houses/' + props.house.id, {
       method: 'POST',
@@ -319,9 +319,6 @@ async function submitForm(e: any) {
 
 async function sendImage(houseId: number) {
   
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
 
   if (!state.picture) {
     return

@@ -38,6 +38,10 @@ function showDeleteDialog() {
   state.isDeleteDialogOpen = true
 }
 
+const headers = {
+  'X-Api-Key': apiKey
+}
+
 // this is old way
 // response.then((responseResolved) => {
 //   responseResolved.text().then((responseExtracted) => {
@@ -48,11 +52,6 @@ function showDeleteDialog() {
 
 // this is new good way
 async function getHousesFromServer() {
-
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
-
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
     headers: headers
   })
@@ -63,11 +62,6 @@ async function getHousesFromServer() {
 getHousesFromServer()
 
 async function deleteHouse(houseId: number | undefined) {
-
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
-
   if (houseId === undefined) return
 
   await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {

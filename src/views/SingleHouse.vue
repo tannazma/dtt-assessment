@@ -9,6 +9,10 @@ import { apiKey } from '@/stores/Api-key'
 const route = useRoute()
 const router = useRouter()
 
+const headers = {
+  'X-Api-Key': apiKey,
+};
+
 const state = reactive<{
   house: T_House | undefined
   houses: T_House[]
@@ -27,10 +31,6 @@ watch(
 )
 
 async function getHouseFromServer() {
-
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
 
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
     headers: headers
@@ -52,9 +52,6 @@ function showDeleteDialog() {
 
 async function deleteHouse(houseId: number | undefined) {
 
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
 
   if (houseId === undefined) return
 
