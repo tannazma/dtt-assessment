@@ -1,9 +1,9 @@
-<template class="create-new">
+<template>
   <div class="new">
     <RouterLink to="/new"
       ><button class="create-new primary">
         <img class="upload-image" src="/src/assets/ic_plus_white@3x.png" />
-        <img class="upload-image-gray" src="/src/assets/ic_plus_grey@3x.png" />
+        <img class="upload-image-mobile" src="/src/assets/ic_plus_grey@3x.png" />
         <span> CREATE NEW</span>
       </button></RouterLink
     >
@@ -24,7 +24,7 @@ import { RouterLink } from 'vue-router'
   top: 2px;
   margin-right: 12px;
 }
-.upload-image-gray {
+.upload-image-mobile {
   width: 22px;
 }
 
@@ -47,7 +47,7 @@ import { RouterLink } from 'vue-router'
   }
 }
 @media (min-width: 800px) {
-  .upload-image-gray {
+  .upload-image-mobile {
     display: none;
   }
 }

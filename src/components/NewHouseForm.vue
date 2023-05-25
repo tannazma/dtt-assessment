@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form>
     <div class="form-field">
       <label>
         Street name
@@ -10,12 +10,12 @@
           :style="{ border: isStreetValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isStreetValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isStreetValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
     </div>
-    <div class="form-field-tow">
-      <div class="addition">
+    <div class="form-field-two">
+      <div>
         <label>
           House Number
           <input
@@ -25,11 +25,11 @@
             :style="{ border: isHouseNumberValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span class="span-input" :style="{ display: isHouseNumberValid() ? 'none' : 'block' }">
+        <span class="error-message" :style="{ display: isHouseNumberValid() ? 'none' : 'block' }">
           Required field is missing</span
         >
       </div>
-      <div class="addition">
+      <div>
         <label>
           Addition
           <input
@@ -50,7 +50,7 @@
           :style="{ border: isPostalCodeValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isPostalCodeValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isPostalCodeValid() ? 'none' : 'block' }">
         Please enter a valid postal code</span
       >
     </div>
@@ -64,26 +64,23 @@
           :style="{ border: isCityValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isCityValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isCityValid() ? 'none' : 'block' }">
         Please enter a valid city</span
       >
     </div>
     <div class="form-field">
       <label>
         Upload picture (JPG or PNG)
-        <div class="plus-picture-div">
-          <div v-if="!state.picture" class="plus-icon-div">
-            <img width="25" src="/src/assets/ic_plus_grey@3x.png" class="plus-icon" />
-          </div>
+        <div v-if="!state.picture" class="upload-picture-placeholder">
+          <img width="25" src="/src/assets/ic_plus_grey@3x.png" />
         </div>
         <input
-          class="input-file"
           onchange="document.getElementById('selected-image').src = window.URL.createObjectURL(this.files[0])"
           type="file"
           @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
       </label>
-      <div class="attribute-selector">
+      <div>
         <img
           v-if="state.picture"
           id="selected-image"
@@ -112,12 +109,12 @@
           :style="{ border: isPriceValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isPriceValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isPriceValid() ? 'none' : 'block' }">
         Please enter a valid price</span
       >
     </div>
-    <div class="form-field-tow">
-      <div class="addition">
+    <div class="form-field-two">
+      <div>
         <label>
           Size
           <input
@@ -127,11 +124,11 @@
             :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span class="span-input" :style="{ display: isSizeValid() ? 'none' : 'block' }">
+        <span class="error-message" :style="{ display: isSizeValid() ? 'none' : 'block' }">
           Please enter a valid size</span
         >
       </div>
-      <div class="addition">
+      <div>
         <label>
           Garage
           <select
@@ -146,12 +143,12 @@
             <option value="No">No</option>
           </select>
         </label>
-        <span class="span-input" :style="{ display: isGarageValid() ? 'none' : 'block' }">
+        <span class="error-message" :style="{ display: isGarageValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
     </div>
-    <div class="form-field-tow">
+    <div class="form-field-two">
       <div class="bedroom-container">
         <label>
           Bedrooms
@@ -162,11 +159,11 @@
             :style="{ border: isBedroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span class="span-input" :style="{ display: isBedroomsValid() ? 'none' : 'block' }">
+        <span class="error-message" :style="{ display: isBedroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
-      <div class="addition">
+      <div>
         <label>
           Bathrooms
           <input
@@ -176,7 +173,7 @@
             :style="{ border: isBathroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
-        <span class="span-input" :style="{ display: isBathroomsValid() ? 'none' : 'block' }">
+        <span class="error-message" :style="{ display: isBathroomsValid() ? 'none' : 'block' }">
           Enter a valid number</span
         >
       </div>
@@ -191,7 +188,7 @@
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isYearValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isYearValid() ? 'none' : 'block' }">
         Enter a valid year</span
       >
     </div>
@@ -207,7 +204,7 @@
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="span-input" :style="{ display: isDescriptionValid() ? 'none' : 'block' }">
+      <span class="error-message" :style="{ display: isDescriptionValid() ? 'none' : 'block' }">
         Required field is missing</span
       >
     </div>
@@ -221,7 +218,7 @@
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { apiKey } from '@/stores/Api-key';
+import { apiKey } from '@/stores/Api-key'
 
 const props = defineProps<{
   isEditing: boolean
@@ -247,8 +244,8 @@ const state = reactive({
 })
 
 const headers = {
-  'X-Api-Key': apiKey,
-};
+  'X-Api-Key': apiKey
+}
 // const state2 = reactive({
 //   priceValue: '',
 //   bedroomsValue: '',
@@ -295,15 +292,15 @@ async function submitForm(e: any) {
     fetch('https://api.intern.d-tt.nl/api/houses/' + props.house.id, {
       method: 'POST',
       headers: headers,
-      body: form_data,
-    });
+      body: form_data
+    })
 
     sendImage(props.house.id)
   } else {
     const response = fetch('https://api.intern.d-tt.nl/api/houses', {
       method: 'POST',
       headers: headers,
-      body: form_data,
+      body: form_data
     })
 
     try {
@@ -318,8 +315,6 @@ async function submitForm(e: any) {
 }
 
 async function sendImage(houseId: number) {
-  
-
   if (!state.picture) {
     return
   }
@@ -481,31 +476,28 @@ textarea {
 span {
   font-size: 12px;
 }
-.span-input {
+.error-message {
   color: red;
 }
 .span-optional {
   color: blue;
 }
-.plus-icon {
-  margin-left: 23px;
-  margin-bottom: 8px;
-}
-.plus-icon-div {
+.upload-picture-placeholder {
+  font-size: 50px;
+  margin-top: 10px;
   border: 3px dashed #c3c3c3;
   width: 78px;
   height: 84px;
 }
-.plus-picture-div {
-  font-size: 50px;
-  margin-top: 10px;
+.upload-picture-placeholder img{
+  margin-left: 23px;
+  margin-bottom: 8px;
 }
-.input-file {
+input[type=file] {
   display: none;
 }
-.attribute-selector {
-  position: relative;
-}
+
+
 .selected-image {
   border-radius: 3px;
   width: 120px;
@@ -526,22 +518,18 @@ span {
 label {
   font-weight: bold;
 }
-.form {
+form {
   padding-bottom: 10px;
 }
 .form-field {
   margin: 10px 0 20px;
   width: 350px;
 }
-.form-field-tow {
+.form-field-two {
   display: flex;
   gap: 30px;
   margin: 10px 0 20px;
   width: 350px;
-}
-.addition {
-  display: flex;
-  flex-direction: column;
 }
 textarea {
   display: block;
@@ -562,7 +550,7 @@ button:disabled {
   flex-direction: column;
 }
 .form-field,
-.form-field-tow > div {
+.form-field-two > div {
   flex: 1;
 }
 </style>

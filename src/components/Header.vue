@@ -24,7 +24,6 @@ import { RouterLink } from 'vue-router'
 }
 
 .list {
-  align-content: space-between;
   margin: 0 50px;
   color: #c3c3c3;
 }

@@ -1,4 +1,4 @@
-<template class="edit">
+<template>
   <RouterLink :to="'/edit/' + house.id">
     <img width="15" src="/src/assets/ic_edit@3x.png" alt="edit icon" />
   </RouterLink>
