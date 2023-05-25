@@ -219,6 +219,7 @@ import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiKey } from '@/stores/Api-key'
+import {sendImage} from '@/stores/Api-call'
 
 const props = defineProps<{
   isEditing: boolean
@@ -295,7 +296,7 @@ async function submitForm(e: any) {
       body: form_data
     })
 
-    sendImage(props.house.id)
+    sendImage(props.house.id, state.picture)
   } else {
     const response = fetch('https://api.intern.d-tt.nl/api/houses', {
       method: 'POST',
@@ -305,7 +306,7 @@ async function submitForm(e: any) {
 
     try {
       const createdHouse = await (await response).json()
-      await sendImage(createdHouse.id)
+      await sendImage(createdHouse.id, state.picture)
       router.push('/house/' + createdHouse.id)
     } catch (err) {
       console.error(err)
@@ -314,20 +315,7 @@ async function submitForm(e: any) {
   }
 }
 
-async function sendImage(houseId: number) {
-  if (!state.picture) {
-    return
-  }
-  const formData = new FormData()
 
-  formData.append('image', state.picture)
-  const response = await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
-    method: 'POST',
-    headers: headers,
-    body: formData
-  })
-  console.log(response)
-}
 // function isFormValidate() {
 //   if (
 //     priceValue.trim() &&
