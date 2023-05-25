@@ -219,8 +219,9 @@ import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiKey } from '@/stores/Api-key'
-import {sendImage} from '@/stores/Api-call'
-import {sendImageForEditPage} from '@/stores/Api-call'
+import { sendImage } from '@/stores/Api-call'
+import { sendImageForEditPage } from '@/stores/Api-call'
+import { sendImageForCreateHouse } from '@/stores/Api-call'
 
 const props = defineProps<{
   isEditing: boolean
@@ -295,14 +296,8 @@ async function submitForm(e: any) {
 
     sendImage(props.house.id, state.picture)
   } else {
-    const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-      method: 'POST',
-      headers: headers,
-      body: form_data
-    })
-
     try {
-      const createdHouse = await (await response).json()
+      const createdHouse = await sendImageForCreateHouse(form_data)
       await sendImage(createdHouse.id, state.picture)
       router.push('/house/' + createdHouse.id)
     } catch (err) {
@@ -311,7 +306,6 @@ async function submitForm(e: any) {
     }
   }
 }
-
 
 // function isFormValidate() {
 //   if (
@@ -474,14 +468,13 @@ span {
   width: 78px;
   height: 84px;
 }
-.upload-picture-placeholder img{
+.upload-picture-placeholder img {
   margin-left: 23px;
   margin-bottom: 8px;
 }
-input[type=file] {
+input[type='file'] {
   display: none;
 }
-
 
 .selected-image {
   border-radius: 3px;

@@ -45,3 +45,6 @@ like 2 hours to remove inline styles in some cases
 like 3 hours to create delete dialog componenet and remove it from all pages and mount it on other pages like houses and single house
 like 2 hours to remove inline styles in all the files
 like 2 hours to find and know how to export api-key and import it on the components we need
+like 3 hours to refactor styles but not all of them
+almost 3 hours to understaand how to create a seperate file for api calls (fetches)
+almost 1.5 hour to refactor send image functions and seperate them in the api call file
