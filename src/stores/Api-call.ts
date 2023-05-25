@@ -1,14 +1,14 @@
 import { apiKey } from '@/stores/Api-key'
 
+const headers = {
+    'X-Api-Key': apiKey
+  }
 
 export async function sendImage(houseId: number, picture: any) {
     if (!picture) {
       return
     }
     const formData = new FormData()
-    const headers = {
-        'X-Api-Key': apiKey
-      }
   
     formData.append('image', picture)
     const response = await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
@@ -18,3 +18,12 @@ export async function sendImage(houseId: number, picture: any) {
     })
     console.log(response)
   }
+
+  export async function sendImageForEditPage(houseId:number, form_data: any) {
+    
+   fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
+    method: 'POST',
+    headers: headers,
+    body: form_data
+  })
+}

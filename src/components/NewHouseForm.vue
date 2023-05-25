@@ -220,6 +220,7 @@ import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiKey } from '@/stores/Api-key'
 import {sendImage} from '@/stores/Api-call'
+import {sendImageForEditPage} from '@/stores/Api-call'
 
 const props = defineProps<{
   isEditing: boolean
@@ -290,11 +291,7 @@ async function submitForm(e: any) {
   }
 
   if (props.editPage && props.house?.id) {
-    fetch('https://api.intern.d-tt.nl/api/houses/' + props.house.id, {
-      method: 'POST',
-      headers: headers,
-      body: form_data
-    })
+    sendImageForEditPage(props.house.id, form_data)
 
     sendImage(props.house.id, state.picture)
   } else {
