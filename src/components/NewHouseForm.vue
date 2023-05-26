@@ -218,7 +218,6 @@
 import type { T_House } from '@/types/house'
 import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { apiKey } from '@/stores/Api-key'
 import { sendImage } from '@/stores/Api-call'
 import { sendImageForEditPage } from '@/stores/Api-call'
 import { sendImageForCreateHouse } from '@/stores/Api-call'
@@ -246,9 +245,6 @@ const state = reactive({
   description: props.house ? props.house.description.toString() : ''
 })
 
-const headers = {
-  'X-Api-Key': apiKey
-}
 // const state2 = reactive({
 //   priceValue: '',
 //   bedroomsValue: '',
