@@ -1,16 +1,35 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+function isEditOrCreatePage(): boolean {
+  return (
+    route.name === 'list' || route.name === 'edit' || route.name === 'new' || route.name === 'house'
+  )
+}
 </script>
 
 <template>
   <div class="header-container">
     <img width="100" src="/src/assets/img_logo_dtt@3x.png" alt="dtt logo" />
-    <RouterLink class="list" to="/list">Houses</RouterLink>
+    <RouterLink class="list" :class="{ active: isEditOrCreatePage() }" to="/list"
+      >Houses</RouterLink
+    >
     <RouterLink class="about" to="/about">About</RouterLink>
   </div>
 </template>
 
 <style scoped>
+.list {
+  margin: 0 50px;
+  color: #c3c3c3;
+}
+.active {
+  font-weight: bold;
+  color: black;
+}
 .header-container {
   padding: 20px 30px;
   display: flex;
@@ -23,10 +42,6 @@ import { RouterLink } from 'vue-router'
   z-index: 1;
 }
 
-.list {
-  margin: 0 50px;
-  color: #c3c3c3;
-}
 .about {
   color: #c3c3c3;
 }

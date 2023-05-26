@@ -27,12 +27,12 @@ const router = createRouter({
     },
     {
       path: '/new',
-      name: 'New',
+      name: 'new',
       component: () => import('../views/CreateNewView.vue')
     },
     {
       path: '/edit/:id',
-      name: 'Edit',
+      name: 'edit',
       component: () => import('../views/EditHouseView.vue')
     }
   ]
