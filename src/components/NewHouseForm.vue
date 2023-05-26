@@ -5,8 +5,8 @@
         Street name
         <input
           placeholder="Enter the street name"
-          :value="state.streetName"
-          @input="event => state.streetName = (event.target as HTMLInputElement)?.value"
+          :value="formState.streetName"
+          @input="event => formState.streetName = (event.target as HTMLInputElement)?.value"
           :style="{ border: isStreetValid() ? 'none' : '1px solid red' }"
         />
       </label>
@@ -20,8 +20,8 @@
           House Number
           <input
             placeholder="Enter house number"
-            :value="state.houseNumber"
-            @input="event => state.houseNumber = (event.target as HTMLInputElement)?.value"
+            :value="formState.houseNumber"
+            @input="event => formState.houseNumber = (event.target as HTMLInputElement)?.value"
             :style="{ border: isHouseNumberValid() ? 'none' : '1px solid red' }"
           />
         </label>
@@ -33,8 +33,8 @@
         <label>
           Addition
           <input
-            :value="state.numberAddition"
-            @input="event => state.numberAddition = (event.target as HTMLInputElement)?.value"
+            :value="formState.numberAddition"
+            @input="event => formState.numberAddition = (event.target as HTMLInputElement)?.value"
           />
         </label>
         <span class="span-optional" :style="{ display: 'block' }"> This is optional</span>
@@ -45,8 +45,8 @@
         Postal code
         <input
           placeholder="e.g. 1000 AA"
-          :value="state.zip"
-          @input="event => state.zip = (event.target as HTMLInputElement)?.value"
+          :value="formState.zip"
+          @input="event => formState.zip = (event.target as HTMLInputElement)?.value"
           :style="{ border: isPostalCodeValid() ? 'none' : '1px solid red' }"
         />
       </label>
@@ -59,8 +59,8 @@
         City
         <input
           placeholder="e.g. Utreckt"
-          :value="state.city"
-          @input="event => state.city = (event.target as HTMLInputElement)?.value"
+          :value="formState.city"
+          @input="event => formState.city = (event.target as HTMLInputElement)?.value"
           :style="{ border: isCityValid() ? 'none' : '1px solid red' }"
         />
       </label>
@@ -71,26 +71,26 @@
     <div class="form-field">
       <label>
         Upload picture (JPG or PNG)
-        <div v-if="!state.picture && !props.house?.image" class="upload-picture-placeholder">
+        <div v-if="!formState.picture && !props.house?.image" class="upload-picture-placeholder">
           <img width="25" src="/src/assets/ic_plus_grey@3x.png" />
         </div>
         <input
           onchange="document.getElementById('selected-image').src = window.URL.createObjectURL(this.files[0])"
           type="file"
-          @input="event => state.picture = (event.target as HTMLInputElement)?.files?.[0]"
+          @input="event => formState.picture = (event.target as HTMLInputElement)?.files?.[0]"
         />
       </label>
       <div>
         <img
-          v-if="state.picture || props.house?.image"
+          v-if="formState.picture || props.house?.image"
           id="selected-image"
           src="#"
           alt="Selected Image"
           class="selected-image"
         />
         <img
-          @click="state.picture = undefined"
-          v-if="state.picture"
+          @click="formState.picture = undefined"
+          v-if="formState.picture"
           src="/src/assets/ic_clear_white@3x.png"
           width="20"
           height="20"
@@ -103,8 +103,8 @@
         Price
         <input
           placeholder="e.g. €150.000"
-          :value="state.price"
-          @input="event => state.price = (event.target as HTMLInputElement)?.value"
+          :value="formState.price"
+          @input="event => formState.price = (event.target as HTMLInputElement)?.value"
           class="input"
           :style="{ border: isPriceValid() ? 'none' : '1px solid red' }"
         />
@@ -119,8 +119,8 @@
           Size
           <input
             placeholder="e.g. 60m2"
-            :value="state.size"
-            @input="event => state.size = (event.target as HTMLInputElement)?.value"
+            :value="formState.size"
+            @input="event => formState.size = (event.target as HTMLInputElement)?.value"
             :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
           />
         </label>
@@ -134,8 +134,8 @@
           <select
             placeholder="Select"
             type="boolean"
-            :value="state.hasGarage"
-            @input="event => state.hasGarage = (event.target as HTMLInputElement)?.value"
+            :value="formState.hasGarage"
+            @input="event => formState.hasGarage = (event.target as HTMLInputElement)?.value"
             :style="{ border: isGarageValid() ? 'none' : '1px solid red' }"
             class="garage"
           >
@@ -154,8 +154,8 @@
           Bedrooms
           <input
             placeholder="Enter amount"
-            :value="state.bedrooms"
-            @input="event => state.bedrooms = (event.target as HTMLInputElement)?.value"
+            :value="formState.bedrooms"
+            @input="event => formState.bedrooms = (event.target as HTMLInputElement)?.value"
             :style="{ border: isBedroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
@@ -168,8 +168,8 @@
           Bathrooms
           <input
             placeholder="Enter amount"
-            :value="state.bathrooms"
-            @input="event => state.bathrooms = (event.target as HTMLInputElement)?.value"
+            :value="formState.bathrooms"
+            @input="event => formState.bathrooms = (event.target as HTMLInputElement)?.value"
             :style="{ border: isBathroomsValid() ? 'none' : '1px solid red' }"
           />
         </label>
@@ -183,8 +183,8 @@
         Construction date
         <input
           placeholder="Enter description"
-          :value="state.constructionYear"
-          @input="event => state.constructionYear = (event.target as HTMLInputElement)?.value"
+          :value="formState.constructionYear"
+          @input="event => formState.constructionYear = (event.target as HTMLInputElement)?.value"
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
@@ -199,8 +199,8 @@
           rows="5"
           placeholder="Enter description"
           required
-          :value="state.description"
-          @input="event => state.description = (event.target as HTMLInputElement)?.value"
+          :value="formState.description"
+          @input="event => formState.description = (event.target as HTMLInputElement)?.value"
           :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
         />
       </label>
@@ -229,7 +229,7 @@ const props = defineProps<{
 }>()
 
 const router = useRouter()
-const state = reactive({
+const formState = reactive({
   price: props.house ? props.house.price.toString() : '',
   bedrooms: props.house ? props.house.rooms.bedrooms.toString() : '',
   bathrooms: props.house ? props.house.rooms.bathrooms.toString() : '',
@@ -287,8 +287,8 @@ async function submitForm(e: any) {
   e.preventDefault()
   var form_data = new FormData()
 
-  for (var key in state) {
-    const value = state[key as keyof typeof state]
+  for (var key in formState) {
+    const value = formState[key as keyof typeof formState]
     if (value) {
       form_data.append(key, value)
     }
@@ -297,11 +297,11 @@ async function submitForm(e: any) {
   if (props.editPage && props.house?.id) {
     sendImageForEditPage(props.house.id, form_data)
 
-    sendImage(props.house.id, state.picture)
+    sendImage(props.house.id, formState.picture)
   } else {
     try {
       const createdHouse = await sendImageForCreateHouse(form_data)
-      await sendImage(createdHouse.id, state.picture)
+      await sendImage(createdHouse.id, formState.picture)
       router.push('/house/' + createdHouse.id)
     } catch (err) {
       console.error(err)
@@ -351,14 +351,14 @@ function isFormValidate() {
 }
 
 function isDescriptionValid() {
-  if (state.description.trim()) {
+  if (formState.description.trim()) {
     return true
   } else {
     return false
   }
 }
 function isPriceValid() {
-  if (state.price.trim() && Number(state.price.trim())) {
+  if (formState.price.trim() && Number(formState.price.trim())) {
     return true
   } else {
     return false
@@ -366,7 +366,7 @@ function isPriceValid() {
 }
 
 function isGarageValid() {
-  if (state.hasGarage.trim() && Boolean(state.hasGarage.trim())) {
+  if (formState.hasGarage.trim() && Boolean(formState.hasGarage.trim())) {
     return true
   } else {
     return false
@@ -375,9 +375,9 @@ function isGarageValid() {
 
 function isYearValid() {
   if (
-    state.constructionYear.trim() &&
-    Number(state.constructionYear.trim()) &&
-    /^[12][0-9]{3}$/.test(state.constructionYear.trim())
+    formState.constructionYear.trim() &&
+    Number(formState.constructionYear.trim()) &&
+    /^[12][0-9]{3}$/.test(formState.constructionYear.trim())
   ) {
     return true
   } else {
@@ -386,35 +386,35 @@ function isYearValid() {
 }
 
 function isBedroomsValid() {
-  if (state.bedrooms.trim() && Number(state.bedrooms.trim())) {
+  if (formState.bedrooms.trim() && Number(formState.bedrooms.trim())) {
     return true
   } else {
     return false
   }
 }
 function isBathroomsValid() {
-  if (state.bathrooms.trim() && Number(state.bathrooms.trim())) {
+  if (formState.bathrooms.trim() && Number(formState.bathrooms.trim())) {
     return true
   } else {
     return false
   }
 }
 function isCityValid() {
-  if (state.city.trim() && /^[a-zA-Z\s]+$/.test(state.city.trim())) {
+  if (formState.city.trim() && /^[a-zA-Z\s]+$/.test(formState.city.trim())) {
     return true
   } else {
     return false
   }
 }
 function isStreetValid() {
-  if (state.streetName.trim() && /^[a-zA-Z\s0-9]+$/.test(state.streetName.trim())) {
+  if (formState.streetName.trim() && /^[a-zA-Z\s0-9]+$/.test(formState.streetName.trim())) {
     return true
   } else {
     return false
   }
 }
 function isHouseNumberValid() {
-  if (state.houseNumber.trim() && Number(state.houseNumber.trim())) {
+  if (formState.houseNumber.trim() && Number(formState.houseNumber.trim())) {
     return true
   } else {
     return false
@@ -422,14 +422,14 @@ function isHouseNumberValid() {
 }
 
 function isPostalCodeValid() {
-  if (state.zip.trim() && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(state.zip.trim())) {
+  if (formState.zip.trim() && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(formState.zip.trim())) {
     return true
   } else {
     return false
   }
 }
 function isSizeValid() {
-  if (state.size.trim() && /\d+[,.]?\d*\s*/.test(state.size.trim())) {
+  if (formState.size.trim() && /\d+[,.]?\d*\s*/.test(formState.size.trim())) {
     return true
   } else {
     return false
