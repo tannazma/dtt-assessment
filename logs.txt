@@ -48,3 +48,4 @@ like 2 hours to find and know how to export api-key and import it on the compone
 like 3 hours to refactor styles but not all of them
 almost 3 hours to understaand how to create a seperate file for api calls (fetches)
 almost 1.5 hour to refactor send image functions and seperate them in the api call file
+almost 2 hours to understand why picture is not visible in the edit page and make it visible

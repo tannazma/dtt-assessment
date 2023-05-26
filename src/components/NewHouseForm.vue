@@ -71,7 +71,7 @@
     <div class="form-field">
       <label>
         Upload picture (JPG or PNG)
-        <div v-if="!state.picture" class="upload-picture-placeholder">
+        <div v-if="!state.picture && !props.house?.image" class="upload-picture-placeholder">
           <img width="25" src="/src/assets/ic_plus_grey@3x.png" />
         </div>
         <input
@@ -82,7 +82,7 @@
       </label>
       <div>
         <img
-          v-if="state.picture"
+          v-if="state.picture || props.house?.image"
           id="selected-image"
           src="#"
           alt="Selected Image"
@@ -216,7 +216,7 @@
 
 <script setup lang="ts">
 import type { T_House } from '@/types/house'
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { apiKey } from '@/stores/Api-key'
 import { sendImage } from '@/stores/Api-call'
@@ -279,6 +279,13 @@ const headers = {
 // state.constructionYear = '1968'
 // // state.hasGarage = 'trie'
 // // state.description = 'Nice houseeeeeeeee!'
+
+onMounted(() => {
+  if (props.house) {
+    const selectImage = document.getElementById('selected-image') as HTMLImageElement
+    selectImage.src = props.house.image
+  }
+})
 
 async function submitForm(e: any) {
   e.preventDefault()
