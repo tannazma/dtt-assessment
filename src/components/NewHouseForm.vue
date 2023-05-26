@@ -422,7 +422,7 @@ function isHouseNumberValid() {
 }
 
 function isPostalCodeValid() {
-  if (state.zip.trim() && /^([0-9]{4}[ ]+[a-zA-Z]{2})$/.test(state.zip.trim())) {
+  if (state.zip.trim() && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(state.zip.trim())) {
     return true
   } else {
     return false
