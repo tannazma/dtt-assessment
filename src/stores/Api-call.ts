@@ -35,3 +35,10 @@ export async function sendImageForCreateHouse(form_data: any) {
   })
   return await (await response).json()
 }
+
+export async function getHousesFromServerForEdit() {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    headers: headers
+  })
+  return await (await response).json()
+}

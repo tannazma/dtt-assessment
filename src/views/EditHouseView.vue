@@ -3,7 +3,7 @@ import NewHouseForm from '@/components/NewHouseForm.vue'
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import { apiKey } from '@/stores/Api-key'
+import { getHousesFromServerForEdit } from '@/stores/Api-call'
 
 const state = reactive<{
   house: T_House | undefined
@@ -12,16 +12,9 @@ const state = reactive<{
 const route = useRoute()
 
 async function getHouseFromServer() {
+  getHousesFromServerForEdit()
 
-  const headers = {
-    'X-Api-Key': apiKey,
-  };
-
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: headers
-  })
-
-  const houses: T_House[] = await (await response).json()
+  const houses: T_House[] = await getHousesFromServerForEdit()
   state.house = houses.find((house) => house.id === Number(route.params.id))
 }
 getHouseFromServer()
