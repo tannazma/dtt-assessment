@@ -5,6 +5,8 @@ import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
 import DeleteDialog from '@/components/DeleteDialog.vue'
 import { apiKey } from '@/stores/Api-key'
+import {getHouseFromServerForSingle} from '@/stores/Api-call'
+import {deleteHouseForSingle} from '@/stores/Api-call'
 
 const route = useRoute()
 const router = useRouter()
@@ -32,11 +34,9 @@ watch(
 
 async function getHouseFromServer() {
 
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: headers
-  })
+ getHouseFromServerForSingle()
 
-  const houses: T_House[] = await (await response).json()
+  const houses: T_House[] = await getHouseFromServerForSingle()
   state.house = houses.find((house) => house.id === Number(route.params.id))
   state.houses = houses
 }
@@ -55,10 +55,7 @@ async function deleteHouse(houseId: number | undefined) {
 
   if (houseId === undefined) return
 
-  await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
-    headers: headers,
-    method: 'delete'
-  })
+  await deleteHouseForSingle(houseId)
   //close the dialog
   hideDeleteDialog()
   router.push('/list')

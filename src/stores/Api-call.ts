@@ -42,3 +42,31 @@ export async function getHousesFromServerForEdit() {
   })
   return await (await response).json()
 }
+
+export async function getHousesFromServerForList() {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    headers: headers
+  })
+  return await (await response).json()
+}
+
+export async function deleteHouseInList(houseId: number) {
+  fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
+    headers: headers,
+    method: 'delete'
+  })
+}
+
+export async function getHouseFromServerForSingle() {
+  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
+    headers: headers
+  })
+  return await (await response).json()
+}
+
+export async function deleteHouseForSingle(houseId: number) {
+  fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
+    headers: headers,
+    method: 'delete'
+  })
+}

@@ -5,6 +5,8 @@ import type { T_House } from '@/types/house'
 import DeleteDialog from '@/components/DeleteDialog.vue'
 import { apiKey } from '@/stores/Api-key'
 import CreateNewButton from '@/components/CreateNewButton.vue'
+import { getHousesFromServerForList } from '@/stores/Api-call'
+import { deleteHouseInList } from '@/stores/Api-call'
 
 const state = reactive<{
   searchText: string
@@ -52,11 +54,9 @@ const headers = {
 
 // this is new good way
 async function getHousesFromServer() {
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: headers
-  })
+  getHousesFromServerForList()
 
-  state.houses = await (await response).json()
+  state.houses = await getHousesFromServerForList()
 }
 
 getHousesFromServer()
@@ -64,10 +64,7 @@ getHousesFromServer()
 async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
 
-  await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
-    headers: headers,
-    method: 'delete'
-  })
+  await deleteHouseInList(houseId)
   //close the dialog
   hideDeleteDialog()
   getHousesFromServer()
