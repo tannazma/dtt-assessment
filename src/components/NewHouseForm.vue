@@ -7,10 +7,16 @@
           placeholder="Enter the street name"
           :value="formState.streetName"
           @input="event => formState.streetName = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isStreetValid() ? 'none' : '1px solid red' }"
+          :style="{
+            border: isStreetValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+          }"
         />
       </label>
-      <span class="error-message" :style="{ display: isStreetValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isStreetValid() ? 'none' : 'block' }"
+      >
         Required field is missing</span
       >
     </div>
@@ -22,10 +28,16 @@
             placeholder="Enter house number"
             :value="formState.houseNumber"
             @input="event => formState.houseNumber = (event.target as HTMLInputElement)?.value"
-            :style="{ border: isHouseNumberValid() ? 'none' : '1px solid red' }"
+            :style="{
+              border: isHouseNumberValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+            }"
           />
         </label>
-        <span class="error-message" :style="{ display: isHouseNumberValid() ? 'none' : 'block' }">
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isHouseNumberValid() ? 'none' : 'block' }"
+        >
           Required field is missing</span
         >
       </div>
@@ -47,10 +59,16 @@
           placeholder="e.g. 1000 AA"
           :value="formState.zip"
           @input="event => formState.zip = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isPostalCodeValid() ? 'none' : '1px solid red' }"
+          :style="{
+            border: isPostalCodeValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+          }"
         />
       </label>
-      <span class="error-message" :style="{ display: isPostalCodeValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isPostalCodeValid() ? 'none' : 'block' }"
+      >
         Please enter a valid postal code</span
       >
     </div>
@@ -61,10 +79,14 @@
           placeholder="e.g. Utreckt"
           :value="formState.city"
           @input="event => formState.city = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isCityValid() ? 'none' : '1px solid red' }"
+          :style="{ border: isCityValid() || !state.showErrorMessages ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="error-message" :style="{ display: isCityValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isCityValid() ? 'none' : 'block' }"
+      >
         Please enter a valid city</span
       >
     </div>
@@ -106,10 +128,14 @@
           :value="formState.price"
           @input="event => formState.price = (event.target as HTMLInputElement)?.value"
           class="input"
-          :style="{ border: isPriceValid() ? 'none' : '1px solid red' }"
+          :style="{ border: isPriceValid() || !state.showErrorMessages ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="error-message" :style="{ display: isPriceValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isPriceValid() ? 'none' : 'block' }"
+      >
         Please enter a valid price</span
       >
     </div>
@@ -121,10 +147,16 @@
             placeholder="e.g. 60m2"
             :value="formState.size"
             @input="event => formState.size = (event.target as HTMLInputElement)?.value"
-            :style="{ border: isSizeValid() ? 'none' : '1px solid red' }"
+            :style="{
+              border: isSizeValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+            }"
           />
         </label>
-        <span class="error-message" :style="{ display: isSizeValid() ? 'none' : 'block' }">
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isSizeValid() ? 'none' : 'block' }"
+        >
           Please enter a valid size</span
         >
       </div>
@@ -136,14 +168,20 @@
             type="boolean"
             :value="formState.hasGarage"
             @input="event => formState.hasGarage = (event.target as HTMLInputElement)?.value"
-            :style="{ border: isGarageValid() ? 'none' : '1px solid red' }"
+            :style="{
+              border: isGarageValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+            }"
             class="garage"
           >
             <option value="Yes" class="option-yes">Yes</option>
             <option value="No">No</option>
           </select>
         </label>
-        <span class="error-message" :style="{ display: isGarageValid() ? 'none' : 'block' }">
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isGarageValid() ? 'none' : 'block' }"
+        >
           Enter a valid number</span
         >
       </div>
@@ -156,10 +194,16 @@
             placeholder="Enter amount"
             :value="formState.bedrooms"
             @input="event => formState.bedrooms = (event.target as HTMLInputElement)?.value"
-            :style="{ border: isBedroomsValid() ? 'none' : '1px solid red' }"
+            :style="{
+              border: isBedroomsValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+            }"
           />
         </label>
-        <span class="error-message" :style="{ display: isBedroomsValid() ? 'none' : 'block' }">
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isBedroomsValid() ? 'none' : 'block' }"
+        >
           Enter a valid number</span
         >
       </div>
@@ -170,10 +214,16 @@
             placeholder="Enter amount"
             :value="formState.bathrooms"
             @input="event => formState.bathrooms = (event.target as HTMLInputElement)?.value"
-            :style="{ border: isBathroomsValid() ? 'none' : '1px solid red' }"
+            :style="{
+              border: isBathroomsValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+            }"
           />
         </label>
-        <span class="error-message" :style="{ display: isBathroomsValid() ? 'none' : 'block' }">
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isBathroomsValid() ? 'none' : 'block' }"
+        >
           Enter a valid number</span
         >
       </div>
@@ -185,10 +235,14 @@
           placeholder="Enter description"
           :value="formState.constructionYear"
           @input="event => formState.constructionYear = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
+          :style="{ border: isYearValid() || !state.showErrorMessages ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="error-message" :style="{ display: isYearValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isYearValid() ? 'none' : 'block' }"
+      >
         Enter a valid year</span
       >
     </div>
@@ -201,10 +255,14 @@
           required
           :value="formState.description"
           @input="event => formState.description = (event.target as HTMLInputElement)?.value"
-          :style="{ border: isYearValid() ? 'none' : '1px solid red' }"
+          :style="{ border: isYearValid() || !state.showErrorMessages ? 'none' : '1px solid red' }"
         />
       </label>
-      <span class="error-message" :style="{ display: isDescriptionValid() ? 'none' : 'block' }">
+      <span
+        class="error-message"
+        v-if="state.showErrorMessages"
+        :style="{ display: isDescriptionValid() ? 'none' : 'block' }"
+      >
         Required field is missing</span
       >
     </div>
@@ -244,6 +302,9 @@ const formState = reactive({
   picture: undefined as File | undefined,
   description: props.house ? props.house.description.toString() : ''
 })
+const state = reactive<{
+  showErrorMessages: boolean
+}>({ showErrorMessages: false })
 
 // const state2 = reactive({
 //   priceValue: '',
@@ -284,6 +345,7 @@ onMounted(() => {
 })
 
 async function submitForm(e: any) {
+  state.showErrorMessages = true
   e.preventDefault()
   var form_data = new FormData()
 
