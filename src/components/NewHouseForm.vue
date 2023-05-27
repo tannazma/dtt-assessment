@@ -276,7 +276,7 @@
         Required field is missing</span
       >
     </div>
-    <button @click="submitForm" type="submit" :disabled="!isFormValidate()" class="primary">
+    <button @click="submitForm" type="submit" class="primary">
       {{ isEditing ? 'EDIT' : 'CREATE' }}
     </button>
   </form>
@@ -357,6 +357,11 @@ onMounted(() => {
 async function submitForm(e: any) {
   state.showErrorMessages = true
   e.preventDefault()
+
+  if (!isFormValidate()) {
+    return
+  }
+
   var form_data = new FormData()
 
   for (var key in formState) {
