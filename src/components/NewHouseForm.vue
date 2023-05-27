@@ -100,7 +100,17 @@
           onchange="document.getElementById('selected-image').src = window.URL.createObjectURL(this.files[0])"
           type="file"
           @input="event => formState.picture = (event.target as HTMLInputElement)?.files?.[0]"
+          :style="{
+            border: isPicturetValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+          }"
         />
+        <span
+          class="error-message"
+          v-if="state.showErrorMessages"
+          :style="{ display: isPicturetValid() ? 'none' : 'block' }"
+        >
+          Required field is missing</span
+        >
       </label>
       <div>
         <img
@@ -404,7 +414,9 @@ function isFormValidate() {
     isHouseNumberValid() &&
     isSizeValid() &&
     isStreetValid() &&
-    isPostalCodeValid()
+    isPostalCodeValid() &&
+    isPicturetValid()
+
   ) {
     return true
   } else {
@@ -463,6 +475,13 @@ function isBathroomsValid() {
 }
 function isCityValid() {
   if (formState.city.trim() && /^[a-zA-Z\s]+$/.test(formState.city.trim())) {
+    return true
+  } else {
+    return false
+  }
+}
+function isPicturetValid() {
+  if (formState.picture) {
     return true
   } else {
     return false
