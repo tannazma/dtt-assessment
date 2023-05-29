@@ -29,14 +29,17 @@
             :value="formState.houseNumber"
             @input="event => formState.houseNumber = (event.target as HTMLInputElement)?.value"
             :style="{
-              border: isHouseNumberValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+              border:
+                isNumberValid(formState.houseNumber) || !state.showErrorMessages
+                  ? 'none'
+                  : '1px solid red'
             }"
           />
         </label>
         <span
           class="error-message"
           v-if="state.showErrorMessages"
-          :style="{ display: isHouseNumberValid() ? 'none' : 'block' }"
+          :style="{ display: isNumberValid(state.showErrorMessages) ? 'none' : 'block' }"
         >
           Required field is missing</span
         >
@@ -138,13 +141,16 @@
           :value="formState.price"
           @input="event => formState.price = (event.target as HTMLInputElement)?.value"
           class="input"
-          :style="{ border: isPriceValid() || !state.showErrorMessages ? 'none' : '1px solid red' }"
+          :style="{
+            border:
+              isNumberValid(formState.price) || !state.showErrorMessages ? 'none' : '1px solid red'
+          }"
         />
       </label>
       <span
         class="error-message"
         v-if="state.showErrorMessages"
-        :style="{ display: isPriceValid() ? 'none' : 'block' }"
+        :style="{ display: isNumberValid(formState.price) ? 'none' : 'block' }"
       >
         Please enter a valid price</span
       >
@@ -179,7 +185,10 @@
             :value="formState.hasGarage"
             @input="event => formState.hasGarage = (event.target as HTMLInputElement)?.value"
             :style="{
-              border: isGarageValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+              border:
+                isNumberValid(formState.hasGarage) || !state.showErrorMessages
+                  ? 'none'
+                  : '1px solid red'
             }"
             class="garage"
           >
@@ -190,7 +199,7 @@
         <span
           class="error-message"
           v-if="state.showErrorMessages"
-          :style="{ display: isGarageValid() ? 'none' : 'block' }"
+          :style="{ display: isNumberValid(formState.hasGarage) ? 'none' : 'block' }"
         >
           Enter a valid number</span
         >
@@ -205,14 +214,17 @@
             :value="formState.bedrooms"
             @input="event => formState.bedrooms = (event.target as HTMLInputElement)?.value"
             :style="{
-              border: isBedroomsValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+              border:
+                isNumberValid(formState.bedrooms) || !state.showErrorMessages
+                  ? 'none'
+                  : '1px solid red'
             }"
           />
         </label>
         <span
           class="error-message"
           v-if="state.showErrorMessages"
-          :style="{ display: isBedroomsValid() ? 'none' : 'block' }"
+          :style="{ display: isNumberValid(formState.bedrooms) ? 'none' : 'block' }"
         >
           Enter a valid number</span
         >
@@ -225,14 +237,17 @@
             :value="formState.bathrooms"
             @input="event => formState.bathrooms = (event.target as HTMLInputElement)?.value"
             :style="{
-              border: isBathroomsValid() || !state.showErrorMessages ? 'none' : '1px solid red'
+              border:
+                isNumberValid(formState.bathrooms) || !state.showErrorMessages
+                  ? 'none'
+                  : '1px solid red'
             }"
           />
         </label>
         <span
           class="error-message"
           v-if="state.showErrorMessages"
-          :style="{ display: isBathroomsValid() ? 'none' : 'block' }"
+          :style="{ display: isNumberValid(formState.bathrooms) ? 'none' : 'block' }"
         >
           Enter a valid number</span
         >
@@ -411,13 +426,13 @@ async function submitForm(e: any) {
 function isFormValidate() {
   if (
     isDescriptionValid() &&
-    isPriceValid() &&
-    isBedroomsValid() &&
-    isBathroomsValid() &&
+    isNumberValid(formState.price) &&
+    isNumberValid(formState.bedrooms) &&
+    isNumberValid(formState.bathrooms) &&
+    isNumberValid(formState.hasGarage) &&
+    isNumberValid(formState.houseNumber) &&
     isCityValid() &&
     isYearValid() &&
-    isGarageValid() &&
-    isHouseNumberValid() &&
     isSizeValid() &&
     isStreetValid() &&
     isPostalCodeValid() &&
@@ -436,16 +451,9 @@ function isDescriptionValid() {
     return false
   }
 }
-function isPriceValid() {
-  if (formState.price && Number(formState.price)) {
-    return true
-  } else {
-    return false
-  }
-}
 
-function isGarageValid() {
-  if (formState.hasGarage && Boolean(formState.hasGarage)) {
+function isNumberValid(fieldValue: any) {
+  if (fieldValue) {
     return true
   } else {
     return false
@@ -453,31 +461,13 @@ function isGarageValid() {
 }
 
 function isYearValid() {
-  if (
-    formState.constructionYear &&
-    Number(formState.constructionYear) &&
-    /^[12][0-9]{3}$/.test(formState.constructionYear)
-  ) {
+  if (formState.constructionYear && /^[12][0-9]{3}$/.test(formState.constructionYear)) {
     return true
   } else {
     return false
   }
 }
 
-function isBedroomsValid() {
-  if (formState.bedrooms && Number(formState.bedrooms)) {
-    return true
-  } else {
-    return false
-  }
-}
-function isBathroomsValid() {
-  if (formState.bathrooms && Number(formState.bathrooms)) {
-    return true
-  } else {
-    return false
-  }
-}
 function isCityValid() {
   if (formState.city && /^[a-zA-Z\s]+$/.test(formState.city)) {
     return true
@@ -499,13 +489,6 @@ function isStreetValid() {
     return false
   }
 }
-function isHouseNumberValid() {
-  if (formState.houseNumber && Number(formState.houseNumber)) {
-    return true
-  } else {
-    return false
-  }
-}
 
 function isPostalCodeValid() {
   if (formState.zip && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(formState.zip)) {
@@ -522,13 +505,6 @@ function isSizeValid() {
   }
 }
 
-function newFunction() {
-  return 'garage'
-}
-
-function newFunction_1() {
-  return 'garage'
-}
 </script>
 
 <style scoped>
