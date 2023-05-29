@@ -430,14 +430,14 @@ function isFormValidate() {
 }
 
 function isDescriptionValid() {
-  if (formState.description.trim()) {
+  if (formState.description) {
     return true
   } else {
     return false
   }
 }
 function isPriceValid() {
-  if (formState.price.trim() && Number(formState.price.trim())) {
+  if (formState.price && Number(formState.price)) {
     return true
   } else {
     return false
@@ -445,7 +445,7 @@ function isPriceValid() {
 }
 
 function isGarageValid() {
-  if (formState.hasGarage.trim() && Boolean(formState.hasGarage.trim())) {
+  if (formState.hasGarage && Boolean(formState.hasGarage)) {
     return true
   } else {
     return false
@@ -454,9 +454,9 @@ function isGarageValid() {
 
 function isYearValid() {
   if (
-    formState.constructionYear.trim() &&
-    Number(formState.constructionYear.trim()) &&
-    /^[12][0-9]{3}$/.test(formState.constructionYear.trim())
+    formState.constructionYear &&
+    Number(formState.constructionYear) &&
+    /^[12][0-9]{3}$/.test(formState.constructionYear)
   ) {
     return true
   } else {
@@ -465,21 +465,21 @@ function isYearValid() {
 }
 
 function isBedroomsValid() {
-  if (formState.bedrooms.trim() && Number(formState.bedrooms.trim())) {
+  if (formState.bedrooms && Number(formState.bedrooms)) {
     return true
   } else {
     return false
   }
 }
 function isBathroomsValid() {
-  if (formState.bathrooms.trim() && Number(formState.bathrooms.trim())) {
+  if (formState.bathrooms && Number(formState.bathrooms)) {
     return true
   } else {
     return false
   }
 }
 function isCityValid() {
-  if (formState.city.trim() && /^[a-zA-Z\s]+$/.test(formState.city.trim())) {
+  if (formState.city && /^[a-zA-Z\s]+$/.test(formState.city)) {
     return true
   } else {
     return false
@@ -493,14 +493,14 @@ function isPicturetValid() {
   }
 }
 function isStreetValid() {
-  if (formState.streetName.trim() && /^[a-zA-Z\s0-9]+$/.test(formState.streetName.trim())) {
+  if (formState.streetName && /^[a-zA-Z\s0-9]+$/.test(formState.streetName)) {
     return true
   } else {
     return false
   }
 }
 function isHouseNumberValid() {
-  if (formState.houseNumber.trim() && Number(formState.houseNumber.trim())) {
+  if (formState.houseNumber && Number(formState.houseNumber)) {
     return true
   } else {
     return false
@@ -508,14 +508,14 @@ function isHouseNumberValid() {
 }
 
 function isPostalCodeValid() {
-  if (formState.zip.trim() && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(formState.zip.trim())) {
+  if (formState.zip && /^([0-9]{4}[ ]{0,1}[a-zA-Z]{2})$/.test(formState.zip)) {
     return true
   } else {
     return false
   }
 }
 function isSizeValid() {
-  if (formState.size.trim() && /\d+[,.]?\d*\s*/.test(formState.size.trim())) {
+  if (formState.size && /\d+[,.]?\d*\s*/.test(formState.size)) {
     return true
   } else {
     return false
