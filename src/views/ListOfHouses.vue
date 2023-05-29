@@ -12,13 +12,13 @@ const state = reactive<{
   searchText: string
   houses: T_House[]
   isDeleteDialogOpen: boolean
-  sortParameter: 'price' | 'size'
+  sortParameter: 'price' | 'size' | undefined
   houseToDeleteId: number | undefined
 }>({
   searchText: '',
   houses: [],
   isDeleteDialogOpen: false,
-  sortParameter: 'price',
+  sortParameter: undefined,
   houseToDeleteId: undefined
 })
 
@@ -38,6 +38,11 @@ function hideDeleteDialog() {
 
 function showDeleteDialog() {
   state.isDeleteDialogOpen = true
+}
+
+function clickOnPriceButton() {
+  if (state.sortParameter === 'price') state.sortParameter = undefined
+  else state.sortParameter = 'price'
 }
 
 const headers = {
@@ -100,7 +105,7 @@ async function deleteHouse(houseId: number | undefined) {
       <button
         class="price tertiary"
         :class="{ primary: state.sortParameter === 'price' }"
-        @click="state.sortParameter = 'price'"
+        @click="clickOnPriceButton"
       >
         Price
       </button>
@@ -133,9 +138,10 @@ async function deleteHouse(houseId: number | undefined) {
           state.houseToDeleteId = houseId
         }
       "
-      v-for="house in filteredHouses.sort((house1, house2) =>
-        house1[state.sortParameter] > house2[state.sortParameter] ? -1 : 1
-      )"
+      v-for="house in filteredHouses.slice().sort((house1, house2) => {
+        if (state.sortParameter === undefined) return 0;
+        return house1[state.sortParameter] > house2[state.sortParameter] ? -1 : 1
+      })"
       :key="house.id"
       :house="house"
       :showEdit="true"
