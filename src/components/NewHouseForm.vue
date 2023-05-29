@@ -287,7 +287,7 @@ import type { T_House } from '@/types/house'
 import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { sendImage } from '@/stores/Api-call'
-import { sendImageForEditPage } from '@/stores/Api-call'
+import { sendHouseForEdit } from '@/stores/Api-call'
 import { sendImageForCreateHouse } from '@/stores/Api-call'
 
 const props = defineProps<{
@@ -372,7 +372,7 @@ async function submitForm(e: any) {
   }
 
   if (props.editPage && props.house?.id) {
-    await sendImageForEditPage(props.house.id, form_data)
+    await sendHouseForEdit(props.house.id, form_data)
 
     await sendImage(props.house.id, formState.picture)
     router.push('/house/' + props.house.id)
