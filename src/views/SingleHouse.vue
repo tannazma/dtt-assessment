@@ -4,25 +4,22 @@ import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
 import DeleteDialog from '@/components/DeleteDialog.vue'
-import { apiKey } from '@/stores/Api-key'
-import {getHouseFromServerForSingle} from '@/stores/Api-call'
-import {deleteHouseForSingle} from '@/stores/Api-call'
+import { getHouseFromServerForSingle } from '@/stores/Api-call'
+import { deleteHouseForSingle } from '@/stores/Api-call'
 
 const route = useRoute()
 const router = useRouter()
-
-const headers = {
-  'X-Api-Key': apiKey,
-};
 
 const state = reactive<{
   house: T_House | undefined
   houses: T_House[]
   isDeleteDialogOpen: boolean
+  recommendedHouses: T_House[]
 }>({
   house: undefined,
   isDeleteDialogOpen: false,
-  houses: []
+  houses: [],
+  recommendedHouses: []
 })
 
 watch(
@@ -33,12 +30,12 @@ watch(
 )
 
 async function getHouseFromServer() {
-
- getHouseFromServerForSingle()
+  getHouseFromServerForSingle()
 
   const houses: T_House[] = await getHouseFromServerForSingle()
   state.house = houses.find((house) => house.id === Number(route.params.id))
   state.houses = houses
+  state.recommendedHouses = state.houses.slice(0, 3)
 }
 getHouseFromServer()
 
@@ -51,8 +48,6 @@ function showDeleteDialog() {
 }
 
 async function deleteHouse(houseId: number | undefined) {
-
-
   if (houseId === undefined) return
 
   await deleteHouseForSingle(houseId)
@@ -184,7 +179,7 @@ async function deleteHouse(houseId: number | undefined) {
     <div class="recommended-column">
       <h3 class="h3">Recommended for you</h3>
       <RouterLink
-        v-for="recommendHouse in state.houses.slice(0, 3)"
+        v-for="recommendHouse in state.recommendedHouses"
         :to="'/house/' + recommendHouse.id"
       >
         <HouseListItem
