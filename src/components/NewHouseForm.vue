@@ -372,9 +372,10 @@ async function submitForm(e: any) {
   }
 
   if (props.editPage && props.house?.id) {
-    sendImageForEditPage(props.house.id, form_data)
+    await sendImageForEditPage(props.house.id, form_data)
 
-    sendImage(props.house.id, formState.picture)
+    await sendImage(props.house.id, formState.picture)
+    router.push('/house/' + props.house.id)
   } else {
     try {
       const createdHouse = await sendImageForCreateHouse(form_data)
