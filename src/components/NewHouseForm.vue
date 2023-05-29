@@ -486,7 +486,7 @@ function isCityValid() {
   }
 }
 function isPicturetValid() {
-  if (formState.picture) {
+  if (formState.picture || props.house?.image) {
     return true
   } else {
     return false
