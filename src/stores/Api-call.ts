@@ -19,7 +19,7 @@ export async function sendImage(houseId: number, picture: any) {
   console.log(response)
 }
 
-export async function sendImageForEditPage(houseId: number, form_data: any) {
+export async function sendHouseForEdit(houseId: number, form_data: any) {
   fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
     method: 'POST',
     headers: headers,
