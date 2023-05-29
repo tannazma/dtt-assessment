@@ -35,7 +35,9 @@ async function getHouseFromServer() {
   const houses: T_House[] = await getHouseFromServerForSingle()
   state.house = houses.find((house) => house.id === Number(route.params.id))
   state.houses = houses
-  state.recommendedHouses = state.houses.slice(0, 3)
+  state.recommendedHouses = state.houses
+    .filter((b) => b.location.city === state.house?.location.city)
+    .slice(0, 3)
 }
 getHouseFromServer()
 
