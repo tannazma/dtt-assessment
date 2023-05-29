@@ -422,7 +422,6 @@ function isFormValidate() {
     isStreetValid() &&
     isPostalCodeValid() &&
     isPicturetValid()
-
   ) {
     return true
   } else {
