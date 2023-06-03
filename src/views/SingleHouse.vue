@@ -4,38 +4,35 @@ import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
 import DeleteDialog from '@/components/DeleteDialog.vue'
-import { getHouseFromServerForSingle } from '@/stores/Api-call'
 import { deleteHouseForSingle } from '@/stores/Api-call'
+import { useGlobalStore } from '@/stores/globalStore'
 
 const route = useRoute()
 const router = useRouter()
 
+const globalState = useGlobalStore()
+
 const state = reactive<{
   house: T_House | undefined
-  houses: T_House[]
   isDeleteDialogOpen: boolean
   recommendedHouses: T_House[]
 }>({
   house: undefined,
   isDeleteDialogOpen: false,
-  houses: [],
   recommendedHouses: []
 })
 
 watch(
   () => route.params.id,
   () => {
-    state.house = state.houses.find((house) => house.id === Number(route.params.id))
-    }
+    state.house = globalState.getHouseById(Number(route.params.id))
+  }
 )
 
 async function getHouseFromServer() {
-  getHouseFromServerForSingle()
-
-  const houses: T_House[] = await getHouseFromServerForSingle()
-  state.house = houses.find((house) => house.id === Number(route.params.id))
-  state.houses = houses
-  state.recommendedHouses = state.houses
+  await globalState.getHousesFromServer()
+  state.house = globalState.getHouseById(Number(route.params.id))
+  state.recommendedHouses = globalState.houses
     .filter((b) => b.location.city === state.house?.location.city)
     .slice(0, 3)
 }
@@ -204,7 +201,7 @@ async function deleteHouse(houseId: number | undefined) {
   width: 100%;
 }
 .house-box {
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   padding: 0 24px;
 }
 .house-title {
