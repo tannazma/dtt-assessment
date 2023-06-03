@@ -74,7 +74,7 @@ async function deleteHouse(houseId: number | undefined) {
     </RouterLink>
   </div>
   <div class="house-container">
-    <div class="house-box">
+    <div>
       <div>
         <img class="image" :src="state.house?.image" alt="house image" />
         <div class="back-mobile">
@@ -205,8 +205,8 @@ async function deleteHouse(houseId: number | undefined) {
   width: 100%;
 }
 .house-box {
-  margin-bottom: 20px;
-  padding: 0px 24px 0 24px;
+  margin-bottom: 20px;  
+  padding: 0 24px;
 }
 .house-title {
   display: flex;
@@ -285,9 +285,6 @@ async function deleteHouse(houseId: number | undefined) {
   background-color: white;
   margin-top: 0;
   display: flex;
-}
-.house-box {
-  flex: 1;
 }
 .location-p {
   margin-bottom: 10px;
