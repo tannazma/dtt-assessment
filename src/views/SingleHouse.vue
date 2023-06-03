@@ -25,8 +25,8 @@ const state = reactive<{
 watch(
   () => route.params.id,
   () => {
-    getHouseFromServer()
-  }
+    state.house = state.houses.find((house) => house.id === Number(route.params.id))
+    }
 )
 
 async function getHouseFromServer() {
