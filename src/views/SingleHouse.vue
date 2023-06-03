@@ -12,11 +12,9 @@ const globalState = useGlobalStore()
 
 const state = reactive<{
   house: T_House | undefined
-  isDeleteDialogOpen: boolean
   recommendedHouses: T_House[]
 }>({
   house: undefined,
-  isDeleteDialogOpen: false,
   recommendedHouses: []
 })
 
@@ -78,6 +76,7 @@ globalState.$onAction((actionEvent) => {
               ($event) => {
                 $event.preventDefault()
                 globalState.showDeleteDialog()
+                globalState.houseToDeleteId = state.house?.id
               }
             "
             src="/src/assets/ic_delete_white@3x.png"
