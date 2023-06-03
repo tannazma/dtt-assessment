@@ -3,8 +3,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { reactive, watch } from 'vue'
 import type { T_House } from '@/types/house'
 import HouseListItem from '@/components/HouseListItem.vue'
-import DeleteDialog from '@/components/DeleteDialog.vue'
-import { deleteHouseForSingle } from '@/stores/Api-call'
 import { useGlobalStore } from '@/stores/globalStore'
 
 const route = useRoute()
@@ -38,21 +36,12 @@ async function getHouseFromServer() {
 }
 getHouseFromServer()
 
-function hideDeleteDialog() {
-  state.isDeleteDialogOpen = false
-}
-
-function showDeleteDialog() {
-  state.isDeleteDialogOpen = true
-}
-
-async function deleteHouse(houseId: number | undefined) {
-  if (houseId === undefined) return
-
-  await deleteHouseForSingle(houseId)
-  hideDeleteDialog()
-  router.push('/list')
-}
+globalState.$onAction((actionEvent) => {
+  const nameOfAction = actionEvent.name
+  if (nameOfAction === 'deleteHouse') {
+    router.push('/list')
+  }
+})
 </script>
 
 <template>
@@ -88,7 +77,7 @@ async function deleteHouse(houseId: number | undefined) {
             @click="
               ($event) => {
                 $event.preventDefault()
-                showDeleteDialog()
+                globalState.showDeleteDialog()
               }
             "
             src="/src/assets/ic_delete_white@3x.png"
@@ -120,7 +109,8 @@ async function deleteHouse(houseId: number | undefined) {
                 @click="
                   ($event) => {
                     $event.preventDefault()
-                    showDeleteDialog()
+                    globalState.showDeleteDialog()
+                    globalState.houseToDeleteId = state.house?.id
                   }
                 "
                 width="15"
@@ -188,11 +178,6 @@ async function deleteHouse(houseId: number | undefined) {
         />
       </RouterLink>
     </div>
-    <DeleteDialog
-      v-if="state.isDeleteDialogOpen"
-      @delete="deleteHouse(state.house?.id)"
-      @close="hideDeleteDialog"
-    />
   </div>
 </template>
 
