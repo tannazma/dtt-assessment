@@ -331,37 +331,6 @@ const state = reactive<{
   showErrorMessages: boolean
 }>({ showErrorMessages: false })
 
-// const state2 = reactive({
-//   priceValue: '',
-//   bedroomsValue: '',
-//   bathroomsValue: '',
-//   sizeValue: '',
-//   streetNameValue: '',
-//   houseNumberValue: '',
-//   numberAdditionValue: '',
-//   zipValue: '',
-//   cityValue: '',
-//   constructionYearValue: '',
-//   hasGarageValue: '',
-//   pictureValue: '',
-//   descriptionValue: ''
-// })
-
-// it is here for referece comparison
-
-// state.price = '210'
-// state.bedrooms = '1'
-// state.bathrooms = '1'
-// state.size = '1'
-// state.streetName = 'Overtoom'
-// state.houseNumber = '21'
-// // state.numberAddition = '1'
-// state.zip = '11867787686781TY'
-// state.city = 'Amsterdam'
-// state.constructionYear = '1968'
-// // state.hasGarage = 'trie'
-// // state.description = 'Nice houseeeeeeeee!'
-
 onMounted(() => {
   if (props.house) {
     const selectImage = document.getElementById('selected-image') as HTMLImageElement
@@ -402,26 +371,6 @@ async function submitForm(e: any) {
     }
   }
 }
-
-// function isFormValidate() {
-//   if (
-//     priceValue.trim() &&
-//     bedroomsValue.trim() &&
-//     bathroomsValue.trim() &&
-//     sizeValue.trim() &&
-//     streetNameValue.trim() &&
-//     houseNumberValue.trim() &&
-//     zipValue.trim() &&
-//     cityValue.trim() &&
-//     constructionYearValue.trim() &&
-//     hasGarageValue.trim() &&
-//     pictureValue.trim() &&
-//     descriptionValue.trim()
-//   ) {
-//     return true
-//   } else {
-//     return false
-//   }}
 
 function isFormValidate() {
   if (

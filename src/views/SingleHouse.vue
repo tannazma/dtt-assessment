@@ -53,7 +53,6 @@ async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
 
   await deleteHouseForSingle(houseId)
-  //close the dialog
   hideDeleteDialog()
   router.push('/list')
 }

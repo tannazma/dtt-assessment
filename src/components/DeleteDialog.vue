@@ -8,7 +8,6 @@
       </div>
       <div class="dialog-buttons">
         <button class="dialog-button-yes primary" @click="confirmDelete">YES, DELETE</button>
-        <!-- close the dialog when we press Go back -->
         <button class="dialog-button-no secondary" @click="close">GO BACK</button>
       </div>
     </div>

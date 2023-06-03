@@ -11,12 +11,11 @@ export async function sendImage(houseId: number, picture: any) {
   const formData = new FormData()
 
   formData.append('image', picture)
-  const response = await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
+  await fetch('https://api.intern.d-tt.nl/api/houses/' + houseId + '/upload', {
     method: 'POST',
     headers: headers,
     body: formData
   })
-  console.log(response)
 }
 
 export async function sendHouseForEdit(houseId: number, form_data: any) {

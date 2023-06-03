@@ -10,7 +10,7 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     <h2>Desin and Development</h2>
     <div class="about-logo-container">
-        <img src="src/assets/img_logo_dtt@3x.png" class="about-logo" alt="dtt logo" />
+      <img src="src/assets/img_logo_dtt@3x.png" class="about-logo" alt="dtt logo" />
       <div class="by-dtt">
         <p>By DTT</p>
         <a href="https://www.d-tt.nl" class="dtt-site">www.d-tt.nl </a>

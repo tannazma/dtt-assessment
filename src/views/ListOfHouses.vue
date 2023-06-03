@@ -3,7 +3,6 @@ import HouseListItem from '@/components/HouseListItem.vue'
 import { computed, reactive } from 'vue'
 import type { T_House } from '@/types/house'
 import DeleteDialog from '@/components/DeleteDialog.vue'
-import { apiKey } from '@/stores/Api-key'
 import CreateNewButton from '@/components/CreateNewButton.vue'
 import { getHousesFromServerForList } from '@/stores/Api-call'
 import { deleteHouseInList } from '@/stores/Api-call'
@@ -49,19 +48,6 @@ function clickOnSizeButton() {
   else state.sortParameter = 'size'
 }
 
-const headers = {
-  'X-Api-Key': apiKey
-}
-
-// this is old way
-// response.then((responseResolved) => {
-//   responseResolved.text().then((responseExtracted) => {
-//     const result = JSON.parse(responseExtracted);
-//     state.houses = result;
-//   })
-// })
-
-// this is new good way
 async function getHousesFromServer() {
   getHousesFromServerForList()
 
@@ -74,7 +60,6 @@ async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
 
   await deleteHouseInList(houseId)
-  //close the dialog
   hideDeleteDialog()
   getHousesFromServer()
 }
@@ -160,11 +145,6 @@ async function deleteHouse(houseId: number | undefined) {
 </template>
 
 <style scoped>
-.house-parent {
-  display: flex;
-  flex-direction: column;
-}
-
 .first-part {
   display: flex;
   margin-top: 20px;
