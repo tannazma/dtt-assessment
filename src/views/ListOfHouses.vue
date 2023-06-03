@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import HouseListItem from '@/components/HouseListItem.vue'
 import { computed, reactive } from 'vue'
-import type { T_House } from '@/types/house'
 import DeleteDialog from '@/components/DeleteDialog.vue'
 import CreateNewButton from '@/components/CreateNewButton.vue'
-import { getHousesFromServerForList } from '@/stores/Api-call'
 import { deleteHouseInList } from '@/stores/Api-call'
+import { useGlobalStore } from '@/stores/globalStore'
 
 const state = reactive<{
   searchText: string
-  houses: T_House[]
   isDeleteDialogOpen: boolean
   sortParameter: 'price' | 'size' | undefined
   houseToDeleteId: number | undefined
 }>({
   searchText: '',
-  houses: [],
   isDeleteDialogOpen: false,
   sortParameter: 'price',
   houseToDeleteId: undefined
 })
 
+const globalState = useGlobalStore()
+
 const filteredHouses = computed(() =>
-  state.houses.filter(
+  globalState.houses.filter(
     (h) =>
       h.description.toLowerCase().includes(state.searchText.toLowerCase()) ||
       h.location.street.toLowerCase().includes(state.searchText.toLowerCase()) ||
@@ -48,20 +47,14 @@ function clickOnSizeButton() {
   else state.sortParameter = 'size'
 }
 
-async function getHousesFromServer() {
-  getHousesFromServerForList()
-
-  state.houses = await getHousesFromServerForList()
-}
-
-getHousesFromServer()
+globalState.getHousesFromSerever()
 
 async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
 
   await deleteHouseInList(houseId)
   hideDeleteDialog()
-  getHousesFromServer()
+  globalState.getHousesFromSerever()
 }
 </script>
 
