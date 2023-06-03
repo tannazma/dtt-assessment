@@ -78,12 +78,12 @@ async function deleteHouse(houseId: number | undefined) {
             <img class="back-mobile" src="/src/assets/ic_back_white@3x.png" alt="black gray icon" />
           </RouterLink>
         </div>
-        <div class="edit-mobile">
+        <div class="edit-mobile" v-if="state.house?.madeByMe">
           <RouterLink :to="'/edit/' + state.house?.id">
             <img src="/src/assets/ic_edit_white@3x.png" alt="edit icon" class="edit-mobile" />
           </RouterLink>
         </div>
-        <div class="delete-mobile">
+        <div class="delete-mobile" v-if="state.house?.madeByMe">
           <img
             @click="
               ($event) => {

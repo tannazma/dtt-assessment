@@ -96,8 +96,8 @@ globalState.getHousesFromServer()
       })"
       :key="house.id"
       :house="house"
-      :showEdit="true"
-      :showDelete="true"
+      :showEdit="house.madeByMe"
+      :showDelete="house.madeByMe"
     />
   </div>
 </template>
