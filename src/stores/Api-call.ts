@@ -35,13 +35,6 @@ export async function sendImageForCreateHouse(form_data: any) {
   return await (await response).json()
 }
 
-export async function getHousesFromServerForEdit() {
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: headers
-  })
-  return await (await response).json()
-}
-
 export async function getHousesFromServerForList() {
   const response = fetch('https://api.intern.d-tt.nl/api/houses', {
     headers: headers
@@ -54,13 +47,6 @@ export async function deleteHouseInList(houseId: number) {
     headers: headers,
     method: 'delete'
   })
-}
-
-export async function getHouseFromServerForSingle() {
-  const response = fetch('https://api.intern.d-tt.nl/api/houses', {
-    headers: headers
-  })
-  return await (await response).json()
 }
 
 export async function deleteHouseForSingle(houseId: number) {
