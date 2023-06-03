@@ -48,10 +48,3 @@ export async function deleteHouseInList(houseId: number) {
     method: 'delete'
   })
 }
-
-export async function deleteHouseForSingle(houseId: number) {
-  fetch('https://api.intern.d-tt.nl/api/houses/' + houseId, {
-    headers: headers,
-    method: 'delete'
-  })
-}
