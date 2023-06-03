@@ -9,6 +9,16 @@ export const useGlobalStore = defineStore('globalStore', {
   getters: {
     getHouseById(state) {
       return (houseId: number) => state.houses.find((house) => house.id === houseId)
+    },
+    filterHouses(state) {
+      return (searchText: string) =>
+        state.houses.filter(
+          (h) =>
+            h.description.toLowerCase().includes(searchText.toLowerCase()) ||
+            h.location.street.toLowerCase().includes(searchText.toLowerCase()) ||
+            h.location.city.toLowerCase().includes(searchText.toLowerCase()) ||
+            h.location.zip.toLowerCase().includes(searchText.toLowerCase())
+        )
     }
   },
   actions: {

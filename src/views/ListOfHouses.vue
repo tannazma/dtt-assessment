@@ -20,15 +20,7 @@ const state = reactive<{
 
 const globalState = useGlobalStore()
 
-const filteredHouses = computed(() =>
-  globalState.houses.filter(
-    (h) =>
-      h.description.toLowerCase().includes(state.searchText.toLowerCase()) ||
-      h.location.street.toLowerCase().includes(state.searchText.toLowerCase()) ||
-      h.location.city.toLowerCase().includes(state.searchText.toLowerCase()) ||
-      h.location.zip.toLowerCase().includes(state.searchText.toLowerCase())
-  )
-)
+const filteredHouses = computed(() => globalState.filterHouses(state.searchText))
 
 function hideDeleteDialog() {
   state.isDeleteDialogOpen = false
