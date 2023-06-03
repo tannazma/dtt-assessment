@@ -47,14 +47,14 @@ function clickOnSizeButton() {
   else state.sortParameter = 'size'
 }
 
-globalState.getHousesFromSerever()
+globalState.getHousesFromServer()
 
 async function deleteHouse(houseId: number | undefined) {
   if (houseId === undefined) return
 
   await deleteHouseInList(houseId)
   hideDeleteDialog()
-  globalState.getHousesFromSerever()
+  globalState.getHousesFromServer()
 }
 </script>
 

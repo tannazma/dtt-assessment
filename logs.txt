@@ -51,3 +51,4 @@ almost 1.5 hour to refactor send image functions and seperate them in the api ca
 almost 2 hours to understand why picture is not visible in the edit page and make it visible
 like 2 hours more to refactor all fetches and put them in api call file
 like 1 hour to know how to create a dynamic class for new and edit pages have bold style in headerlike 1 hour to remove error messages in form (create or edit) in default and make it triggered when user clicks on submit form
+like 1 day to learn about store and how to use pinia for implementing store for states

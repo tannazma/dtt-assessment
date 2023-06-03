@@ -3,7 +3,7 @@ import NewHouseForm from '@/components/NewHouseForm.vue'
 import type { T_House } from '@/types/house'
 import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import { getHousesFromServerForEdit } from '@/stores/Api-call'
+import { useGlobalStore } from '@/stores/globalStore'
 
 const state = reactive<{
   house: T_House | undefined
@@ -11,13 +11,13 @@ const state = reactive<{
 
 const route = useRoute()
 
-async function getHouseFromServer() {
-  getHousesFromServerForEdit()
+const globalState = useGlobalStore()
 
-  const houses: T_House[] = await getHousesFromServerForEdit()
-  state.house = houses.find((house) => house.id === Number(route.params.id))
+async function getHouseFromStore() {
+  await globalState.getHousesFromServer()
+  state.house = globalState.getHouseById(Number(route.params.id))
 }
-getHouseFromServer()
+getHouseFromStore()
 </script>
 
 <template>

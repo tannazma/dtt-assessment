@@ -6,8 +6,13 @@ export const useGlobalStore = defineStore('globalStore', {
   state: () => {
     return { houses: [] as T_House[] }
   },
+  getters: {
+    getHouseById(state) {
+      return (houseId: number) => state.houses.find((house) => house.id === houseId)
+    }
+  },
   actions: {
-    async getHousesFromSerever() {
+    async getHousesFromServer() {
       this.houses = await getHousesFromServerForList()
     }
   }
