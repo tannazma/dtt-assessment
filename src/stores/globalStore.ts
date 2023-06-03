@@ -1,10 +1,15 @@
 import { defineStore } from 'pinia'
 import { getHousesFromServerForList } from './Api-call'
 import type { T_House } from '@/types/house'
+import { deleteHouseInList } from '@/stores/Api-call'
 
 export const useGlobalStore = defineStore('globalStore', {
   state: () => {
-    return { houses: [] as T_House[] }
+    return {
+      houses: [] as T_House[],
+      isDeleteDialogOpen: false,
+      houseToDeleteId: undefined as number | undefined
+    }
   },
   getters: {
     getHouseById(state) {
@@ -24,6 +29,19 @@ export const useGlobalStore = defineStore('globalStore', {
   actions: {
     async getHousesFromServer() {
       this.houses = await getHousesFromServerForList()
+    },
+    hideDeleteDialog() {
+      this.isDeleteDialogOpen = false
+    },
+    showDeleteDialog() {
+      this.isDeleteDialogOpen = true
+    },
+    async deleteHouse() {
+      if (this.houseToDeleteId === undefined) return
+
+      await deleteHouseInList(this.houseToDeleteId)
+      this.hideDeleteDialog()
+      this.getHousesFromServer()
     }
   }
 })

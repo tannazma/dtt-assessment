@@ -1,35 +1,20 @@
 <script setup lang="ts">
 import HouseListItem from '@/components/HouseListItem.vue'
 import { computed, reactive } from 'vue'
-import DeleteDialog from '@/components/DeleteDialog.vue'
 import CreateNewButton from '@/components/CreateNewButton.vue'
-import { deleteHouseInList } from '@/stores/Api-call'
 import { useGlobalStore } from '@/stores/globalStore'
 
 const state = reactive<{
   searchText: string
-  isDeleteDialogOpen: boolean
   sortParameter: 'price' | 'size' | undefined
-  houseToDeleteId: number | undefined
 }>({
   searchText: '',
-  isDeleteDialogOpen: false,
   sortParameter: 'price',
-  houseToDeleteId: undefined
 })
 
 const globalState = useGlobalStore()
 
 const filteredHouses = computed(() => globalState.filterHouses(state.searchText))
-
-function hideDeleteDialog() {
-  state.isDeleteDialogOpen = false
-}
-
-function showDeleteDialog() {
-  state.isDeleteDialogOpen = true
-}
-
 function clickOnPriceButton() {
   if (state.sortParameter === 'price') state.sortParameter = undefined
   else state.sortParameter = 'price'
@@ -41,13 +26,6 @@ function clickOnSizeButton() {
 
 globalState.getHousesFromServer()
 
-async function deleteHouse(houseId: number | undefined) {
-  if (houseId === undefined) return
-
-  await deleteHouseInList(houseId)
-  hideDeleteDialog()
-  globalState.getHousesFromServer()
-}
 </script>
 
 <template>
@@ -108,8 +86,8 @@ async function deleteHouse(houseId: number | undefined) {
     <HouseListItem
       @deleteHouse="
         (houseId) => {
-          showDeleteDialog()
-          state.houseToDeleteId = houseId
+          globalState.showDeleteDialog()
+          globalState.houseToDeleteId = houseId
         }
       "
       v-for="house in filteredHouses.slice().sort((house1, house2) => {
@@ -122,11 +100,6 @@ async function deleteHouse(houseId: number | undefined) {
       :showDelete="true"
     />
   </div>
-  <DeleteDialog
-    v-if="state.isDeleteDialogOpen"
-    @delete="deleteHouse(state.houseToDeleteId)"
-    @close="hideDeleteDialog"
-  />
 </template>
 
 <style scoped>
