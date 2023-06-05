@@ -55,6 +55,7 @@ function isEditOrCreatePage(): boolean {
   height: 75px;
   z-index: 1;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .about {
