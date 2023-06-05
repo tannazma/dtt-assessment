@@ -26,6 +26,7 @@ import { RouterLink } from 'vue-router'
 }
 .upload-image-mobile {
   width: 22px;
+  padding-top: 17px;
 }
 
 @media (max-width: 800px) {
