@@ -3,6 +3,7 @@ import { RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue'
 import DeleteDialog from './components/DeleteDialog.vue'
 import { useGlobalStore } from './stores/globalStore'
+import FooterMobile from './components/FooterMobile.vue'
 
 const globalState = useGlobalStore()
 
@@ -19,6 +20,7 @@ const route = useRoute()
     @delete="globalState.deleteHouse()"
     @close="globalState.hideDeleteDialog()"
   />
+  <FooterMobile />
 </template>
 
 <style scoped>
