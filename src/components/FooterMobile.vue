@@ -40,7 +40,6 @@ function isEditOrCreatePage(): boolean {
 
 <style scoped>
 .list {
-  margin: 0 50px;
   color: #c3c3c3;
   flex: 1;
 }

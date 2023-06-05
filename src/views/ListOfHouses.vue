@@ -210,6 +210,7 @@ globalState.getHousesFromServer()
     display: flex;
     flex-direction: column;
     gap: 13px;
+    padding-bottom: 85px;
   }
 }
 </style>
